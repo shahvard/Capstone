@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SherTutor">
         <activity
+            android:name=".TutorHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
