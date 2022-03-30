@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent(this, TutorHomeActivity::class.java)
         startActivity(intent)
 
+        var intent = Intent(this, StudentHomePage::class.java)
+        startActivity(intent)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflator = menuInflater
