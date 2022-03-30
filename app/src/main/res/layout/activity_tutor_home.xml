@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4A40739C"
-    tools:context=".TutorHomeActivity">
+    tools:context=".Tutor.TutorHomeActivity">
 
     <TextView
         android:id="@+id/headingView"

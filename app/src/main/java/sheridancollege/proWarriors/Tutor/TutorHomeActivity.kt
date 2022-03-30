@@ -1,8 +1,9 @@
-package sheridancollege.proWarriors
+package sheridancollege.proWarriors.Tutor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import sheridancollege.proWarriors.R
 
 class TutorHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

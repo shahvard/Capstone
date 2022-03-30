@@ -12,7 +12,16 @@
         android:icon="@drawable/account"
         android:id="@+id/account"
         app:showAsAction="always"
-        android:title="Profile" />
+        android:title="Profile">
+
+        <menu>
+            <item
+                android:title="View As Student"
+                android:id="@+id/cView"
+                />
+        </menu>
+    </item>
+
     <item
         android:title="More"
         android:id="@+id/more"
