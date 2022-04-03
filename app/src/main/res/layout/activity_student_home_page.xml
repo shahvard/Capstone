@@ -9,27 +9,45 @@
 
     <TextView
         android:id="@+id/sessionsList"
-        android:layout_width="411dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="392dp"
+        android:layout_height="420dp"
+        android:layout_marginTop="8dp"
         android:maxLines="10"
         android:minLines="1"
-        android:text="@string/upcoming_sessions"
+        android:text="List"
         android:textAlignment="center"
         android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/headingView"
-        android:layout_width="413dp"
-        android:layout_height="29dp"
+        android:layout_width="250dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="116dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="117dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/welcome"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp"
+        android:textSize="26sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="180dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/upcoming_sessions"
+        android:textColor="#050404"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headingView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

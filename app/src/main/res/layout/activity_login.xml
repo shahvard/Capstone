@@ -73,7 +73,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:inputType="textPersonName|textEmailAddress"
+        android:inputType="text"
         android:text="Email"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

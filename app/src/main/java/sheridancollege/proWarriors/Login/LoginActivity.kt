@@ -25,10 +25,12 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             if(intent.getStringExtra("type") == "student"){
                 var i = Intent(this, StudentHomePage::class.java)
+                i.putExtra("studentName", userName.text)
                 startActivity(i)
             }
             if(intent.getStringExtra("type") == "tutor"){
                 var i = Intent(this, TutorHomeActivity::class.java)
+                i.putExtra("tutorName", userName.text)
                 startActivity(i)
             }
         }
