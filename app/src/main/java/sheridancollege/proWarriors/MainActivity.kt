@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import sheridancollege.proWarriors.Landing.LandingActivity
+import sheridancollege.proWarriors.Login.LoginActivity
 import sheridancollege.proWarriors.Student.StudentHomePage
 
 class MainActivity : AppCompatActivity() {
