@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "114426740326",
+    "project_id": "shertutor-b4464",
+    "storage_bucket": "shertutor-b4464.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114426740326:android:e5c0858cc0b4a0a09c37a7",
+        "android_client_info": {
+          "package_name": "sheridancollege.proWarriors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114426740326-1pe79jeefu83vuqebj2lbmj610kv5t5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcUWiNjURZB9Mm__K5H2TlJLqes0EOtHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114426740326-1pe79jeefu83vuqebj2lbmj610kv5t5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
