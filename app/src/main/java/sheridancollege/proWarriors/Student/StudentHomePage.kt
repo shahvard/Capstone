@@ -9,6 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
 import org.w3c.dom.Text
 import sheridancollege.proWarriors.Login.LoginActivity
@@ -17,13 +20,23 @@ import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Tutor.TutorHomeActivity
 
 class StudentHomePage : AppCompatActivity() {
-    //private lateinit var auth: FirebaseAuth
-
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home_page)
 
+        database = Firebase.database.reference
+        val delimiter ="@"
+        val email = intent.getStringExtra("studentName")
+        val username = email?.split(delimiter)?.get(0)
         val heading = findViewById<TextView>(R.id.headingView)
+        var user: User? =null
+
+
+
+
+
+
         heading.text = "Welcome " + intent.getStringExtra("studentName")
     }
 
