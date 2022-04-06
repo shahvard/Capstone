@@ -50,12 +50,12 @@
         android:id="@+id/fName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/details"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="50dp"
         android:layout_toRightOf="@+id/firstNameLabel"
         android:text="Shubh"
-        android:layout_marginTop="50dp"
-        android:textSize="24dp"
-        android:layout_marginLeft="60dp"
-        android:layout_below="@+id/details"/>
+        android:textSize="24dp" />
 
 
     <TextView
@@ -92,12 +92,12 @@
         android:id="@+id/cNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lastNameLabel"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/contactLabel"
         android:text="6474697977"
-        android:layout_marginTop="20dp"
-        android:textSize="24dp"
-        android:layout_marginLeft="30dp"
-        android:layout_below="@+id/lastNameLabel"/>
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/addressLabel"

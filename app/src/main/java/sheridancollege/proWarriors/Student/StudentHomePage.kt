@@ -28,7 +28,7 @@ import sheridancollege.proWarriors.Tutor.TutorHomeActivity
 class StudentHomePage : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     var isTutor: Boolean = false
-    var studentInfo: ArrayList<String> = TODO()
+    var studentInfo: ArrayList<String> = ArrayList(7)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home_page)
@@ -89,7 +89,7 @@ class StudentHomePage : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean{
 
         when(item.title.toString()){
-            "Person"->{
+            "Profile"->{
 
                 var intent = Intent(this, StudentDetailsActivity::class.java)
                 intent.putExtra("studentObject", studentInfo)
@@ -104,10 +104,7 @@ class StudentHomePage : AppCompatActivity() {
                     val dialogBuilder = AlertDialog.Builder(this)
                     dialogBuilder.setMessage("You do not have an access to tutor login.")
                         .setCancelable(false)
-                        .setPositiveButton("Proceed", DialogInterface.OnClickListener {
-                                dialog, id -> finish()
-                        })
-                        .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                        .setNegativeButton("Okay", DialogInterface.OnClickListener {
                                 dialog, id -> dialog.cancel()
                         })
                     val alert = dialogBuilder.create()
