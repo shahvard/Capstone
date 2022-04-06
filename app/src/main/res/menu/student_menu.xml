@@ -16,6 +16,10 @@
 
         <menu>
             <item
+                android:title="Profile"
+                android:id="@+id/profile"
+                />
+            <item
                 android:title="View As Tutor"
                 android:id="@+id/cView"
                 />

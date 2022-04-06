@@ -10,15 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SherTutor">
         <activity
+            android:name=".Profile.StudentDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Landing.LandingActivity"
             android:exported="false" />
         <activity
             android:name=".Login.LoginActivity"
             android:exported="false" />
-        <activity
+        <!--<activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
