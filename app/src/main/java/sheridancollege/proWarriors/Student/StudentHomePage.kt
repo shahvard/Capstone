@@ -1,5 +1,6 @@
 package sheridancollege.proWarriors.Student
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -25,6 +27,8 @@ import sheridancollege.proWarriors.Tutor.TutorHomeActivity
 
 class StudentHomePage : AppCompatActivity() {
     private lateinit var database: DatabaseReference
+    var isTutor: Boolean = false
+    var studentInfo: ArrayList<String> = TODO()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home_page)
@@ -34,22 +38,36 @@ class StudentHomePage : AppCompatActivity() {
         val email = intent.getStringExtra("studentName")
         val username = email?.split(delimiter)?.get(0)
         val heading = findViewById<TextView>(R.id.headingView)
-        var user: User? =null
+        //var user: User? =null
 
 
 
-        val postListener = object : ValueEventListener {
+        val studentListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                if( dataSnapshot.child("Students") != null) {
-                    val data = dataSnapshot.child("Students")
-                    val name =  data.child("shahvard").child("firstName").value.toString()
-                    heading.text = "Welcome $name"
+                   val data = dataSnapshot.child("Students")
+                   studentInfo.add(username.toString())
+                   studentInfo.add(data.child(username.toString()).child("firstName").value.toString())
+                   studentInfo.add(data.child(username.toString()).child("lastName").value.toString())
+                   studentInfo.add(data.child(username.toString()).child("phoneNo").value.toString())
+                   studentInfo.add(data.child(username.toString()).child("email").value.toString())
+                   studentInfo.add(data.child(username.toString()).child("address").value.toString())
+                   studentInfo.add(data.child(username.toString()).child("isTutor").value.toString())
+                   val name = studentInfo.get(1)
+                   /*if (data.child(username.toString()).child("isTutor").value.toString() == "true")
+                       isTutor = true
+                   else
+                       isTutor = false*/
 
-                //Toast.makeText(this@,"Inside",Toast.LENGTH_SHORT).show()
+                   if(studentInfo.get(6) == "true"){
+                       isTutor = true
+                   }
+                   else{
+                       isTutor = false
+                   }
+
+                   heading.text = "Welcome $name"
                 }
-                // Get Post object and use the values to update the UI
-                //val post = dataSnapshot.getValue<Post>()
-                // ...
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -58,17 +76,7 @@ class StudentHomePage : AppCompatActivity() {
             }
 
         }
-        database.addValueEventListener(postListener)
-        /*if (username != null) {
-            var a = database.child("Students").child(username)
-            a.get().addOnSuccessListener { document->
-               document.getValue<String>()
-            }
-        }*/
-
-
-
-       // heading.text = "Welcome " + intent.getStringExtra("studentName")
+        database.addValueEventListener(studentListener)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -82,12 +90,30 @@ class StudentHomePage : AppCompatActivity() {
 
         when(item.title.toString()){
             "Person"->{
+
                 var intent = Intent(this, StudentDetailsActivity::class.java)
+                intent.putExtra("studentObject", studentInfo)
                 startActivity(intent)
             }
             "View As Tutor" -> {
-                var intent = Intent(this, TutorHomeActivity::class.java)
-                startActivity(intent)
+                if(isTutor == true){
+                    var intent = Intent(this, TutorHomeActivity::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    val dialogBuilder = AlertDialog.Builder(this)
+                    dialogBuilder.setMessage("You do not have an access to tutor login.")
+                        .setCancelable(false)
+                        .setPositiveButton("Proceed", DialogInterface.OnClickListener {
+                                dialog, id -> finish()
+                        })
+                        .setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                                dialog, id -> dialog.cancel()
+                        })
+                    val alert = dialogBuilder.create()
+                    alert.setTitle("Tutor Access denied.")
+                    alert.show()
+                }
             }
             "Logout"->{
                 Firebase.auth.signOut()
