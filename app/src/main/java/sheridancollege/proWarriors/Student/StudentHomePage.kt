@@ -46,27 +46,41 @@ class StudentHomePage : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                if( dataSnapshot.child("Students") != null) {
                    val data = dataSnapshot.child("Students")
-                   studentInfo.add(username.toString())
+                  // var a :StudentEntity? = StudentEntity()
+                   val firstName = data.child(username.toString()).child("firstName").value.toString()
+                   val lastName = data.child(username.toString()).child("lastName").value.toString()
+                   val email = data.child(username.toString()).child("email").value.toString()
+                   val phoneNo = data.child(username.toString()).child("phoneNo").value.toString()
+                   val address = data.child(username.toString()).child("address").value.toString()
+                   val isTutor = data.child(username.toString()).child("isTutor").value.toString().toBoolean()
+
+
+                      StudentEntity.student =Student(username.toString(),firstName,lastName,email,address,phoneNo,isTutor)
+
+
+                  /* studentInfo.add(username.toString())
                    studentInfo.add(data.child(username.toString()).child("firstName").value.toString())
                    studentInfo.add(data.child(username.toString()).child("lastName").value.toString())
                    studentInfo.add(data.child(username.toString()).child("phoneNo").value.toString())
                    studentInfo.add(data.child(username.toString()).child("email").value.toString())
                    studentInfo.add(data.child(username.toString()).child("address").value.toString())
                    studentInfo.add(data.child(username.toString()).child("isTutor").value.toString())
-                   val name = studentInfo.get(1)
+                   val name = studentInfo.get(1)*/
                    /*if (data.child(username.toString()).child("isTutor").value.toString() == "true")
                        isTutor = true
                    else
                        isTutor = false*/
-
+/*
                    if(studentInfo.get(6) == "true"){
                        isTutor = true
                    }
                    else{
                        isTutor = false
-                   }
+                   }*/
 
-                   heading.text = "Welcome $name"
+
+                       heading.text = "Welcome ${StudentEntity.student!!.firstName}"
+
                 }
             }
 
@@ -93,6 +107,7 @@ class StudentHomePage : AppCompatActivity() {
 
                 var intent = Intent(this, StudentDetailsActivity::class.java)
                 intent.putExtra("studentObject", studentInfo)
+
                 startActivity(intent)
             }
             "View As Tutor" -> {
