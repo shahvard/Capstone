@@ -12,7 +12,7 @@
         android:icon="@drawable/account"
         android:id="@+id/account"
         app:showAsAction="always"
-        android:title="Profile">
+        android:title="Account">
 
         <menu>
             <item
@@ -30,12 +30,12 @@
         </menu>
     </item>
 
-    <item
+   <!-- <item
         android:title="More"
         android:id="@+id/more"
         android:icon="@drawable/more"
         app:showAsAction="always"
         />
-
+-->
 
 </menu>

@@ -9,16 +9,18 @@
         android:title="Notification"
         app:showAsAction="always" />
     <item
+        android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_foreground"
+        app:showAsAction="always"
+        />
+    <item
         android:icon="@drawable/account"
         android:id="@+id/account"
         app:showAsAction="always"
-        android:title="Profile">
+        android:title="Account">
 
         <menu>
-            <item
-                android:title="Home"
-                android:id="@+id/home"
-                />
             <item
                 android:title="View As Tutor"
                 android:id="@+id/cView"
@@ -29,13 +31,13 @@
                 />
         </menu>
     </item>
-
+<!--
     <item
         android:title="More"
         android:id="@+id/more"
         android:icon="@drawable/more"
         app:showAsAction="always"
-        />
+        />-->
 
 
 </menu>

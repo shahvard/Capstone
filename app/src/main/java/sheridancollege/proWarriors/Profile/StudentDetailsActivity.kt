@@ -18,7 +18,8 @@ import sheridancollege.proWarriors.Student.StudentHomePage
 import sheridancollege.proWarriors.Tutor.TutorHomeActivity
 
 class StudentDetailsActivity : AppCompatActivity() {
-    var student=StudentEntity.student
+
+    var student = StudentEntity.student
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +29,17 @@ class StudentDetailsActivity : AppCompatActivity() {
         var last = findViewById<TextView>(R.id.lName)
         var phone = findViewById<TextView>(R.id.cNumber)
         var add = findViewById<TextView>(R.id.address)
-        var sInfo: ArrayList<String> = intent.getStringArrayListExtra("studentObject") as ArrayList<String>
-        //intent.get
-        //sInfo.get(0)
+
 
         if (student != null) {
             first.text = student.firstName
-            last.text = student.lastName//sInfo.get(2)
-            phone.text = student.phoneNo//sInfo.get(3)
-            add.text = student.address//sInfo.get(5)
+            last.text = student.lastName
+            phone.text = student.phoneNo
+            add.text = student.address
         }
         if(student == null){
-            Toast.makeText(this,"Student null",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Student info not found. Please try again later.",Toast.LENGTH_SHORT).show()
         }
-
-        //first.text = sInfo.get(1)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,8 +52,17 @@ class StudentDetailsActivity : AppCompatActivity() {
 
         when(item.title.toString()){
             "Home"->{
-                var intent = Intent(this, StudentHomePage::class.java)
-                startActivity(intent)
+                if (student.isTutor == false){
+                    var intent = Intent(this, StudentHomePage::class.java)
+                    intent.putExtra("info", student)
+                    startActivity(intent)
+                }
+                else if(student.isTutor == true){
+                    var intent = Intent(this, StudentHomePage::class.java)
+                    intent.putExtra("info", student)
+                    startActivity(intent)
+                }
+
             }
             "View As Tutor" -> {
                 if(student.isTutor == true){
