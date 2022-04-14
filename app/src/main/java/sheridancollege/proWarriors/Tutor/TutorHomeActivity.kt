@@ -80,6 +80,10 @@ class TutorHomeActivity : AppCompatActivity() {
         if (intent.getStringExtra("sName") != null){
             heading.text = "Welcome " + intent.getStringExtra("sName")
         }
+
+        if(intent.getStringExtra("name") != null){
+            heading.text = "Welcome " + intent.getStringExtra("name")
+        }
     }
 
    override fun onCreateOptionsMenu(menu: Menu?): Boolean {

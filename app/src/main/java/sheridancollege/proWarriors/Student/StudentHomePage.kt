@@ -76,6 +76,9 @@ class StudentHomePage : AppCompatActivity() {
         if (intent.getStringExtra("tutName") != null){
             heading.text = "Welcome " + intent.getStringExtra("tutName")
         }
+        if(intent.getStringExtra("name" )!= null){
+            heading.text = "Welcome " + intent.getStringExtra("name")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

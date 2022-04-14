@@ -56,12 +56,12 @@ class StudentDetailsActivity : AppCompatActivity() {
             "Home"->{
                 if (student.isTutor == false){
                     var intent = Intent(this, StudentHomePage::class.java)
-                    intent.putExtra("info", student)
+                    intent.putExtra("name", student.firstName)
                     startActivity(intent)
                 }
                 else if(student.isTutor == true){
                     var intent = Intent(this, StudentHomePage::class.java)
-                    intent.putExtra("info", student)
+                    intent.putExtra("name", student.firstName)
                     startActivity(intent)
                 }
 
@@ -69,6 +69,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             "View As Tutor" -> {
                 if(student.isTutor == true){
                     var intent = Intent(this, TutorHomeActivity::class.java)
+                    intent.putExtra("TutorName", student.firstName)
                     startActivity(intent)
                 }
                 else{
