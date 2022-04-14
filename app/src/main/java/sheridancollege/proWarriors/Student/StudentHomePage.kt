@@ -19,53 +19,63 @@ import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.Login.LoginActivity
 import sheridancollege.proWarriors.Profile.StudentDetailsActivity
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Tutor.TutorEntity
 import sheridancollege.proWarriors.Tutor.TutorHomeActivity
 
 class StudentHomePage : AppCompatActivity() {
+    private lateinit var heading: TextView
     private lateinit var database: DatabaseReference
-    var isTutor: Boolean = false
-    var studentInfo: ArrayList<String> = ArrayList(7)
+    private  var tut: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home_page)
 
-        var x = intent.getSerializableExtra("info") as Student
         database = Firebase.database.reference
         val delimiter ="@"
         val email = intent.getStringExtra("studentName")
         val username = email?.split(delimiter)?.get(0)
-        val heading = findViewById<TextView>(R.id.headingView)
+        heading = findViewById(R.id.headingView)
 
-        if(x!=null){
-            heading.text = "Welcome ${x.firstName}"
-        }
-        val studentListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.child("Students") != null) {
-                    val data = dataSnapshot.child("Students")
-                    val firstName = data.child(username.toString()).child("firstName").value.toString()
-                    val lastName = data.child(username.toString()).child("lastName").value.toString()
-                    val email = data.child(username.toString()).child("email").value.toString()
-                    val phoneNo = data.child(username.toString()).child("phoneNo").value.toString()
-                    val address = data.child(username.toString()).child("address").value.toString()
-                    val isTutor =  data.child(username.toString()).child("isTutor").value.toString().toBoolean()
+        if(intent.getStringExtra("tutName") == null){
+            val studentListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.child("Students") != null) {
+                        val data = dataSnapshot.child("Students")
+                        val firstName = data.child(username.toString()).child("firstName").value.toString()
+                        val lastName = data.child(username.toString()).child("lastName").value.toString()
+                        val email = data.child(username.toString()).child("email").value.toString()
+                        val phoneNo = data.child(username.toString()).child("phoneNo").value.toString()
+                        val address = data.child(username.toString()).child("address").value.toString()
+                        val tutor =  data.child(username.toString()).child("isTutor").value.toString().toBoolean()
 
-                    StudentEntity.student = Student(
-                        username.toString(),
-                        firstName,
-                        lastName,
-                        email,
-                        address,
-                        phoneNo,
-                        isTutor
-                    )
-                    heading.text = "Welcome ${StudentEntity.student!!.firstName}"
+                        StudentEntity.student = Student(
+                            username.toString(),
+                            firstName,
+                            lastName,
+                            email,
+                            address,
+                            phoneNo,
+                            tutor
+                        )
+                        heading.text = "Welcome ${StudentEntity.student!!.firstName}"
+                        tut = StudentEntity.student.isTutor!!
+                    }
+                    else{
+                        Toast.makeText(
+                            this@StudentHomePage, "No DATA.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                }
+                override fun onCancelled(databaseError: DatabaseError) {
                 }
             }
-            override fun onCancelled(databaseError: DatabaseError) {
-            }
+            database.addValueEventListener(studentListener)
         }
-        database.addValueEventListener(studentListener)
+        if (intent.getStringExtra("tutName") != null){
+            heading.text = "Welcome " + intent.getStringExtra("tutName")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -82,8 +92,9 @@ class StudentHomePage : AppCompatActivity() {
                 startActivity(intent)
             }
             "View As Tutor" -> {
-                if(isTutor == true){
+                if(tut == true){
                     var intent = Intent(this, TutorHomeActivity::class.java)
+                    intent.putExtra("sName", StudentEntity.student.firstName)
                     startActivity(intent)
                 }
                 else{
