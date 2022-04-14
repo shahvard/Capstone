@@ -30,10 +30,12 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         if (intent.getStringExtra("type") == "student") {
                             var intent = Intent(this, StudentHomePage::class.java)
+                            intent.putExtra("studentName", userName.text.toString())
                             startActivity(intent)
                         }
                         if (intent.getStringExtra("type") == "tutor") {
                             var intent = Intent(this, TutorHomeActivity::class.java)
+                            intent.putExtra("tutorName", userName.text.toString())
                             startActivity(intent)
                         }
                     } else {

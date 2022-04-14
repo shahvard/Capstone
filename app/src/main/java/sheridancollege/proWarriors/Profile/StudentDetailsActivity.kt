@@ -15,6 +15,7 @@ import sheridancollege.proWarriors.Login.LoginActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.StudentHomePage
+import sheridancollege.proWarriors.Tutor.TutorEntity
 import sheridancollege.proWarriors.Tutor.TutorHomeActivity
 
 class StudentDetailsActivity : AppCompatActivity() {
@@ -31,14 +32,15 @@ class StudentDetailsActivity : AppCompatActivity() {
         var add = findViewById<TextView>(R.id.address)
 
 
+
         if (student != null) {
             first.text = student.firstName
             last.text = student.lastName
             phone.text = student.phoneNo
             add.text = student.address
         }
-        if(student == null){
-            Toast.makeText(this,"Student info not found. Please try again later.",Toast.LENGTH_SHORT).show()
+        else{
+            Toast.makeText(this,"Student info not found. Please try again later.", Toast.LENGTH_SHORT).show()
         }
     }
 

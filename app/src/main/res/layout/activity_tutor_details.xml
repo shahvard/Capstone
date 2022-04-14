@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile.StudentDetailsActivity">
+
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Details"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textSize="34dp" />
+
+    <!--<ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="166dp"
+        android:layout_height="155dp"
+        android:layout_below="@+id/details"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="82dp" />-->
+
+    <!--<TextView
+        android:id="@+id/editImage"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profilePicture"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="0.8dp"
+
+        android:text="Edit" />-->
+
+    <TextView
+        android:id="@+id/firstNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:text="First Name: "
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/fName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/firstNameLabel"
+        android:text="Shubh"
+        android:textSize="24dp" />
+
+
+    <TextView
+        android:id="@+id/lastNameLabel"
+        android:textSize="24dp"
+        android:layout_below="@+id/firstNameLabel"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Last Name: "/>
+
+    <TextView
+        android:id="@+id/lName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/lastNameLabel"
+        android:text="Patel"
+        android:layout_marginTop="20dp"
+        android:textSize="24dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/firstNameLabel"/>
+    <TextView
+        android:id="@+id/contactLabel"
+        android:textSize="24dp"
+        android:layout_below="@+id/lastNameLabel"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Contact No: "/>
+
+    <TextView
+        android:id="@+id/cNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lastNameLabel"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/contactLabel"
+        android:text="6474697977"
+        android:textSize="24dp" />
+
+    <TextView
+        android:id="@+id/addressLabel"
+        android:textSize="24dp"
+        android:layout_below="@+id/contactLabel"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Address: " />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/addressLabel"
+        android:text="717 Macbeth Heights"
+        android:layout_marginTop="20dp"
+        android:textSize="24dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/contactLabel"/>
+
+</RelativeLayout>
