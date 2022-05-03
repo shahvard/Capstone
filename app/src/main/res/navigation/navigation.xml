@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="sheridancollege.proWarriors.Fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_studentLoginFragment"
+            app:destination="@id/studentLoginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tutorLoginFragment"
+            app:destination="@id/tutorLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentLoginFragment"
+        android:name="sheridancollege.proWarriors.Login.StudentLoginFragment"
+        android:label="fragment_student_login"
+        tools:layout="@layout/fragment_student_login" />
+    <fragment
+        android:id="@+id/tutorLoginFragment"
+        android:name="sheridancollege.proWarriors.Login.TutorLoginFragment"
+        android:label="fragment_tutor_login"
+        tools:layout="@layout/fragment_tutor_login" />
+</navigation>

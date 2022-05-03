@@ -6,22 +6,15 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
         classpath 'com.google.gms:google-services:4.3.10'
     }
 }
 
+ext {
+    ankoCommonsVersion = '0.10.8'
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-/*
-allprojects {
-    // ...
-
-    repositories {
-        // Check that you have the following line (if not, add it):
-        google()  // Google's Maven repository
-        // ...
-    }
-}*/
