@@ -20,11 +20,32 @@
     <fragment
         android:id="@+id/studentLoginFragment"
         android:name="sheridancollege.proWarriors.Login.StudentLoginFragment"
-        android:label="fragment_student_login"
-        tools:layout="@layout/fragment_student_login" />
+        android:label="Student Login"
+        tools:layout="@layout/fragment_student_login">
+        <action
+            android:id="@+id/action_studentLoginFragment_to_studentHomeFragment2"
+            app:destination="@id/studentHomeFragment2" />
+        <action
+            android:id="@+id/action_studentLoginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tutorLoginFragment"
         android:name="sheridancollege.proWarriors.Login.TutorLoginFragment"
-        android:label="fragment_tutor_login"
+        android:label="Tutor Login"
         tools:layout="@layout/fragment_tutor_login" />
+    <fragment
+        android:id="@+id/studentHomeFragment2"
+        android:name="sheridancollege.proWarriors.Student.StudentHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_student_home" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="sheridancollege.proWarriors.Login.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_studentHomeFragment2"
+            app:destination="@id/studentHomeFragment2" />
+    </fragment>
 </navigation>

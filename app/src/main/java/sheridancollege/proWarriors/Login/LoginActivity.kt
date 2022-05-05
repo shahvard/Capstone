@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
         val userName = findViewById<EditText>(R.id.userNameText)
         val userPass = findViewById<EditText>(R.id.passwordText)
-        val loginButton = findViewById<Button>(R.id.loginButton)
+        val loginButton = findViewById<Button>(R.id.signUpButton)
 
         loginButton.setOnClickListener {
             auth.signInWithEmailAndPassword(userName.text.toString(), userPass.text.toString())

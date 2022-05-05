@@ -1,10 +1,14 @@
 package sheridancollege.proWarriors.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.findNavController
+import sheridancollege.proWarriors.Login.LoginActivity
 import sheridancollege.proWarriors.R
 class HomeFragment : Fragment() {
 
@@ -15,7 +19,26 @@ class HomeFragment : Fragment() {
     ): View? {
 
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
-        // Inflate the layout for this fragment
+        var sButton = view.findViewById<Button>(R.id.stdButton)
+        var tButton = view.findViewById<Button>(R.id.tutorButton)
+
+        sButton.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_homeFragment_to_studentLoginFragment)
+            /*var intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("type", "student")
+            startActivity(intent)*/
+        }
+
+        tButton.setOnClickListener {
+
+            view.findNavController()
+                .navigate(R.id.action_homeFragment_to_tutorLoginFragment)
+            /*var intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("type", "tutor")
+            startActivity(intent)*/
+        }
+
         return view
     }
 
