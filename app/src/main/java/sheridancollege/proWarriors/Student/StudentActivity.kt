@@ -19,26 +19,26 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.HomeAndLogin.LoginActivity
-import sheridancollege.proWarriors.Profile.StudentDetailsActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Tutor.TutorActivity
 
 class StudentActivity : AppCompatActivity() {
-    private lateinit var heading: TextView
-    private lateinit var database: DatabaseReference
-    private  var tut: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home_page)
 
-        database = Firebase.database.reference
+        val navController = this.findNavController(R.id.studentNavHost)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+
+        /* database = Firebase.database.reference
         val delimiter ="@"
         val email = intent.getStringExtra("studentName")
         val username = email?.split(delimiter)?.get(0)
         heading = findViewById(R.id.headingView)
 
         if(intent.getStringExtra("tutName") == null){
-            val studentListener = object : ValueEventListener {
+        *//*    val studentListener = object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.child("Students") != null) {
                         val data = dataSnapshot.child("Students")
@@ -127,5 +127,7 @@ class StudentActivity : AppCompatActivity() {
             }
         }
         return true
+    }*/
+
     }
 }

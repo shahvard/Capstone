@@ -19,8 +19,8 @@ import sheridancollege.proWarriors.Tutor.TutorActivity
 
 class StudentDetailsFragment : Fragment() {
 
-    var student = StudentEntity.student
-
+    //private lateinit var student:Student
+    private lateinit var username:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +33,13 @@ class StudentDetailsFragment : Fragment() {
         var phone = view.findViewById<TextView>(R.id.cNumber)
         var add = view.findViewById<TextView>(R.id.address)
 
+        user?.let {
+            val email = user.email
+            username = email?.split("@")?.get(0).toString()
+        }
+        var studententity = StudentEntity
+        studententity.getStudentDetails(username)
+        var student:Student= stu.student
         if (student != null) {
             first.text = student.firstName
             last.text = student.lastName
@@ -59,12 +66,12 @@ class StudentDetailsFragment : Fragment() {
                 return NavigationUI.onNavDestinationSelected(item,
                     requireView().findNavController()) || super.onOptionsItemSelected(item)
             }
-            "View As Tutor" -> {
+          /* *//* "View As Tutor" -> {
                 if(student.isTutor == true){
                     var intent = Intent(activity?.applicationContext, TutorActivity::class.java)
                     intent.putExtra("TutorName", student.firstName)
                     startActivity(intent)
-                }
+                }*//*
                 else{
                     val dialogBuilder = AlertDialog.Builder(activity?.applicationContext!!)
                     dialogBuilder.setMessage("You do not have an access to tutor login.")
@@ -76,7 +83,7 @@ class StudentDetailsFragment : Fragment() {
                     alert.setTitle("Tutor Access denied.")
                     alert.show()
                 }
-            }
+            }*/
             "Logout"->{
                 Firebase.auth.signOut()
                 Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment_to_studentLoginFragment2)
