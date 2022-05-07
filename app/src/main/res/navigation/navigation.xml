@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="sheridancollege.proWarriors.Fragments.HomeFragment"
+        android:name="sheridancollege.proWarriors.HomeAndLogin.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/studentLoginFragment"
-        android:name="sheridancollege.proWarriors.Login.StudentLoginFragment"
+        android:name="sheridancollege.proWarriors.HomeAndLogin.StudentLoginFragment"
         android:label="Student Login"
         tools:layout="@layout/fragment_student_login">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/tutorLoginFragment"
-        android:name="sheridancollege.proWarriors.Login.TutorLoginFragment"
+        android:name="sheridancollege.proWarriors.HomeAndLogin.TutorLoginFragment"
         android:label="Tutor Login"
         tools:layout="@layout/fragment_tutor_login" />
     <fragment
@@ -41,11 +41,14 @@
         tools:layout="@layout/fragment_student_home" />
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="sheridancollege.proWarriors.Login.SignUpFragment"
+        android:name="sheridancollege.proWarriors.HomeAndLogin.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_studentHomeFragment2"
             app:destination="@id/studentHomeFragment2" />
+        <action
+            android:id="@+id/action_signUpFragment_to_studentLoginFragment"
+            app:destination="@id/studentLoginFragment" />
     </fragment>
 </navigation>

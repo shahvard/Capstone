@@ -1,4 +1,4 @@
-package sheridancollege.proWarriors.Login
+package sheridancollege.proWarriors.HomeAndLogin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Student.StudentHomePage
-import sheridancollege.proWarriors.Tutor.TutorHomeActivity
+import sheridancollege.proWarriors.Student.StudentActivity
+import sheridancollege.proWarriors.Tutor.TutorActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -29,13 +29,13 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         if (intent.getStringExtra("type") == "student") {
-                            var intent = Intent(this, StudentHomePage::class.java)
+                            var intent = Intent(this, StudentActivity::class.java)
                             intent.putExtra("studentName", userName.text.toString())
                             //intent
                             startActivity(intent)
                         }
                         if (intent.getStringExtra("type") == "tutor") {
-                            var intent = Intent(this, TutorHomeActivity::class.java)
+                            var intent = Intent(this, TutorActivity::class.java)
                             //intent
                             intent.putExtra("tutorName", userName.text.toString())
                             startActivity(intent)

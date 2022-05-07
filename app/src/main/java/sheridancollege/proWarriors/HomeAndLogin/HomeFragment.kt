@@ -1,6 +1,5 @@
-package sheridancollege.proWarriors.Fragments
+package sheridancollege.proWarriors.HomeAndLogin
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
-import sheridancollege.proWarriors.Login.LoginActivity
 import sheridancollege.proWarriors.R
 class HomeFragment : Fragment() {
 

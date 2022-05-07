@@ -11,12 +11,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import sheridancollege.proWarriors.Login.LoginActivity
+import sheridancollege.proWarriors.HomeAndLogin.LoginActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentEntity
-import sheridancollege.proWarriors.Student.StudentHomePage
-import sheridancollege.proWarriors.Tutor.TutorEntity
-import sheridancollege.proWarriors.Tutor.TutorHomeActivity
+import sheridancollege.proWarriors.Student.StudentActivity
+import sheridancollege.proWarriors.Tutor.TutorActivity
 
 class StudentDetailsActivity : AppCompatActivity() {
 
@@ -55,12 +54,12 @@ class StudentDetailsActivity : AppCompatActivity() {
         when(item.title.toString()){
             "Home"->{
                 if (student.isTutor == false){
-                    var intent = Intent(this, StudentHomePage::class.java)
+                    var intent = Intent(this, StudentActivity::class.java)
                     intent.putExtra("name", student.firstName)
                     startActivity(intent)
                 }
                 else if(student.isTutor == true){
-                    var intent = Intent(this, StudentHomePage::class.java)
+                    var intent = Intent(this, StudentActivity::class.java)
                     intent.putExtra("name", student.firstName)
                     startActivity(intent)
                 }
@@ -68,7 +67,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             }
             "View As Tutor" -> {
                 if(student.isTutor == true){
-                    var intent = Intent(this, TutorHomeActivity::class.java)
+                    var intent = Intent(this, TutorActivity::class.java)
                     intent.putExtra("TutorName", student.firstName)
                     startActivity(intent)
                 }

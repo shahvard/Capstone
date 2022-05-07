@@ -19,7 +19,7 @@
             android:name=".Landing.LandingActivity"
             android:exported="false" />
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".HomeAndLogin.LoginActivity"
             android:exported="false" />
         <!--
 <activity
@@ -36,8 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Student.StudentHomePage" />
-        <activity android:name=".Tutor.TutorHomeActivity" />
+        <activity android:name=".Student.StudentActivity" />
+        <activity android:name=".Tutor.TutorActivity" />
     </application>
 
 </manifest>

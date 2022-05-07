@@ -1,6 +1,7 @@
-package sheridancollege.proWarriors.Login
+package sheridancollege.proWarriors.HomeAndLogin
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Student.StudentActivity
 
 class StudentLoginFragment : Fragment() {
 
@@ -37,7 +39,6 @@ class StudentLoginFragment : Fragment() {
                     Toast.LENGTH_SHORT).show()
             }
             else{
-
                 auth.sendPasswordResetEmail(view.findViewById<TextView>(R.id.userNameText).text.toString())
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
@@ -66,8 +67,10 @@ class StudentLoginFragment : Fragment() {
                                Toast.LENGTH_SHORT
                            ).show()
                            val user = auth.currentUser
-                           view.findNavController()
-                               .navigate(R.id.action_studentLoginFragment_to_studentHomeFragment2)
+                           /*view.findNavController()
+                               .navigate(R.id.action_studentLoginFragment_to_studentHomeFragment2)*/
+                           var intent = Intent(activity?.applicationContext, StudentActivity::class.java)
+                           startActivity(intent)
                        }
                         else{
                            Toast.makeText(
@@ -76,34 +79,14 @@ class StudentLoginFragment : Fragment() {
                            ).show()
                        }
                     } else {
-                        // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(
                             this.context, "Authentication failed.",
                             Toast.LENGTH_SHORT
                         ).show()
-
-
                     }
                 }
         }
-
-
-
-
-
-
-
         return view
     }
-
-   /* public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-
-        }
-    }*/
-
 }

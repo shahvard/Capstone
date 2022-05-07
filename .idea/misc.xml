@@ -17,14 +17,19 @@
         <entry key="app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.15501519756838905" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_student_details.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/activity_student_home_page.xml" value="0.16210739614994935" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15989583333333332" />
+        <entry key="app/src/main/res/layout/activity_tutor_details.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_tutor_home.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.20244565217391305" />
-        <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.20244565217391305" />
-        <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.20244565217391305" />
+        <entry key="app/src/main/res/layout/fragment_student_details.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.190625" />
+        <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.19384057971014493" />
+        <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.19384057971014493" />
+        <entry key="app/src/main/res/menu/details_menu.xml" value="0.370585632324219" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.18020833333333333" />
-        <entry key="app/src/main/res/menu/tutor_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

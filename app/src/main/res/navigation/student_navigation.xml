@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_navigation"
+    app:startDestination="@id/studentHomeFragment">
+
+    <fragment
+        android:id="@+id/studentHomeFragment"
+        android:name="sheridancollege.proWarriors.Student.StudentHomeFragment"
+        android:label="fragment_student_home"
+        tools:layout="@layout/fragment_student_home" >
+        <action
+            android:id="@+id/action_studentHomeFragment_to_studentDetailsFragment"
+            app:destination="@id/studentDetailsFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_tutorLoginFragment2"
+            app:destination="@id/tutorLoginFragment2" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_studentLoginFragment2"
+            app:destination="@id/studentLoginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentDetailsFragment"
+        android:name="sheridancollege.proWarriors.Student.StudentDetailsFragment"
+        android:label="fragment_student_details"
+        tools:layout="@layout/fragment_student_details" >
+        <action
+            android:id="@+id/action_studentDetailsFragment_to_tutorLoginFragment2"
+            app:destination="@id/tutorLoginFragment2" />
+        <action
+            android:id="@+id/action_studentDetailsFragment_to_studentLoginFragment2"
+            app:destination="@id/studentLoginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentLoginFragment2"
+        android:name="sheridancollege.proWarriors.HomeAndLogin.StudentLoginFragment"
+        android:label="fragment_student_login"
+        tools:layout="@layout/fragment_student_login" />
+    <fragment
+        android:id="@+id/tutorLoginFragment2"
+        android:name="sheridancollege.proWarriors.HomeAndLogin.TutorLoginFragment"
+        android:label="fragment_tutor_login"
+        tools:layout="@layout/fragment_tutor_login" />
+</navigation>

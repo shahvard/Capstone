@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4A40739C"
-    tools:context=".Tutor.TutorHomeActivity">
+    tools:context=".Tutor.TutorActivity">
+
+
+    <fragment android:id="@+id/tutorNavHost"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:navGraph="@navigation/tutor_navigation"
+        app:defaultNavHost="true" />
 
     <TextView
         android:id="@+id/headingView"

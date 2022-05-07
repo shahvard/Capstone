@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -16,13 +18,12 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import sheridancollege.proWarriors.Login.LoginActivity
+import sheridancollege.proWarriors.HomeAndLogin.LoginActivity
 import sheridancollege.proWarriors.Profile.StudentDetailsActivity
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Tutor.TutorEntity
-import sheridancollege.proWarriors.Tutor.TutorHomeActivity
+import sheridancollege.proWarriors.Tutor.TutorActivity
 
-class StudentHomePage : AppCompatActivity() {
+class StudentActivity : AppCompatActivity() {
     private lateinit var heading: TextView
     private lateinit var database: DatabaseReference
     private  var tut: Boolean = false
@@ -62,7 +63,7 @@ class StudentHomePage : AppCompatActivity() {
                     }
                     else{
                         Toast.makeText(
-                            this@StudentHomePage, "No DATA.",
+                            this@StudentActivity, "No DATA.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -79,6 +80,9 @@ class StudentHomePage : AppCompatActivity() {
         if(intent.getStringExtra("name" )!= null){
             heading.text = "Welcome " + intent.getStringExtra("name")
         }
+
+        val navController = this.findNavController(R.id.studentNavHost)
+        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -96,7 +100,7 @@ class StudentHomePage : AppCompatActivity() {
             }
             "View As Tutor" -> {
                 if(tut == true){
-                    var intent = Intent(this, TutorHomeActivity::class.java)
+                    var intent = Intent(this, TutorActivity::class.java)
                     intent.putExtra("sName", StudentEntity.student.firstName)
                     startActivity(intent)
                 }

@@ -15,14 +15,11 @@ import sheridancollege.proWarriors.R
 
 class StudentHomeFragment : Fragment() {
 
-
-// ...
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-            val view = inflater.inflate(R.layout.fragment_student_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_student_home, container, false)
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
