@@ -17,7 +17,6 @@ class TutorLoginFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_tutor_login, container, false)
-        // Inflate the layout for this fragment
         return view
     }
 

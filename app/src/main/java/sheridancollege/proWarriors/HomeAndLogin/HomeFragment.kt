@@ -23,18 +23,12 @@ class HomeFragment : Fragment() {
         sButton.setOnClickListener {
             view.findNavController()
                 .navigate(R.id.action_homeFragment_to_studentLoginFragment)
-            /*var intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("type", "student")
-            startActivity(intent)*/
         }
 
         tButton.setOnClickListener {
 
             view.findNavController()
                 .navigate(R.id.action_homeFragment_to_tutorLoginFragment)
-            /*var intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("type", "tutor")
-            startActivity(intent)*/
         }
 
         return view

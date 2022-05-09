@@ -16,7 +16,7 @@
         app:defaultNavHost="true" />
 
     <TextView
-        android:id="@+id/headingView"
+        android:id="@+id/headingText"
         android:layout_width="219dp"
         android:layout_height="41dp"
         android:layout_marginStart="96dp"
@@ -39,7 +39,7 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headingView">
+        app:layout_constraintTop_toBottomOf="@+id/headingText">
 
         <ListView
             android:id="@+id/course_list"

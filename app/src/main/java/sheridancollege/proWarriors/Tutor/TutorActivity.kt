@@ -18,7 +18,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import sheridancollege.proWarriors.HomeAndLogin.LoginActivity
 import sheridancollege.proWarriors.Profile.TutorDetailsActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentActivity
@@ -36,7 +35,7 @@ class TutorActivity : AppCompatActivity() {
         val delimiter ="@"
         val email = intent.getStringExtra("tutorName")
         val username = email?.split(delimiter)?.get(0)
-        heading = findViewById<TextView>(R.id.headingView)
+        heading = findViewById<TextView>(R.id.headingText)
 
         val tutorListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -119,7 +118,7 @@ class TutorActivity : AppCompatActivity() {
                     alert.show()
                 }
             }
-            "Logout"->{
+            /*"Logout"->{
                 Firebase.auth.signOut()
                 var intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
@@ -127,7 +126,7 @@ class TutorActivity : AppCompatActivity() {
                     this, "Successfully logged out.",
                     Toast.LENGTH_SHORT
                 ).show()
-            }
+            }*/
         }
         return true
     }

@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import sheridancollege.proWarriors.HomeAndLogin.LoginActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Tutor.TutorEntity
 import sheridancollege.proWarriors.Tutor.TutorActivity
@@ -79,7 +78,7 @@ class TutorDetailsActivity : AppCompatActivity() {
                     alert.show()
                 }
             }
-            "Logout"->{
+            /*"Logout"->{
                 Firebase.auth.signOut()
                 var intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
@@ -87,7 +86,7 @@ class TutorDetailsActivity : AppCompatActivity() {
                     this, "Successfully logged out.",
                     Toast.LENGTH_SHORT
                 ).show()
-            }
+            }*/
         }
         return true
     }

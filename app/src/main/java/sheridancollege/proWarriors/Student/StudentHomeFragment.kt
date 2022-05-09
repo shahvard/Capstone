@@ -1,17 +1,23 @@
 package sheridancollege.proWarriors.Student
 
 import android.os.Bundle
+import android.provider.Settings
 import android.view.*
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import sheridancollege.proWarriors.HomeAndLogin.LoginActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Tutor.TutorActivity
+import sheridancollege.proWarriors.Student.stu.Companion.student
 
 
 class StudentHomeFragment : Fragment() {
@@ -21,31 +27,27 @@ private lateinit var username:String
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_student_home, container, false)
+
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
         var studententity = StudentEntity
-        val welcomeText :TextView = view.findViewById(R.id.headingView)
         studententity.getStudentDetails(username)
-        //var student:Student= stu.student
-        Toast.makeText(this.context,stu.student.firstName.toString(),Toast.LENGTH_SHORT).show()
 
-//        if (student != null) {
-//            welcomeText.text = "Welcome "+student.firstName.toString()
-//        }
+        val heading= view.findViewById<TextView>(R.id.headingText)
 
-        //else{
-           // Toast.makeText(activity,"Student info not found. Please try again later.", Toast.LENGTH_SHORT).show()
-       // }
-
-
-
-
-setHasOptionsMenu(true)
+        GlobalScope.launch {
+            delay(600L)
+            if (student != null) {
+                heading.text = "Welcome "+ student.firstName.toString()
+            }
+        }
+        setHasOptionsMenu(true)
         return view
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -86,7 +88,6 @@ setHasOptionsMenu(true)
                 ).show()
             }
         }
-            return true
-
+        return true
     }
 }

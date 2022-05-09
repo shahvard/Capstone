@@ -27,11 +27,13 @@ class StudentLoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Firebase.auth.signOut()
 
         val view = inflater.inflate(R.layout.fragment_student_login, container, false)
 
 
         auth = Firebase.auth
+
         view.findViewById<TextView>(R.id.forgotPasswordText).setOnClickListener() {
 
             if (view.findViewById<TextView>(R.id.userNameText).text.toString()!! == "") {

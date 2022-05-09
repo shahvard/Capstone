@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_student_home" >
         <action
             android:id="@+id/action_studentHomeFragment_to_studentDetailsFragment"
-            app:destination="@id/studentDetailsFragment" />
+            app:destination="@id/studentDetailsFragment"
+            app:popUpTo="@id/studentHomeFragment" />
         <action
             android:id="@+id/action_studentHomeFragment_to_tutorLoginFragment2"
             app:destination="@id/tutorLoginFragment2" />

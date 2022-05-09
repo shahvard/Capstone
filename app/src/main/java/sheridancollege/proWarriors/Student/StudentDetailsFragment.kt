@@ -19,7 +19,6 @@ import sheridancollege.proWarriors.Tutor.TutorActivity
 
 class StudentDetailsFragment : Fragment() {
 
-    //private lateinit var student:Student
     private lateinit var username:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,10 +45,10 @@ class StudentDetailsFragment : Fragment() {
             phone.text = student.phoneNo
             add.text = student.address
         }
-
         else{
             Toast.makeText(activity,"Student info not found. Please try again later.", Toast.LENGTH_SHORT).show()
         }
+        setHasOptionsMenu(true)
         return view
     }
 
@@ -60,7 +59,6 @@ class StudentDetailsFragment : Fragment() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when(item.title.toString()){
             "Home"->{
                 return NavigationUI.onNavDestinationSelected(item,
@@ -93,7 +91,6 @@ class StudentDetailsFragment : Fragment() {
                 ).show()
             }
         }
-
         return true
     }
 }
