@@ -1,30 +1,28 @@
-package sheridancollege.proWarriors.Student
+package sheridancollege.proWarriors.TutorFragments
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Tutor.TutorActivity
+import sheridancollege.proWarriors.Tutor.Tutor
+import sheridancollege.proWarriors.Tutor.TutorEntity
+import sheridancollege.proWarriors.Tutor.tut
 
-
-class StudentDetailsFragment : Fragment() {
+class TutorDetailsFragment : Fragment() {
 
     private lateinit var username:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_student_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_tutor_details, container, false)
         val user = Firebase.auth.currentUser
 
         var first = view.findViewById<TextView>(R.id.fName)
@@ -36,17 +34,17 @@ class StudentDetailsFragment : Fragment() {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-        var studententity = StudentEntity
-        studententity.getStudentDetails(username)
-        var student:Student= stu.student
-        if (student != null) {
-            first.text = student.firstName
-            last.text = student.lastName
-            phone.text = student.phoneNo
-            add.text = student.address
+
+        TutorEntity.getDetails(username)
+        var tutor: Tutor = tut.tutor
+        if (tutor != null) {
+            first.text = tutor.firstName
+            last.text = tutor.lastName
+            phone.text = tutor.phoneNo
+            add.text = tutor.address
         }
         else{
-            Toast.makeText(activity,"Student info not found. Please try again later.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity,"Tutor info not found. Please try again later.", Toast.LENGTH_SHORT).show()
         }
         setHasOptionsMenu(true)
         return view
@@ -54,7 +52,7 @@ class StudentDetailsFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.details_menu, menu)
+        inflater?.inflate(R.menu.tutor_details_menu, menu)
     }
 
 
@@ -64,7 +62,7 @@ class StudentDetailsFragment : Fragment() {
                 return NavigationUI.onNavDestinationSelected(item,
                     requireView().findNavController()) || super.onOptionsItemSelected(item)
             }
-          /* *//* "View As Tutor" -> {
+            /* *//* "View As Tutor" -> {
                 if(student.isTutor == true){
                     var intent = Intent(activity?.applicationContext, TutorActivity::class.java)
                     intent.putExtra("TutorName", student.firstName)

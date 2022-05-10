@@ -1,4 +1,4 @@
-package sheridancollege.proWarriors.HomeAndLogin
+package sheridancollege.proWarriors.Home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tutor_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tutor_navigation"
+    app:startDestination="@id/tutorHomeFragment">
 
+    <fragment
+        android:id="@+id/tutorHomeFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorHomeFragment"
+        android:label="fragment_tutor_home"
+        tools:layout="@layout/fragment_tutor_home" >
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_tutorDetailsFragment"
+            app:destination="@id/tutorDetailsFragment"
+            app:popUpTo="@id/tutorHomeFragment" />
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_tutorLoginFragment2"
+            app:destination="@id/tutorLoginFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorDetailsFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorDetailsFragment"
+        android:label="fragment_tutor_details"
+        tools:layout="@layout/fragment_tutor_details" >
+        <action
+            android:id="@+id/action_tutorDetailsFragment_to_tutorLoginFragment2"
+            app:destination="@id/tutorLoginFragment2"
+            app:popUpTo="@id/tutorHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorLoginFragment2"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorLoginFragment"
+        android:label="fragment_tutor_login"
+        tools:layout="@layout/fragment_tutor_login" />
 </navigation>

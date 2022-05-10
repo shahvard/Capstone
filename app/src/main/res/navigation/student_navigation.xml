@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/studentHomeFragment"
-        android:name="sheridancollege.proWarriors.Student.StudentHomeFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentHomeFragment"
         android:label="fragment_student_home"
         tools:layout="@layout/fragment_student_home" >
         <action
@@ -15,32 +15,21 @@
             app:destination="@id/studentDetailsFragment"
             app:popUpTo="@id/studentHomeFragment" />
         <action
-            android:id="@+id/action_studentHomeFragment_to_tutorLoginFragment2"
-            app:destination="@id/tutorLoginFragment2" />
-        <action
             android:id="@+id/action_studentHomeFragment_to_studentLoginFragment2"
             app:destination="@id/studentLoginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
-        android:name="sheridancollege.proWarriors.Student.StudentDetailsFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentDetailsFragment"
         android:label="fragment_student_details"
         tools:layout="@layout/fragment_student_details" >
-        <action
-            android:id="@+id/action_studentDetailsFragment_to_tutorLoginFragment2"
-            app:destination="@id/tutorLoginFragment2" />
         <action
             android:id="@+id/action_studentDetailsFragment_to_studentLoginFragment2"
             app:destination="@id/studentLoginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/studentLoginFragment2"
-        android:name="sheridancollege.proWarriors.HomeAndLogin.StudentLoginFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentLoginFragment"
         android:label="fragment_student_login"
         tools:layout="@layout/fragment_student_login" />
-    <fragment
-        android:id="@+id/tutorLoginFragment2"
-        android:name="sheridancollege.proWarriors.HomeAndLogin.TutorLoginFragment"
-        android:label="fragment_tutor_login"
-        tools:layout="@layout/fragment_tutor_login" />
 </navigation>

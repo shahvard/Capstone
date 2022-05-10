@@ -1,4 +1,4 @@
-package sheridancollege.proWarriors.HomeAndLogin
+package sheridancollege.proWarriors.Home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

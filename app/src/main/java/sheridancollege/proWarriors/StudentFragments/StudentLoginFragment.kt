@@ -1,4 +1,4 @@
-package sheridancollege.proWarriors.HomeAndLogin
+package sheridancollege.proWarriors.StudentFragments
 
 import android.content.ContentValues.TAG
 import android.content.Intent

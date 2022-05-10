@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="Notification"
+        app:showAsAction="always" />
+    <item
+        android:title="Home"
+        android:id="@+id/tutorHomeFragment"
+        android:icon="@drawable/ic_home_foreground"
+        app:showAsAction="always"
+        />
+    <item
+        android:icon="@drawable/account"
+        android:id="@+id/account"
+        app:showAsAction="always"
+        android:title="Account">
+
+        <menu>
+            <item
+                android:title="View As Student"
+                android:id="@+id/cView"
+                />
+            <item
+                android:title="Logout"
+                android:id="@+id/logout"
+                />
+        </menu>
+    </item>
+</menu>

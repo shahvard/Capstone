@@ -1,22 +1,18 @@
-package sheridancollege.proWarriors.Student
+package sheridancollege.proWarriors.StudentFragments
 
 import android.os.Bundle
-import android.provider.Settings
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu.Companion.student
 
 
@@ -33,8 +29,8 @@ private lateinit var username:String
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-        var studententity = StudentEntity
-        studententity.getStudentDetails(username)
+        //var studententity = StudentEntity
+        StudentEntity.getStudentDetails(username)
 
         val heading= view.findViewById<TextView>(R.id.headingText)
 
