@@ -15,8 +15,12 @@ import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentActivity
+import sheridancollege.proWarriors.Student.stu
 
 class StudentLoginFragment : Fragment() {
 
@@ -69,10 +73,22 @@ class StudentLoginFragment : Fragment() {
                                Toast.LENGTH_SHORT
                            ).show()
                            val user = auth.currentUser
-                           /*view.findNavController()
-                               .navigate(R.id.action_studentLoginFragment_to_studentHomeFragment2)*/
-                           var intent = Intent(activity?.applicationContext, StudentActivity::class.java)
-                           startActivity(intent)
+                           GlobalScope.launch {
+                               delay(500L)
+                               if (stu.student.firstName != null) {
+
+                                   var intent =
+                                       Intent(
+                                           activity?.applicationContext,
+                                           StudentActivity::class.java
+                                       )
+                                   startActivity(intent)
+                               }
+                               else{
+                                   Log.d("data","You are not a student")
+                                   //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
+                               }
+                           }
                        }
                         else{
                            Toast.makeText(

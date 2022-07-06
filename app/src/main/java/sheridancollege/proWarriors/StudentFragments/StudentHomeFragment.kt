@@ -35,7 +35,7 @@ private lateinit var username:String
         val heading= view.findViewById<TextView>(R.id.headingText)
 
         GlobalScope.launch {
-            delay(600L)
+            delay(500L)
             if (student != null) {
                 heading.text = "Welcome "+ student.firstName.toString()
             }
