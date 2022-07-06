@@ -35,8 +35,8 @@ class TutorHomeFragment : Fragment() {
         val heading= view.findViewById<TextView>(R.id.headingText)
 
         GlobalScope.launch {
-            delay(600L)
             if (tut.tutor != null) {
+                delay(400L)
                 heading.text = "Welcome "+ tut.tutor.firstName.toString()
             }
         }

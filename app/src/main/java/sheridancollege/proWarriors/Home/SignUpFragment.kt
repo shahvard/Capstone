@@ -30,7 +30,7 @@ class SignUpFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_sign_up, container, false)
         auth = Firebase.auth
         database = Firebase.database.reference
-        view.findViewById<Button>(R.id.signUpButton).setOnClickListener() {
+        view.findViewById<Button>(R.id.loginButton).setOnClickListener() {
             val email = view.findViewById<TextView>(R.id.userNameText)
             val password = view.findViewById<TextView>(R.id.passwordText)
 
