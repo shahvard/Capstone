@@ -24,16 +24,27 @@
         tools:layout="@layout/fragment_student_login">
         <action
             android:id="@+id/action_studentLoginFragment_to_studentHomeFragment2"
-            app:destination="@id/studentHomeFragment2" />
+            app:destination="@id/studentHomeFragment2"
+            app:popUpTo="@id/studentHomeFragment2" />
         <action
             android:id="@+id/action_studentLoginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/studentLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorLoginFragment"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorLoginFragment"
         android:label="Tutor Login"
-        tools:layout="@layout/fragment_tutor_login" />
+        tools:layout="@layout/fragment_tutor_login" >
+        <action
+            android:id="@+id/action_tutorLoginFragment_to_tutorHomeFragment2"
+            app:destination="@id/tutorHomeFragment2"
+            app:popUpTo="@id/tutorHomeFragment2" />
+        <action
+            android:id="@+id/action_tutorLoginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:popUpTo="@id/tutorLoginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studentHomeFragment2"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentHomeFragment"
@@ -50,5 +61,13 @@
         <action
             android:id="@+id/action_signUpFragment_to_studentLoginFragment"
             app:destination="@id/studentLoginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_tutorLoginFragment"
+            app:destination="@id/tutorLoginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/tutorHomeFragment2"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_tutor_home" />
 </navigation>

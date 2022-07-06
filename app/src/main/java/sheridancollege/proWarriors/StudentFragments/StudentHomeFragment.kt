@@ -17,7 +17,9 @@ import sheridancollege.proWarriors.Student.stu.Companion.student
 
 
 class StudentHomeFragment : Fragment() {
-private lateinit var username:String
+
+    private lateinit var username:String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +31,6 @@ private lateinit var username:String
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-        //var studententity = StudentEntity
         StudentEntity.getStudentDetails(username)
 
         val heading= view.findViewById<TextView>(R.id.headingText)

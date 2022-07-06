@@ -13,8 +13,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.stu
+import sheridancollege.proWarriors.Tutor.Tutor
 import sheridancollege.proWarriors.Tutor.TutorEntity
 import sheridancollege.proWarriors.Tutor.tut
+import sheridancollege.proWarriors.Tutor.tut.Companion.tutor
 
 
 class TutorHomeFragment : Fragment() {
@@ -31,13 +33,18 @@ class TutorHomeFragment : Fragment() {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-        TutorEntity.getDetails(username)
+        TutorEntity.getTutorDetails(username)
         val heading= view.findViewById<TextView>(R.id.headingText)
 
         GlobalScope.launch {
-            if (tut.tutor != null) {
-                delay(400L)
-                heading.text = "Welcome "+ tut.tutor.firstName.toString()
+            if (tutor != null) {
+                delay(200L)
+                heading.text = "Welcome "+ tutor.firstName.toString()
+            }
+            else{
+                delay(900L)
+
+                heading.text = "No name"
             }
         }
         setHasOptionsMenu(true)

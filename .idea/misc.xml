@@ -25,10 +25,10 @@
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_student_details.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.190625" />
-        <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.33714285714285713" />
+        <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.15353260869565216" />
-        <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.19384057971014493" />
+        <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.25" />
         <entry key="app/src/main/res/menu/details_menu.xml" value="0.370585632324219" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/menu/student_details_menu.xml" value="0.1" />
