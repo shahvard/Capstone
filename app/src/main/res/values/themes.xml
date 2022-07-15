@@ -13,4 +13,16 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    
+    <style name="LoginButtons" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/black</item>
+
+
+    </style>
+
+    <style name="login" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorButtonNormal">@color/blue</item>
+        <item name="android:colorControlHighlight">@color/black</item>
+
+    </style>
 </resources>

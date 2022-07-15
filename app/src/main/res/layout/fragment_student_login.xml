@@ -4,33 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sheridan_four"
     tools:context=".StudentFragments.StudentLoginFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#4A40739C">
+        android:alpha="0.7"
+        android:layout_width="400dp"
+        android:layout_height="574dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/logoView"
             android:layout_width="224dp"
             android:layout_height="216dp"
             android:layout_marginStart="78dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="79dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/logo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="93dp"
-            android:layout_height="58dp"
+            android:layout_width="107dp"
+            android:layout_height="45dp"
             android:layout_marginStart="171dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="171dp"
             android:fontFamily="sans-serif-black"
             android:text="Login"
@@ -45,8 +49,8 @@
             android:id="@+id/userNameLabel"
             android:layout_width="106dp"
             android:layout_height="30dp"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="20dp"
             android:inputType="none"
             android:text="UserName :"
             android:textColor="#000000"
@@ -60,8 +64,8 @@
             android:id="@+id/userNameLabel2"
             android:layout_width="106dp"
             android:layout_height="30dp"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="16dp"
             android:text="Password  :"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -72,9 +76,10 @@
 
         <EditText
             android:id="@+id/userNameText"
-            android:layout_width="194dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="241dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:inputType="text"
@@ -87,28 +92,32 @@
 
         <EditText
             android:id="@+id/passwordText"
-            android:layout_width="194dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="241dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:ems="10"
             android:inputType="textPassword"
             android:text="12345678"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/userNameLabel2"
             app:layout_constraintTop_toBottomOf="@+id/userNameText"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Button
-            android:id="@+id/signUpButton"
+            android:id="@+id/loginButton"
+            android:theme="@style/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="102dp"
             android:layout_marginEnd="150dp"
             android:text="Login"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
@@ -116,22 +125,23 @@
             android:id="@+id/newUserText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
             android:text="New User?"
             android:textColor="#0A7E8C"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/forgotPasswordText"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
         <TextView
             android:id="@+id/forgotPasswordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="290dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
             android:text="Forgot Password?"
             android:textColor="#0A7E8C"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -16,7 +16,7 @@ class tut{
 
 object TutorEntity {
 
-    fun getDetails(username:String){
+    fun getTutorDetails(username:String){
         val database: DatabaseReference
         database = Firebase.database.reference
 

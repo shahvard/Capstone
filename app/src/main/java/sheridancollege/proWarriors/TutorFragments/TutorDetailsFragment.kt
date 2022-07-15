@@ -35,7 +35,7 @@ class TutorDetailsFragment : Fragment() {
             username = email?.split("@")?.get(0).toString()
         }
 
-        TutorEntity.getDetails(username)
+        TutorEntity.getTutorDetails(username)
         var tutor: Tutor = tut.tutor
         if (tutor != null) {
             first.text = tutor.firstName

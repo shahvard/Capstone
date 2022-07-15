@@ -60,7 +60,7 @@ class StudentLoginFragment : Fragment() {
                 .navigate(R.id.action_studentLoginFragment_to_signUpFragment)
         }
 
-        view.findViewById<Button>(R.id.signUpButton).setOnClickListener(){
+        view.findViewById<Button>(R.id.loginButton).setOnClickListener(){
         userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
         password= view.findViewById<TextView>(R.id.passwordText).text.toString()
             auth.signInWithEmailAndPassword(userName, password)
