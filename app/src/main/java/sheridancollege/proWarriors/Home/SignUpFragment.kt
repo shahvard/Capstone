@@ -43,7 +43,7 @@ class SignUpFragment : Fragment() {
             val address = view.findViewById<TextView>(R.id.addressText)
             val phoneNo = view.findViewById<TextView>(R.id.phoneNumberText)
 
-            if (check == "sheridancollege.ca") {
+            if (check == "shernet.sheridancollege.ca") {
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this.requireActivity()) { task ->
                         if (task.isSuccessful) {

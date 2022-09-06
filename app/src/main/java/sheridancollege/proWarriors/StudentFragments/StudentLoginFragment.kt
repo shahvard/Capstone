@@ -20,6 +20,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentActivity
+import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu
 
 class StudentLoginFragment : Fragment() {
@@ -31,7 +32,7 @@ class StudentLoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Firebase.auth.signOut()
+       // Firebase.auth.signOut()
 
         val view = inflater.inflate(R.layout.fragment_student_login, container, false)
 
@@ -66,15 +67,18 @@ class StudentLoginFragment : Fragment() {
             auth.signInWithEmailAndPassword(userName, password)
                 .addOnCompleteListener(this.requireActivity()) { task ->
                     if (task.isSuccessful) {
-                       if(auth.currentUser!!.isEmailVerified) {
+                       //if(auth.currentUser!!.isEmailVerified) {
                            Log.d(TAG, "signInWithEmail:success")
                            Toast.makeText(
                                this.context, "Authentication Successful",
                                Toast.LENGTH_SHORT
                            ).show()
                            val user = auth.currentUser
+                        val delimiter="."
                            GlobalScope.launch {
+                               StudentEntity.getStudentDetails(userName?.split(delimiter)?.get(0)!!)
                                delay(500L)
+
                                if (stu.student.firstName != null) {
 
                                    var intent =
@@ -89,13 +93,13 @@ class StudentLoginFragment : Fragment() {
                                    //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
                                }
                            }
-                       }
+                      /* }
                         else{
                            Toast.makeText(
                                this.context, "Please verify your email to Login",
                                Toast.LENGTH_SHORT
                            ).show()
-                       }
+                       }*/
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(
