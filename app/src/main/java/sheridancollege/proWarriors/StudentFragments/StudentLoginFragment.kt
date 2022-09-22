@@ -12,12 +12,17 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import sheridancollege.proWarriors.AppConfig
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentActivity
 import sheridancollege.proWarriors.Student.StudentEntity
@@ -28,11 +33,12 @@ class StudentLoginFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var userName:String
     private lateinit var password:String
+    private val delimiter="."
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       // Firebase.auth.signOut()
+        // Firebase.auth.signOut()
 
         val view = inflater.inflate(R.layout.fragment_student_login, container, false)
 
@@ -61,45 +67,54 @@ class StudentLoginFragment : Fragment() {
                 .navigate(R.id.action_studentLoginFragment_to_signUpFragment)
         }
 
-        view.findViewById<Button>(R.id.loginButton).setOnClickListener(){
-        userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
-        password= view.findViewById<TextView>(R.id.passwordText).text.toString()
+        view.findViewById<Button>(R.id.signUpButton).setOnClickListener(){
+            userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
+            password= view.findViewById<TextView>(R.id.passwordText).text.toString()
             auth.signInWithEmailAndPassword(userName, password)
                 .addOnCompleteListener(this.requireActivity()) { task ->
                     if (task.isSuccessful) {
-                       //if(auth.currentUser!!.isEmailVerified) {
-                           Log.d(TAG, "signInWithEmail:success")
-                           Toast.makeText(
-                               this.context, "Authentication Successful",
-                               Toast.LENGTH_SHORT
-                           ).show()
-                           val user = auth.currentUser
-                        val delimiter="."
-                           GlobalScope.launch {
-                               StudentEntity.getStudentDetails(userName?.split(delimiter)?.get(0)!!)
-                               delay(500L)
+                        if(auth.currentUser!!.isEmailVerified) {
+                            Log.d(TAG, "signInWithEmail:success")
 
-                               if (stu.student.firstName != null) {
+                            //cometLogin
+                            val cometUser: com.cometchat.pro.models.User =User()
+                            cometUser.uid=userName?.split("@")?.get(0)!!
+                            login(cometUser)
 
-                                   var intent =
-                                       Intent(
-                                           activity?.applicationContext,
-                                           StudentActivity::class.java
-                                       )
-                                   startActivity(intent)
-                               }
-                               else{
-                                   Log.d("data","You are not a student")
-                                   //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
-                               }
-                           }
-                      /* }
+                            //Authentication message
+                            Toast.makeText(
+                                this.context, "Authentication Successful",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            val user = auth.currentUser
+
+                            GlobalScope.launch {
+                                StudentEntity.getStudentDetails(userName?.split(delimiter)?.get(0)!!)
+                                delay(500L)
+
+                                if (stu.student.firstName != null) {
+
+                                    var intent =
+                                        Intent(
+                                            activity?.applicationContext,
+                                            StudentActivity::class.java
+                                        )
+
+                                    startActivity(intent)
+
+                                }
+                                else{
+                                    Log.d("data","You are not a student")
+                                    //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
                         else{
-                           Toast.makeText(
-                               this.context, "Please verify your email to Login",
-                               Toast.LENGTH_SHORT
-                           ).show()
-                       }*/
+                            Toast.makeText(
+                                this.context, "Please verify your email to Login",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(
@@ -110,5 +125,22 @@ class StudentLoginFragment : Fragment() {
                 }
         }
         return view
+
+
+    }
+    fun login(user: com.cometchat.pro.models.User){
+        CometChat.login(user.uid, AppConfig.AppDetails.AUTH_KEY, object : CometChat.CallbackListener<com.cometchat.pro.models.User?>() {
+            override fun onSuccess(user: com.cometchat.pro.models.User?) {
+                Log.d("Success","CometChat login successful")
+
+                // progressBar.visibility = View.GONE
+                //startActivity(Intent(this@RegistrationActivity, ConversationsActivity::class.java))
+            }
+            override fun onError(e: CometChatException) {
+                //progressBar.visibility = View.GONE
+                Log.d("error",e.toString())
+                // Toast.makeText(this@RegistrationActivity, e.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 }

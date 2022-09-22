@@ -1,23 +1,30 @@
 package sheridancollege.proWarriors.StudentFragments
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.cometchat.pro.core.CometChat
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import sheridancollege.proWarriors.Chat.ChatActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu.Companion.student
+import sheridancollege.proWarriors.Tutor.TutorActivity
+import sheridancollege.proWarriors.Tutor.tut
 
 
 class StudentHomeFragment : Fragment() {
-private lateinit var username:String
+    private lateinit var username:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +63,7 @@ private lateinit var username:String
                 Navigation.findNavController(requireView())
                     .navigate(R.id.action_studentHomeFragment_to_studentDetailsFragment)
             }
-            /* "View As Tutor" -> {
+            /*"View As Tutor" -> {
                 if(tut == true){
                     var intent = Intent(this, TutorActivity::class.java)
                     intent.putExtra("sName", StudentEntity.student.firstName)
@@ -75,7 +82,8 @@ private lateinit var username:String
                 }
             }*/
             "Logout" -> {
-                Firebase.auth.signOut()
+                AuthUI.getInstance().signOut(this.requireContext())
+                // Firebase.auth.signOut()
                 Navigation.findNavController(requireView())
                     .navigate(R.id.action_studentHomeFragment_to_studentLoginFragment2)
                 Toast.makeText(
@@ -83,6 +91,11 @@ private lateinit var username:String
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            "Chat" ->{
+                startActivity(Intent(this.requireContext(), ChatActivity::class.java))
+            }
+
+
         }
         return true
     }
