@@ -2,6 +2,9 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+
+
+    id 'com.google.gms.google-services'
 }
 
 apply plugin: 'com.android.application'
@@ -10,6 +13,10 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdk 32
+
+    dataBinding {
+        enabled = true
+    }
 
     defaultConfig {
         applicationId "sheridancollege.proWarriors"
@@ -21,6 +28,11 @@ android {
         manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "demo"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [file_provider: "sheridancollege.proWarriors"]
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
 
     buildTypes {
@@ -42,12 +54,35 @@ android {
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+
+    //cometchat dependencies
+    implementation 'com.cometchat:pro-android-calls-sdk:2.1.0'
+    implementation 'com.cometchat:pro-android-chat-sdk:3.0.11'
+
+    //
+    implementation 'com.google.android.material:material:<version>'
+
+
+
+
+
+//start
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+
+    // Firebase SDK
+    implementation platform('com.google.firebase:firebase-bom:26.6.0')
+    implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation platform('com.google.firebase:firebase-bom:29.3.0')
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
 
-    // When using the BoM, you don't specify versions in Firebase library dependencies
+    // Firebase UI Library
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'com.firebaseui:firebase-ui-database:7.2.0'
 
-
+//end
     // Declare the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'

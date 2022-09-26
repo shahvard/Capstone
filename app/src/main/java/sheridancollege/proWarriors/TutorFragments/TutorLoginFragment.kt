@@ -32,7 +32,7 @@ class TutorLoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_tutor_login, container, false)
         auth = Firebase.auth
 
-        view.findViewById<Button>(R.id.loginButton).setOnClickListener(){
+        view.findViewById<Button>(R.id.signUpButton).setOnClickListener(){
             userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
             password= view.findViewById<TextView>(R.id.passwordText).text.toString()
             auth.signInWithEmailAndPassword(userName, password)
