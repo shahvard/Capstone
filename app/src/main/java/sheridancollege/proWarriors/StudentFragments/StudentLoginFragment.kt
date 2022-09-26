@@ -2,7 +2,6 @@ package sheridancollege.proWarriors.StudentFragments
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.net.Credentials
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,7 +14,9 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationException
+import com.auth0.android.callback.Callback
 import com.auth0.android.provider.WebAuthProvider
+import com.auth0.android.result.Credentials
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -26,7 +27,6 @@ import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentActivity
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu
-import javax.security.auth.callback.Callback
 import javax.security.auth.callback.CallbackHandler
 
 class  StudentLoginFragment : Fragment() {
@@ -81,24 +81,23 @@ class  StudentLoginFragment : Fragment() {
                 .withScheme("demo")
                 .withScope("openid profile email")
                 // Launch the authentication passing the callback where the results will be received
-                .start(this.requireContext(), object : Callback<Credentials, AuthenticationException>,
-                    com.auth0.android.callback.Callback<com.auth0.android.result.Credentials, AuthenticationException> {
-                    // Called when there is an authentication failure
-                    override fun onFailure(exception: AuthenticationException) {
-                        // Something went wrong!
-                    }
+                .start(
+                    this.requireContext(),
+                    object : Callback<Credentials, AuthenticationException>{
+                        // Called when there is an authentication failure
+                        override fun onFailure(exception: AuthenticationException) {
+                            // Something went    wrong!
+                        }
 
-                    // Called when authentication completed successfully
-                    fun onSuccess(credentials: Credentials) {
-                        // Get the access token from the credentials object.
-                        // This can be used to call APIs
-                        //val accessToken = credentials.accessToken
-                    }
+                        // Called when authentication completed successfully
+                        override fun onSuccess(credentials: Credentials) {
+                            // Get the access token from the credentials object.
+                            // This can be used to call APIs
+                            val accessToken = credentials.accessToken
+                        }
 
-                    override fun onSuccess(result: com.auth0.android.result.Credentials) {
-                        TODO("Not yet implemented")
                     }
-                })
+                )
 
 
 

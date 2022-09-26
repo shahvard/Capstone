@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -65,6 +66,27 @@ class TutorLoginFragment : Fragment() {
                 }
         }
 
+        view.findViewById<TextView>(R.id.forgotPasswordText).setOnClickListener() {
+
+            if (view.findViewById<TextView>(R.id.userNameText).text.toString()!! == "") {
+                Toast.makeText(this.context,"Please enter your Email Address",
+                    Toast.LENGTH_SHORT).show()
+            }
+            else{
+                auth.sendPasswordResetEmail(view.findViewById<TextView>(R.id.userNameText).text.toString())
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d(ContentValues.TAG, "Email sent.")
+                        }
+                    }
+            }
+        }
+
+
+        view.findViewById<TextView>(R.id.newUserText).setOnClickListener(){
+            view.findNavController()
+                .navigate(R.id.action_tutorLoginFragment_to_signUpFragment)
+        }
         return view
     }
 

@@ -8,14 +8,18 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="sheridancollege.proWarriors.Home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_studentLoginFragment"
-            app:destination="@id/studentLoginFragment" />
+            app:destination="@id/studentLoginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_tutorLoginFragment"
-            app:destination="@id/tutorLoginFragment" />
+            app:destination="@id/tutorLoginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/studentLoginFragment"
@@ -48,26 +52,29 @@
     <fragment
         android:id="@+id/studentHomeFragment2"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentHomeFragment"
-        android:label="Home"
+        android:label="Student Home"
         tools:layout="@layout/fragment_student_home" />
     <fragment
         android:id="@+id/signUpFragment"
         android:name="sheridancollege.proWarriors.Home.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
-        <action
-            android:id="@+id/action_signUpFragment_to_studentHomeFragment2"
-            app:destination="@id/studentHomeFragment2" />
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_studentLoginFragment"
-            app:destination="@id/studentLoginFragment" />
+            app:destination="@id/studentLoginFragment"
+            app:popUpTo="@id/signUpFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_tutorLoginFragment"
-            app:destination="@id/tutorLoginFragment" />
+            app:destination="@id/tutorLoginFragment"
+            app:popUpTo="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorHomeFragment2"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorHomeFragment"
-        android:label="Home"
+        android:label="Tutor Home"
         tools:layout="@layout/fragment_tutor_home" />
 </navigation>
