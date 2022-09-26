@@ -89,7 +89,7 @@ class SignUpFragment : Fragment() {
                                       
                                         val fullName = name.text
                                         if (username != null) {
-                                            signUpTapped( fullName)
+                                            signUpTapped( fullName.toString())
                                         }
                                         
                                         name.text = ""

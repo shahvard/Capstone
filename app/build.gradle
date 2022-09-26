@@ -25,7 +25,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "demo"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [file_provider: "sheridancollege.proWarriors"]
@@ -75,7 +74,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation platform('com.google.firebase:firebase-bom:29.3.0')
+    //implementation platform('com.google.firebase:firebase-bom:29.3.0')
     implementation platform('com.google.firebase:firebase-bom:30.4.1')
 
     // Firebase UI Library
@@ -111,7 +110,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
 
-    implementation 'com.auth0.android:auth0:2.+'
 
 
 }
