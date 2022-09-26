@@ -136,6 +136,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Here for the first time?" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/newUserText"
@@ -156,6 +157,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:text="Forgot Password?"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"/>
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/forgotPasswordText"
