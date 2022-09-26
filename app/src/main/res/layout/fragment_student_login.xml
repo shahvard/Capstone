@@ -1,147 +1,173 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sheridan_four"
-    tools:context=".StudentFragments.StudentLoginFragment">
+    android:orientation="vertical"
+    android:background="#4A40739C"
+    android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:alpha="0.7"
-        android:layout_width="400dp"
-        android:layout_height="574dp"
-        android:layout_marginTop="60dp"
-        android:background="@color/white">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".StudentFragments.StudentLoginFragment">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/stTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:padding="4dp"
+                android:text="SignIn"
+                android:layout_marginStart="10sp"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
 
-        <ImageView
-            android:id="@+id/logoView"
-            android:layout_width="224dp"
-            android:layout_height="216dp"
-            android:layout_marginStart="78dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="79dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDes1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="107dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="171dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="171dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Login"
-            android:textColor="#000000"
-            android:textSize="34sp"
-            android:textStyle="bold|italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logoView" />
+                android:layout_marginTop="90sp"
+                android:layout_marginStart="10sp"
+                android:padding="4dp"
+                android:text="Welcome to SherTutor"
+                android:textColor="@color/blue"
+                android:textSize="32sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/userNameLabel"
-            android:layout_width="106dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="20dp"
-            android:inputType="none"
-            android:text="UserName :"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/userNameText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDes1"
+                android:layout_marginStart="10sp"
+                android:padding="4dp"
+                android:text="Please Enter Sheridan Email to Continue"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/userNameLabel2"
-            android:layout_width="106dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="16dp"
-            android:text="Password  :"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/passwordText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userNameLabel" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:layout_below="@id/tvDes2"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="32dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputUID"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:textColorHint="@android:color/black"
+                    app:boxCornerRadiusBottomEnd="24dp"
+                    app:boxCornerRadiusBottomStart="24dp"
+                    app:boxCornerRadiusTopEnd="24dp"
+                    app:boxCornerRadiusTopStart="24dp"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="custom"
+                    app:endIconTint="@color/black">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userNameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputPass"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inputUID"
+                    android:hint="Password"
+                    android:textColorHint="@android:color/black"
+                    app:boxCornerRadiusBottomEnd="24dp"
+                    app:boxCornerRadiusBottomStart="24dp"
+                    app:boxCornerRadiusTopEnd="24dp"
+                    app:boxCornerRadiusTopStart="24dp"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="1dp"
+                    app:endIconMode="custom"
+                    app:endIconTint="@color/black">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:maxLines="1"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/black" />
 
-        <EditText
-            android:id="@+id/userNameText"
-            android:layout_width="241dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="24dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="shahvard@sheridancollege.ca"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/userNameLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/loginButton"
+                    android:theme="@style/login"
+                    android:layout_below="@+id/inputPass"
+                    android:layout_margin="20sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login" />
 
-        <EditText
-            android:id="@+id/passwordText"
-            android:layout_width="241dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:text="12345678"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/userNameLabel2"
-            app:layout_constraintTop_toBottomOf="@+id/userNameText"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <Button
-            android:id="@+id/signUpButton"
-            android:theme="@style/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginEnd="150dp"
-            android:text="Login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.478"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
-
-        <TextView
-            android:id="@+id/newUserText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
-            android:text="New User?"
-            android:textColor="#0A7E8C"
-            app:layout_constraintBottom_toTopOf="@+id/forgotPasswordText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
-
-        <TextView
-            android:id="@+id/forgotPasswordText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:text="Forgot Password?"
-            android:textColor="#0A7E8C"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/linear"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content">
+              
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Here for the first time?" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/newUserText"
+                    android:layout_width="wrap_content"
+                    android:text="Create User Now!"
+                    android:textAllCaps="true"
+                    android:textColor="@color/blue"
+                    android:layout_marginLeft="8dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="false"
+                android:layout_above="@+id/linear"
+                android:layout_height="wrap_content">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:text="Forgot Password?"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/forgotPasswordText"
+                android:layout_width="wrap_content"
+                android:text="Reset Password"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:layout_marginLeft="8dp"
+                android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</ScrollView>

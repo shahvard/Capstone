@@ -10,6 +10,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+
+import androidx.navigation.findNavController
+
 import androidx.navigation.Navigation
 import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.exceptions.CometChatException
@@ -40,7 +43,9 @@ class SignUpFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_sign_up, container, false)
         auth = Firebase.auth
         database = Firebase.database.reference
+
         val db = Firebase.firestore
+
         view.findViewById<Button>(R.id.signUpButton).setOnClickListener() {
             val email = view.findViewById<TextView>(R.id.userNameText)
             val password = view.findViewById<TextView>(R.id.passwordText)
@@ -49,9 +54,10 @@ class SignUpFragment : Fragment() {
 
             username = email?.text?.toString()?.split(delimiter)?.get(0)!!
             val check = email?.text.toString().split(delimiter)?.get(1)
-            val firstName = view.findViewById<TextView>(R.id.firstNameText)
-            val lastName = view.findViewById<TextView>(R.id.lastNameText)
-            val address = view.findViewById<TextView>(R.id.addressText)
+            val name = view.findViewById<TextView>(R.id.nameText)
+            val firstName: String = name?.text.toString().split(" ")?.get(0)
+            val lastName: String = name?.text.toString().split(" ")?.get(1)
+            val address = view.findViewById<TextView>(R.id.address)
             val phoneNo = view.findViewById<TextView>(R.id.phoneNumberText)
 
             if (check == "sheridancollege.ca") {
@@ -68,34 +74,25 @@ class SignUpFragment : Fragment() {
                                                     "Email sent",
                                             Toast.LENGTH_SHORT
                                         ).show()
-
-
-                                    }
-
-                                    //setting the student in the database
-                                    if (username != null) {
-                                        database.child("Students").child(username)
-                                            .setValue(
-                                                Student(
-                                                    username,
-                                                    firstName.text.toString(),
-                                                    lastName.text.toString(),
-                                                    email.text.toString(),
-                                                    address.text.toString(),
-                                                    phoneNo.text.toString(),
-                                                    false
-                                                )
-                                            )
-                                        val fullName = StringBuilder()
-                                        fullName.append(firstName.text.toString()).append(" ").append(lastName.text.toString())
-
+                                        
+                                        val student = Student(
+                                            username,
+                                            firstName,
+                                            lastName,
+                                            email.text.toString(),
+                                            address.text.toString(),
+                                            phoneNo.text.toString(),
+                                            false
+                                        )
+                                        database.child("Students").child(username!!)
+                                            .setValue(student)
+                                      
+                                        val fullName = name.text
                                         if (username != null) {
-                                            signUpTapped( fullName.toString())
+                                            signUpTapped( fullName)
                                         }
-
-                                        //clearing the text fields
-                                        firstName.text = ""
-                                        lastName.text = ""
+                                        
+                                        name.text = ""
                                         address.text = ""
                                         phoneNo.text = ""
                                         email.text = ""
@@ -124,6 +121,28 @@ class SignUpFragment : Fragment() {
                 ).show()
             }
 
+        }
+
+        view.findViewById<TextView>(R.id.forgotPasswordText).setOnClickListener() {
+
+            if (view.findViewById<TextView>(R.id.userNameText).text.toString()!! == "") {
+                Toast.makeText(this.context,"Please enter your Email Address",
+                    Toast.LENGTH_SHORT).show()
+            }
+            else{
+                auth.sendPasswordResetEmail(view.findViewById<TextView>(R.id.userNameText).text.toString())
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "Email sent.")
+                        }
+                    }
+            }
+        }
+
+
+        view.findViewById<TextView>(R.id.signInText).setOnClickListener(){
+            view.findNavController()
+                .navigate(R.id.action_signUpFragment_to_homeFragment)
         }
         return view
     }

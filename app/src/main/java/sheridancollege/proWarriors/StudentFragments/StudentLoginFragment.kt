@@ -17,7 +17,6 @@ import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -27,26 +26,25 @@ import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentActivity
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu
+import javax.security.auth.callback.CallbackHandler
 
-class StudentLoginFragment : Fragment() {
+class  StudentLoginFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var userName:String
     private lateinit var password:String
     private val delimiter="."
+  
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Firebase.auth.signOut()
-
+        //
         val view = inflater.inflate(R.layout.fragment_student_login, container, false)
-
-
+        
         auth = Firebase.auth
 
         view.findViewById<TextView>(R.id.forgotPasswordText).setOnClickListener() {
-
             if (view.findViewById<TextView>(R.id.userNameText).text.toString()!! == "") {
                 Toast.makeText(this.context,"Please enter your Email Address",
                     Toast.LENGTH_SHORT).show()
@@ -60,14 +58,13 @@ class StudentLoginFragment : Fragment() {
                     }
             }
         }
-
-
+        
         view.findViewById<TextView>(R.id.newUserText).setOnClickListener(){
             view.findNavController()
                 .navigate(R.id.action_studentLoginFragment_to_signUpFragment)
         }
 
-        view.findViewById<Button>(R.id.signUpButton).setOnClickListener(){
+        view.findViewById<Button>(R.id.loginButton).setOnClickListener(){
             userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
             password= view.findViewById<TextView>(R.id.passwordText).text.toString()
             auth.signInWithEmailAndPassword(userName, password)
@@ -93,18 +90,15 @@ class StudentLoginFragment : Fragment() {
                                 delay(500L)
 
                                 if (stu.student.firstName != null) {
-
                                     var intent =
                                         Intent(
                                             activity?.applicationContext,
                                             StudentActivity::class.java
                                         )
-
                                     startActivity(intent)
-
                                 }
                                 else{
-                                    Log.d("data","You are not a student")
+                                    Log.d("data","You are not a student, please login as a tutor.")
                                     //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
                                 }
                             }
@@ -143,4 +137,5 @@ class StudentLoginFragment : Fragment() {
             }
         })
     }
+
 }
