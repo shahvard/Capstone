@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -92,7 +93,7 @@ class StudentHomeFragment : Fragment() {
                 ).show()
             }
             "Chat" ->{
-                startActivity(Intent(this.requireContext(), ChatActivity::class.java))
+                startActivity(Intent(this.requireContext(), CometChatUI::class.java))
             }
 
 

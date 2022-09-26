@@ -32,6 +32,7 @@
         <entry key="app/src/main/res/menu/details_menu.xml" value="0.370585632324219" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/menu/student_details_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/student_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/tutor_details_menu.xml" value="0.1" />
       </map>
     </option>

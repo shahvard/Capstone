@@ -15,6 +15,7 @@
         android:title="Account">
 
         <menu>
+            <item android:title="Chat" />
             <item
                 android:title="Profile"
                 android:id="@+id/profile"
