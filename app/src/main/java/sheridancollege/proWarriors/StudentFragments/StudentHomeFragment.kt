@@ -16,7 +16,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import sheridancollege.proWarriors.Chat.ChatActivity
+
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu.Companion.student
