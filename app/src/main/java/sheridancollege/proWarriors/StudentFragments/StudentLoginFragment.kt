@@ -98,18 +98,24 @@ class  StudentLoginFragment : Fragment() {
                                         )
                                     startActivity(intent)
                                 }
+
                                 else{
                                     Log.d("data","You are not a student, please login as a tutor.")
                                     //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
                                 }
                             }
+
                         }
+
+                        //else if email not verified
                         else{
                             Toast.makeText(
                                 this.context, "Please verify your email to Login",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
+
+                        //else if credentials are not correct
                     } else {
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(
@@ -123,12 +129,14 @@ class  StudentLoginFragment : Fragment() {
 
 
     }
+
+    //logging in to cometchat account
     fun login(user: com.cometchat.pro.models.User){
         CometChat.login(user.uid, AppConfig.AppDetails.AUTH_KEY, object : CometChat.CallbackListener<com.cometchat.pro.models.User?>() {
             override fun onSuccess(user: com.cometchat.pro.models.User?) {
                 Log.d("Success","CometChat login successful")
 
-                // progressBar.visibility = View.GONE
+                //progressBar.visibility = View.GONE
                 //startActivity(Intent(this@RegistrationActivity, ConversationsActivity::class.java))
             }
             override fun onError(e: CometChatException) {

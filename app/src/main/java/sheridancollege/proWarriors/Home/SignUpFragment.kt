@@ -61,6 +61,7 @@ class SignUpFragment : Fragment() {
             val phoneNo = view.findViewById<TextView>(R.id.phoneNumberText)
 
             if (check == "sheridancollege.ca") {
+
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this.requireActivity()) { task ->
                         if (task.isSuccessful) {
@@ -86,22 +87,23 @@ class SignUpFragment : Fragment() {
                                         )
                                         database.child("Students").child(username!!)
                                             .setValue(student)
-                                      
+
+
                                         val fullName = name.text
                                         if (username != null) {
                                             signUpTapped( fullName.toString())
                                         }
-                                        
+//redirecting to course selection page
+                                        Navigation.findNavController(requireView())
+                                            .navigate(R.id.action_signUpFragment_to_courseSelectionFragment)
+
+
                                         name.text = ""
                                         address.text = ""
                                         phoneNo.text = ""
                                         email.text = ""
                                         password.text = ""
 
-
-                                        //redirecting to course selection page
-                                        /* Navigation.findNavController(requireView())
-                                             .navigate(R.id.action_signUpFragment_to_courseSelectionFragment)*/
 
 
                                     }
