@@ -96,5 +96,21 @@
         android:id="@+id/tutorSignUpFragment"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorSignUpFragment"
         android:label="fragment_tutor_sign_up"
-        tools:layout="@layout/fragment_tutor_sign_up" />
+        tools:layout="@layout/fragment_tutor_sign_up" >
+        <action
+            android:id="@+id/action_tutorSignUpFragment_to_tutorLoginFragment"
+            app:destination="@id/tutorLoginFragment" />
+        <action
+            android:id="@+id/action_tutorSignUpFragment_to_tutorCourseSelectionFragment"
+            app:destination="@id/tutorCourseSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorCourseSelectionFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorCourseSelection"
+        android:label="fragment_tutor_course_selection"
+        tools:layout="@layout/fragment_tutor_course_selection" >
+        <action
+            android:id="@+id/action_tutorCourseSelectionFragment_to_tutorLoginFragment"
+            app:destination="@id/tutorLoginFragment" />
+    </fragment>
 </navigation>

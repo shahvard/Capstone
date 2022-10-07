@@ -10,11 +10,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import sheridancollege.proWarriors.AppConfig
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.Student
 import sheridancollege.proWarriors.Tutor.Tutor
@@ -77,15 +83,83 @@ class TutorSignUpFragment : Fragment() {
                                             phoneNo.text.toString(),
                                             false
                                         )
+                                        database.child("Tutors").child(username!!)
+                                            .setValue(tutor)
+
+
+                                        val fullName = name.text
+                                        if (username != null) {
+                                            signUpTapped( fullName.toString())
+                                        }
+
+                                        //redirecting to course selection page
+                                        Navigation.findNavController(requireView())
+                                            .navigate(R.id.action_tutorSignUpFragment_to_tutorCourseSelectionFragment)
+
+
+                                        name.text = ""
+                                        address.text = ""
+                                        phoneNo.text = ""
+                                        email.text = ""
+                                        password.text = ""
+
+
+
                                     }
                                 }
-
+                        } else {
+                            Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                view.context, "Sign up failed.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
+
+            } else {
+                Toast.makeText(
+                    view.context, "Please enter Sheridan Email Address",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        }
+            view.findViewById<TextView>(R.id.signInText).setOnClickListener(){
+                view.findNavController()
+                    .navigate(R.id.action_tutorSignUpFragment_to_tutorLoginFragment)
+            }
+                                    }
+
+
+
+
+
+
                         return view
                     }
+    fun signUpTapped(name:String){
+        val user: User = User()
+        user.uid  = username
+        user.name =name
+
+        registerUser(user)
+    }
+
+    fun registerUser(user: User){
+        CometChat.createUser(user, AppConfig.AppDetails.AUTH_KEY, object : CometChat.CallbackListener<User>() {
+            override fun onSuccess(user: User) {
+                Log.d("Comet Account","success")
+                // progressBar.visibility = View.GONE
+                //login(user)
+            }
+            override fun onError(e: CometChatException) {
+                Log.d("debug",e.toString())
+                Log.d("Comet Account","failure")
+                //sprogressBar.visibility = View.GONE
+                //  createUserBtn.isClickable = true
+                // Toast.makeText(this@RegistrationActivity, e.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
 
 
 

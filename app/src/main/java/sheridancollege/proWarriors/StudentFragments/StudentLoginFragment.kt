@@ -77,7 +77,7 @@ class  StudentLoginFragment : Fragment() {
                                 Log.d(TAG, "signInWithEmail:success")
 
                                 //cometLogin
-                                val cometUser: com.cometchat.pro.models.User =User()
+                                val cometUser:User =User()
                                 cometUser.uid=userName?.split("@")?.get(0)!!
                                 login(cometUser)
 
