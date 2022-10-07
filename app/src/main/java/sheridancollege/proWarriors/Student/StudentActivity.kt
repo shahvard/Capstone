@@ -10,7 +10,7 @@ class StudentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student_home_page)
+        setContentView(R.layout.activity_student)
 
         val navController = this.findNavController(R.id.studentNavHost)
         NavigationUI.setupActionBarWithNavController(this, navController)

@@ -82,9 +82,9 @@
         tools:layout="@layout/fragment_tutor_home" />
     <fragment
         android:id="@+id/courseSelectionFragment"
-        android:name="sheridancollege.proWarriors.StudentFragments.CourseSelectionFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentCourseSelection"
         android:label="fragment_course_selection"
-        tools:layout="@layout/fragment_course_selection" >
+        tools:layout="@layout/student_course_selection" >
         <action
             android:id="@+id/action_courseSelectionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

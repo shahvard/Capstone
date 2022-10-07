@@ -1,24 +1,14 @@
 package sheridancollege.proWarriors.Tutor
 
-import android.content.DialogInterface
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Student.StudentActivity
 
 class TutorActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
@@ -27,7 +17,7 @@ class TutorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tutor_home)
+        setContentView(R.layout.activity_tutor)
 
         val navController = this.findNavController(R.id.tutorNavHost)
         NavigationUI.setupActionBarWithNavController(this, navController)

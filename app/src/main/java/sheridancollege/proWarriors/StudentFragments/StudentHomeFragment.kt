@@ -23,6 +23,8 @@ import kotlinx.coroutines.launch
 
 
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Student.StudentCourseItem
+import sheridancollege.proWarriors.Student.StudentCourseViewAdapter
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu.Companion.student
 import sheridancollege.proWarriors.Tutor.TutorActivity
@@ -75,7 +77,7 @@ class StudentHomeFragment : Fragment() {
 
                     }
                 }
-                rView.adapter=Student_CourseView(courseList as List<String>)
+                rView.adapter= StudentCourseViewAdapter(courseList as List<String>)
 
 
             }
