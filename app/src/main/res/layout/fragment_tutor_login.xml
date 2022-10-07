@@ -113,15 +113,19 @@
                         android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <Button
                     android:id="@+id/loginButton"
-                    android:theme="@style/login"
-                    android:layout_below="@+id/inputPass"
-                    android:layout_margin="20sp"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Login" />
+                    android:layout_below="@+id/inputPass"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="20sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="20sp"
+                    android:layout_marginBottom="20sp"
+                    android:text="Login"
+                    android:theme="@style/login" />
 
             </RelativeLayout>
             <LinearLayout

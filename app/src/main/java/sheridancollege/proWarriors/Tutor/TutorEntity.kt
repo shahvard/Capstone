@@ -24,15 +24,15 @@ object TutorEntity {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.child("Tutors") != null) {
                     val data = dataSnapshot.child("Tutors")
-                    val firstName = data.child(username.toString()).child("firstName").value.toString()
-                    val lastName = data.child(username.toString()).child("lastName").value.toString()
-                    val email = data.child(username.toString()).child("email").value.toString()
-                    val phoneNo = data.child(username.toString()).child("phoneNo").value.toString()
-                    val address = data.child(username.toString()).child("address").value.toString()
-                    val student = data.child(username.toString()).child("isStudent").value.toString().toBoolean()
+                    val firstName = data.child(username).child("firstName").value.toString()
+                    val lastName = data.child(username).child("lastName").value.toString()
+                    val email = data.child(username).child("email").value.toString()
+                    val phoneNo = data.child(username).child("phoneNo").value.toString()
+                    val address = data.child(username).child("address").value.toString()
+                    val student = data.child(username).child("isStudent").value.toString().toBoolean()
 
                     tut.tutor = Tutor(
-                        username.toString(),
+                        username,
                         firstName,
                         lastName,
                         email,

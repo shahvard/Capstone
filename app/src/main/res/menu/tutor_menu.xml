@@ -8,19 +8,19 @@
         android:icon="@drawable/ic_baseline_notifications_24"
         android:title="Notification"
         app:showAsAction="always" />
+
     <item
         android:icon="@drawable/account"
         android:id="@+id/account"
         app:showAsAction="always"
-        android:title="Account"
-        >
+        android:title="Account">
 
         <menu>
+            <item android:title="Chat" />
             <item
                 android:title="Profile"
                 android:id="@+id/profile"
                 />
-
             <item
                 android:title="View As Student"
                 android:id="@+id/cView"

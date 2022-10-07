@@ -12,9 +12,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.cometchat.pro.core.CometChat
+import com.cometchat.pro.exceptions.CometChatException
+import com.cometchat.pro.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import sheridancollege.proWarriors.AppConfig
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Tutor.TutorActivity
 
@@ -32,7 +36,7 @@ class TutorLoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_tutor_login, container, false)
         auth = Firebase.auth
 
-        view.findViewById<Button>(R.id.signUpButton).setOnClickListener(){
+        view.findViewById<Button>(R.id.loginButton).setOnClickListener(){
             userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
             password= view.findViewById<TextView>(R.id.passwordText).text.toString()
             auth.signInWithEmailAndPassword(userName, password)
@@ -44,9 +48,15 @@ class TutorLoginFragment : Fragment() {
                                 this.context, "Authentication Successful",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            val user = auth.currentUser
-                            /*view.findNavController()
-                                .navigate(R.id.action_studentLoginFragment_to_studentHomeFragment2)*/
+
+
+                            //cometLogin
+                            val cometUser: User = User()
+                            cometUser.uid=userName?.split("@")?.get(0)!!
+                            login(cometUser)
+
+
+
                             var intent = Intent(activity?.applicationContext, TutorActivity::class.java)
                             startActivity(intent)
                         }
@@ -85,9 +95,25 @@ class TutorLoginFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.newUserText).setOnClickListener(){
             view.findNavController()
-                .navigate(R.id.action_tutorLoginFragment_to_signUpFragment)
+                .navigate(R.id.action_tutorLoginFragment_to_tutorSignUpFragment)
         }
         return view
     }
 
+}
+//logging in to cometchat account
+fun login(user: com.cometchat.pro.models.User){
+    CometChat.login(user.uid, AppConfig.AppDetails.AUTH_KEY, object : CometChat.CallbackListener<com.cometchat.pro.models.User?>() {
+        override fun onSuccess(user: com.cometchat.pro.models.User?) {
+            Log.d("Success","CometChat login successful")
+
+            //progressBar.visibility = View.GONE
+            //startActivity(Intent(this@RegistrationActivity, ConversationsActivity::class.java))
+        }
+        override fun onError(e: CometChatException) {
+            //progressBar.visibility = View.GONE
+            Log.d("error",e.toString())
+            // Toast.makeText(this@RegistrationActivity, e.localizedMessage, Toast.LENGTH_LONG).show()
+        }
+    })
 }

@@ -1,11 +1,13 @@
 package sheridancollege.proWarriors.TutorFragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
@@ -38,7 +40,7 @@ class TutorHomeFragment : Fragment() {
 
         GlobalScope.launch {
             if (tutor != null) {
-                delay(200L)
+                delay(500L)
                 heading.text = "Welcome "+ tutor.firstName.toString()
             }
             else{
@@ -88,6 +90,10 @@ class TutorHomeFragment : Fragment() {
                     activity, "Successfully logged out.",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+            "Chat"->{
+                startActivity(Intent(this.requireContext(), CometChatUI::class.java))
+
             }
         }
         return true
