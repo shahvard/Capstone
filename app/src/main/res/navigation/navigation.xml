@@ -48,6 +48,9 @@
             android:id="@+id/action_tutorLoginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment"
             app:popUpTo="@id/tutorLoginFragment" />
+        <action
+            android:id="@+id/action_tutorLoginFragment_to_tutorSignUpFragment"
+            app:destination="@id/tutorSignUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentHomeFragment2"
@@ -89,4 +92,9 @@
             android:id="@+id/action_courseSelectionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/tutorSignUpFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorSignUpFragment"
+        android:label="fragment_tutor_sign_up"
+        tools:layout="@layout/fragment_tutor_sign_up" />
 </navigation>

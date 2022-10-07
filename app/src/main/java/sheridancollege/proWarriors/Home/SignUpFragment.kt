@@ -44,7 +44,7 @@ class SignUpFragment : Fragment() {
         auth = Firebase.auth
         database = Firebase.database.reference
 
-        val db = Firebase.firestore
+
 
         view.findViewById<Button>(R.id.signUpButton).setOnClickListener() {
             val email = view.findViewById<TextView>(R.id.userNameText)
@@ -93,7 +93,8 @@ class SignUpFragment : Fragment() {
                                         if (username != null) {
                                             signUpTapped( fullName.toString())
                                         }
-//redirecting to course selection page
+
+                                        //redirecting to course selection page
                                         Navigation.findNavController(requireView())
                                             .navigate(R.id.action_signUpFragment_to_courseSelectionFragment)
 

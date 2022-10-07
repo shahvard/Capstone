@@ -35,7 +35,7 @@ class StudentDetailsFragment : Fragment() {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-//        var studententity = StudentEntity
+
         StudentEntity.getStudentDetails(username)
         var student: Student = stu.student
         if (student != null) {
