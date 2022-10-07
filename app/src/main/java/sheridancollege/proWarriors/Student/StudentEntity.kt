@@ -43,7 +43,6 @@ object StudentEntity {
                   phoneNo,
                   tutor
                )
-               //Log.d("data",stu.student.firstName.toString())
             }
             else {
 

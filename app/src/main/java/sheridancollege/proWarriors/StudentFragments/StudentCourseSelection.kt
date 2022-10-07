@@ -14,17 +14,15 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import sheridancollege.proWarriors.Course.ClassItem
-import sheridancollege.proWarriors.Course.MyCourseView
-
+import sheridancollege.proWarriors.Student.StudentCourseItem
+import sheridancollege.proWarriors.Student.StudentCourseViewAdapter
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Student.StudentCourseSelectionAdapter
 
 
-class CourseSelectionFragment : Fragment() {
+class StudentCourseSelection : Fragment() {
 
-   // private var dataModel: List<ClassItem>? = null
-    private var courseList:ArrayList<ClassItem>?=null
-    private var courseSelected:ArrayList<String>? = null
+    private var courseList:ArrayList<StudentCourseItem>?=null
     private lateinit var database: FirebaseDatabase
     private lateinit var db: DatabaseReference
     private lateinit var rView: RecyclerView
@@ -34,14 +32,11 @@ class CourseSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view=inflater.inflate(R.layout.fragment_course_selection, container, false)
+        val view=inflater.inflate(R.layout.student_course_selection, container, false)
         database = FirebaseDatabase.getInstance()
         db = Firebase.database.reference
         rView = view.findViewById<View>(R.id.courseList) as RecyclerView
-        courseList=ArrayList<ClassItem>()
-
-
-
+        courseList=ArrayList<StudentCourseItem>()
         rView.layoutManager=LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
 
@@ -51,15 +46,10 @@ class CourseSelectionFragment : Fragment() {
                 {
                     for (child in snapshot.children) {
                         val a = child.key
-                        courseList!!.add(ClassItem(a!!,false))
-                        Log.d("courseList",courseList!![0].courseName)
-                        Log.d("list",a)
-
+                        courseList!!.add(StudentCourseItem(a!!,false))
                     }
                 }
-                rView.adapter=MyCourseView(courseList!! as List<ClassItem>)
-
-
+                rView.adapter= StudentCourseSelectionAdapter(courseList!! as List<StudentCourseItem>)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -73,34 +63,12 @@ class CourseSelectionFragment : Fragment() {
             username = email?.split("@")?.get(0).toString()
         }
 
-
-
-
-
-           // val list=a.split("=").get(0)
-          //  Log.d("First value",list.toString())
-
-       /* @Override
-        public void onDataChange(DataSnapshot snapshot) {
-            ArrayList<String> ids = new ArrayList<String>();
-            for (DataSnapshot childSnapshot: snapshot.getChildren()) {
-            ids.add(childSnapshot.getValue().toString());
-        }
-        }*/
-
         val check = view.findViewById<CheckBox>(R.id.checkBox)
-
         view.findViewById<Button>(R.id.Done).setOnClickListener() {
-
-
             for (course in courseList!!) {
                 Log.d("Inside for each", "Succcess")
-
                 if (course.isChecked == true) {
-                    Log.d("Inside second if","Succcess")
                     db.child("StudentCourse").child(username).push().setValue(course.courseName)
-
-
                 }
             }
 
@@ -108,14 +76,9 @@ class CourseSelectionFragment : Fragment() {
 
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_courseSelectionFragment_to_homeFragment)
-
         }
             return view
-        }
-
-
-
-
+    }
 }
 
 

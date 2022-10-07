@@ -66,64 +66,73 @@ class  StudentLoginFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.loginButton).setOnClickListener(){
+
             userName = view.findViewById<TextView>(R.id.userNameText).text.toString()
             password= view.findViewById<TextView>(R.id.passwordText).text.toString()
-            auth.signInWithEmailAndPassword(userName, password)
-                .addOnCompleteListener(this.requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        if(auth.currentUser!!.isEmailVerified) {
-                            Log.d(TAG, "signInWithEmail:success")
+            if(userName != null && password != null){
+                auth.signInWithEmailAndPassword(userName, password)
+                    .addOnCompleteListener(this.requireActivity()) { task ->
+                        if (task.isSuccessful) {
+                            if(auth.currentUser!!.isEmailVerified) {
+                                Log.d(TAG, "signInWithEmail:success")
 
-                            //cometLogin
-                            val cometUser: com.cometchat.pro.models.User =User()
-                            cometUser.uid=userName?.split("@")?.get(0)!!
-                            login(cometUser)
+                                //cometLogin
+                                val cometUser: com.cometchat.pro.models.User =User()
+                                cometUser.uid=userName?.split("@")?.get(0)!!
+                                login(cometUser)
 
-                            //Authentication message
-                            Toast.makeText(
-                                this.context, "Authentication Successful",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            val user = auth.currentUser
+                                //Authentication message
+                                Toast.makeText(
+                                    this.context, "Authentication Successful",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val user = auth.currentUser
 
-                            GlobalScope.launch {
-                                StudentEntity.getStudentDetails(userName?.split(delimiter)?.get(0)!!)
-                                delay(500L)
+                                GlobalScope.launch {
+                                    StudentEntity.getStudentDetails(userName?.split(delimiter)?.get(0)!!)
+                                    delay(500L)
 
-                                if (stu.student.firstName != null) {
-                                    var intent =
-                                        Intent(
-                                            activity?.applicationContext,
-                                            StudentActivity::class.java
-                                        )
-                                    startActivity(intent)
+                                    if (stu.student.firstName != null) {
+                                        var intent =
+                                            Intent(
+                                                activity?.applicationContext,
+                                                StudentActivity::class.java
+                                            )
+                                        startActivity(intent)
+                                    }
+
+                                    else{
+                                        Log.d("data","You are not a student, please login as a tutor.")
+                                        //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
+                                    }
                                 }
 
-                                else{
-                                    Log.d("data","You are not a student, please login as a tutor.")
-                                    //Toast.makeText(this.context,"You are not a student",Toast.LENGTH_SHORT).show()
-                                }
                             }
 
-                        }
+                            //else if email not verified
+                            else{
+                                Toast.makeText(
+                                    this.context, "Please verify your email to Login",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
 
-                        //else if email not verified
-                        else{
+                            //else if credentials are not correct
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.exception)
                             Toast.makeText(
-                                this.context, "Please verify your email to Login",
+                                this.context, "Authentication failed.",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-
-                        //else if credentials are not correct
-                    } else {
-                        Log.w(TAG, "signInWithEmail:failure", task.exception)
-                        Toast.makeText(
-                            this.context, "Authentication failed.",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
-                }
+            }
+            else{
+                Toast.makeText(
+                    this.context, "Please enter login credentials.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
         return view
 

@@ -234,12 +234,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:text="Already an user?" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/signInText"
                     android:layout_width="wrap_content"
                     android:text="Sign In here"
                     android:textAllCaps="true"
+                    android:textSize="16sp"
                     android:textColor="@color/blue"
                     android:layout_marginLeft="8dp"
                     android:layout_height="wrap_content"/>
@@ -255,12 +257,16 @@
                     android:layout_width="wrap_content"
                     android:text="Forgot Password?"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
+
                     android:layout_height="wrap_content"/>
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/forgotPasswordText"
                     android:layout_width="wrap_content"
                     android:text="Reset Password"
                     android:textAllCaps="true"
+                    android:textSize="16sp"
+
                     android:textColor="@color/blue"
                     android:layout_marginLeft="8dp"
                     android:layout_height="wrap_content"/>

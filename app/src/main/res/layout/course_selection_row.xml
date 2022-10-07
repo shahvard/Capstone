@@ -13,15 +13,17 @@
     android:padding="2dp">
 
     <TextView
-        android:id="@+id/txtName"
+        android:id="@+id/courseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="69dp"
         android:paddingTop="5dp"
         android:text="Water Managerment"
         android:textColor="@android:color/background_dark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,9 +32,9 @@
         android:layout_width="40dp"
         android:layout_height="37dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtName"
+        app:layout_constraintStart_toEndOf="@+id/courseName"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
