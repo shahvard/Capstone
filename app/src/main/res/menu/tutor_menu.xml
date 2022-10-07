@@ -22,7 +22,7 @@
                 android:id="@+id/profile"
                 />
             <item
-                android:title="View As Tutor"
+                android:title="View As Student"
                 android:id="@+id/cView"
                 />
             <item
