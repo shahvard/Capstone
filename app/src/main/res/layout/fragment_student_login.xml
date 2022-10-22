@@ -76,14 +76,16 @@
                     app:boxStrokeWidth="1dp"
                     app:endIconMode="custom"
                     app:endIconTint="@color/black">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/userNameText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:maxLines="1"
-                        android:inputType="text"
                         android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="shahvard@sheridancollege.ca"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -102,14 +104,16 @@
                     app:boxStrokeWidth="1dp"
                     app:endIconMode="custom"
                     app:endIconTint="@color/black">
+
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/passwordText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:maxLines="1"
-                        android:inputType="textPassword"
                         android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:text="12345678"
                         android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>

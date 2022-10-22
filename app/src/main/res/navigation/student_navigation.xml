@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_studentLoginFragment2"
             app:destination="@id/studentLoginFragment2" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_studentCourseInfoFragment"
+            app:destination="@id/studentCourseInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -32,4 +35,9 @@
         android:name="sheridancollege.proWarriors.StudentFragments.StudentLoginFragment"
         android:label="Student Login"
         tools:layout="@layout/fragment_student_login" />
+    <fragment
+        android:id="@+id/studentCourseInfoFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentCourseInfoFragment"
+        android:label="fragment_course_info"
+        tools:layout="@layout/fragment_course_info" />
 </navigation>
