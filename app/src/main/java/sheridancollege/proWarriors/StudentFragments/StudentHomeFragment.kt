@@ -1,9 +1,7 @@
 package sheridancollege.proWarriors.StudentFragments
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
@@ -11,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.ktx.auth
@@ -23,12 +20,9 @@ import kotlinx.coroutines.launch
 
 
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Student.StudentCourseItem
 import sheridancollege.proWarriors.Student.StudentCourseViewAdapter
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu.Companion.student
-import sheridancollege.proWarriors.Tutor.TutorActivity
-import sheridancollege.proWarriors.Tutor.tut
 
 
 class StudentHomeFragment : Fragment() {
@@ -60,6 +54,10 @@ class StudentHomeFragment : Fragment() {
                 heading.text = "Welcome "+ student.firstName.toString()
             }
         }
+
+
+
+
 
 
 
