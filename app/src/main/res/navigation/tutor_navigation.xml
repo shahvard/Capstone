@@ -11,26 +11,27 @@
         android:label="fragment_tutor_home"
         tools:layout="@layout/fragment_tutor_home" >
         <action
-            android:id="@+id/action_tutorHomeFragment_to_tutorDetailsFragment"
-            app:destination="@id/tutorDetailsFragment"
-            app:popUpTo="@id/tutorHomeFragment" />
-        <action
             android:id="@+id/action_tutorHomeFragment_to_tutorLoginFragment2"
             app:destination="@id/tutorLoginFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/tutorDetailsFragment"
-        android:name="sheridancollege.proWarriors.TutorFragments.TutorDetailsFragment"
-        android:label="fragment_tutor_details"
-        tools:layout="@layout/fragment_tutor_details" >
         <action
-            android:id="@+id/action_tutorDetailsFragment_to_tutorLoginFragment2"
-            app:destination="@id/tutorLoginFragment2"
-            app:popUpTo="@id/tutorHomeFragment" />
+            android:id="@+id/action_tutorHomeFragment_to_studentDetailsFragment2"
+            app:destination="@id/studentDetailsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/tutorLoginFragment2"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorLoginFragment"
         android:label="fragment_tutor_login"
         tools:layout="@layout/fragment_tutor_login" />
+    <fragment
+        android:id="@+id/studentDetailsFragment2"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentDetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_studentDetailsFragment2_to_tutorHomeFragment"
+            app:destination="@id/tutorHomeFragment" />
+        <action
+            android:id="@+id/action_studentDetailsFragment2_to_tutorLoginFragment2"
+            app:destination="@id/tutorLoginFragment2" />
+    </fragment>
 </navigation>

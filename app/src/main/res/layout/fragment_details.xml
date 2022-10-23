@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".StudentFragments.StudentDetailsFragment">
 
+<!--
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -23,16 +25,16 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textSize="34dp" />
 
-        <!--<ImageView
+        &lt;!&ndash;<ImageView
             android:id="@+id/profilePicture"
             android:layout_width="166dp"
             android:layout_height="155dp"
             android:layout_below="@+id/details"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="26dp"
-            android:layout_marginBottom="82dp" />-->
+            android:layout_marginBottom="82dp" />&ndash;&gt;
 
-        <!--<TextView
+        &lt;!&ndash;<TextView
             android:id="@+id/editImage"
             android:layout_width="94dp"
             android:layout_height="wrap_content"
@@ -40,7 +42,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="0.8dp"
 
-            android:text="Edit" />-->
+            android:text="Edit" />&ndash;&gt;
 
         <TextView
             android:id="@+id/firstNameLabel"
@@ -127,4 +129,104 @@
             android:layout_below="@+id/contactLabel"/>
 
     </RelativeLayout>
+-->
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".Profile.StudentDetailsActivity"
+        android:background="@color/profileBackground">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="@color/profilePrimaryDark"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@+id/toolbar"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleTextAppearance="@style/TransparentText">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:id="@+id/linearLayout"
+                    android:background="@drawable/profile_bk">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/profile_round"
+                        app:srcCompat="@drawable/ic_launcher_foreground"
+                        tools:srcCompat="@drawable/ic_launcher_foreground" />
+
+
+                    <TextView
+                        android:id="@+id/firstName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shubh"
+                        android:textSize="28dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/emailID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="pate1995@sheridancollege.ca"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/profileBackground">
+
+                        <View
+                            android:layout_alignParentTop="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@drawable/profile_bk"/>
+
+                        <TextView
+                            android:id="@+id/backToHome"
+                            style="@style/profileStyledBackButton"
+                            android:text="Back to\nHome"
+                            android:textColor="@color/black"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <include layout="@layout/content_profile" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </FrameLayout>

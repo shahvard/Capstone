@@ -22,14 +22,21 @@ class TutorDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_tutor_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_details, container, false)
         val user = Firebase.auth.currentUser
 
-        var first = view.findViewById<TextView>(R.id.fName)
-        var last = view.findViewById<TextView>(R.id.lName)
+        var fullName = view.findViewById<TextView>(R.id.fName)
+        var first = view.findViewById<TextView>(R.id.firstName)
         var phone = view.findViewById<TextView>(R.id.cNumber)
         var add = view.findViewById<TextView>(R.id.address)
+        var id = view.findViewById<TextView>(R.id.email)
+        var idInfo = view.findViewById<TextView>(R.id.emailID)
+        var back = view.findViewById<TextView>(R.id.backToHome)
 
+        back.setOnClickListener {
+            Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_to_tutorHomeFragment)
+
+        }
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
@@ -39,9 +46,11 @@ class TutorDetailsFragment : Fragment() {
         var tutor: Tutor = tut.tutor
         if (tutor != null) {
             first.text = tutor.firstName
-            last.text = tutor.lastName
+            fullName.text = tutor.firstName + " " + tutor.lastName
             phone.text = tutor.phoneNo
             add.text = tutor.address
+            id.text = tutor.email
+            idInfo.text = tutor.email
         }
         else{
             Toast.makeText(activity,"Tutor info not found. Please try again later.", Toast.LENGTH_SHORT).show()
@@ -82,7 +91,7 @@ class TutorDetailsFragment : Fragment() {
             }*/
             "Logout"->{
                 Firebase.auth.signOut()
-                Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment_to_studentLoginFragment2)
+                Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_to_tutorLoginFragment2)
                 Toast.makeText(
                     activity, "Successfully logged out.",
                     Toast.LENGTH_SHORT
