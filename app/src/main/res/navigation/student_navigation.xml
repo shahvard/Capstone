@@ -25,7 +25,10 @@
         android:id="@+id/studentDetailsFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentDetailsFragment"
         android:label="Details"
-        tools:layout="@layout/fragment_student_details">
+        tools:layout="@layout/fragment_details">
+        <action
+            android:id="@+id/action_studentDetailsFragment_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment" />
         <action
             android:id="@+id/action_studentDetailsFragment_to_studentLoginFragment2"
             app:destination="@id/studentLoginFragment2" />

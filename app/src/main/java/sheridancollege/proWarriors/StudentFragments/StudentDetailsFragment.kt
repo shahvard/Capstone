@@ -23,14 +23,21 @@ class StudentDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_student_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_details, container, false)
         val user = Firebase.auth.currentUser
 
-        var first = view.findViewById<TextView>(R.id.fName)
-        var last = view.findViewById<TextView>(R.id.lName)
+        var fullName = view.findViewById<TextView>(R.id.fName)
+        var first = view.findViewById<TextView>(R.id.firstName)
         var phone = view.findViewById<TextView>(R.id.cNumber)
         var add = view.findViewById<TextView>(R.id.address)
+        var id = view.findViewById<TextView>(R.id.email)
+        var idInfo = view.findViewById<TextView>(R.id.emailID)
+        var back = view.findViewById<TextView>(R.id.backToHome)
 
+        back.setOnClickListener {
+            Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment_to_studentHomeFragment)
+
+        }
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
@@ -40,9 +47,11 @@ class StudentDetailsFragment : Fragment() {
         var student: Student = stu.student
         if (student != null) {
             first.text = student.firstName
-            last.text = student.lastName
+            fullName.text = student.firstName + " " + student.lastName
             phone.text = student.phoneNo
             add.text = student.address
+            id.text = student.email
+            idInfo.text = student.email
         }
         else{
             Toast.makeText(activity,"Student info not found. Please try again later.", Toast.LENGTH_SHORT).show()
