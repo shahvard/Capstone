@@ -166,10 +166,11 @@
                     android:id="@+id/linearLayout"
                     android:background="@drawable/profile_bk">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/profile_round"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:src="@drawable/profile"
                         app:srcCompat="@drawable/ic_launcher_foreground"
                         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
