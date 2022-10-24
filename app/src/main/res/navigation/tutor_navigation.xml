@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/tutorHomeFragment"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorHomeFragment"
-        android:label="fragment_tutor_home"
-        tools:layout="@layout/fragment_tutor_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_tutor_home">
         <action
             android:id="@+id/action_tutorHomeFragment_to_tutorLoginFragment2"
             app:destination="@id/tutorLoginFragment2" />
@@ -20,13 +20,13 @@
     <fragment
         android:id="@+id/tutorLoginFragment2"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorLoginFragment"
-        android:label="fragment_tutor_login"
+        android:label="Tutor Login"
         tools:layout="@layout/fragment_tutor_login" />
     <fragment
         android:id="@+id/studentDetailsFragment2"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentDetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
         <action
             android:id="@+id/action_studentDetailsFragment2_to_tutorHomeFragment"
             app:destination="@id/tutorHomeFragment" />
