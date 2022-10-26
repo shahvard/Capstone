@@ -35,8 +35,9 @@ class StudentCourseSelection : Fragment() {
         val view=inflater.inflate(R.layout.student_course_selection, container, false)
         database = FirebaseDatabase.getInstance()
         db = Firebase.database.reference
-        rView = view.findViewById<View>(R.id.courseList) as RecyclerView
         courseList=ArrayList()
+        rView = view.findViewById<View>(R.id.courseList) as RecyclerView
+
         rView.layoutManager=LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
 
@@ -66,7 +67,7 @@ class StudentCourseSelection : Fragment() {
         val check = view.findViewById<CheckBox>(R.id.checkBox)
         view.findViewById<Button>(R.id.Done).setOnClickListener() {
             for (course in courseList!!) {
-                Log.d("Inside for each", "Succcess")
+               // Log.d("Inside for each", "Succcess")
                 if (course.isChecked == true) {
                     db.child("StudentCourse").child(username).push().setValue(course.courseName)
                 }
