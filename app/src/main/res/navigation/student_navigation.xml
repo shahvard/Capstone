@@ -45,5 +45,27 @@
         android:id="@+id/studentCourseInfoFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentCourseInfoFragment"
         android:label="fragment_course_info"
-        tools:layout="@layout/fragment_course_info" />
+        tools:layout="@layout/fragment_course_info" >
+        <action
+            android:id="@+id/action_studentCourseInfoFragment_to_studentTutorDescriptionFragment"
+            app:destination="@id/studentTutorDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentTutorDescriptionFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentTutorDescriptionFragment"
+        android:label="fragment_student_tutor_description"
+        tools:layout="@layout/fragment_student_tutor_description" >
+        <action
+            android:id="@+id/action_studentTutorDescriptionFragment_to_studentAppointmentBookingFragment"
+            app:destination="@id/studentAppointmentBookingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentAppointmentBookingFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentAppointmentBookingFragment"
+        android:label="fragment_student_appointment_booking"
+        tools:layout="@layout/fragment_student_appointment_booking" >
+        <action
+            android:id="@+id/action_studentAppointmentBookingFragment_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment" />
+    </fragment>
 </navigation>
