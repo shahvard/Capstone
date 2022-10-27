@@ -111,9 +111,10 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         storageRef.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             mImage.setImageBitmap(bitmap)
+
         }
 
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(false)
         return view
     }
 
@@ -189,17 +190,12 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
             val result = CropImage.getActivityResult(data)
-
             if (resultCode == Activity.RESULT_OK){
                 val resultUri = result.uri
-                //val thumb_filePath = File(resultUri.path)
-
                 val thumb_bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, resultUri)
                 val baos = ByteArrayOutputStream()
                 thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
                 val thumb_byte = baos.toByteArray()
-
-                //val uid = Firebase.auth.currentUser?.uid
                 val filepath = imageStore.child("profile_images").child(username + ".jpg")
                 val thumb_filepath = imageStore.child("profile_images").child("Thumbs").child(username + ".jpg")
 
@@ -220,20 +216,18 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                             }
                             else{
                                 Toast.makeText(requireContext(), "Error uploading profile feature.", Toast.LENGTH_SHORT).show()
-
                             }
                         }
                     }
                     else{
                         Toast.makeText(requireContext(), "Error uploading profile feature.", Toast.LENGTH_SHORT).show()
-
                     }
                 }
-
             }else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
                 val error = result.error
             }
         }
+
     }
 
     override fun onRequestPermissionsResult(

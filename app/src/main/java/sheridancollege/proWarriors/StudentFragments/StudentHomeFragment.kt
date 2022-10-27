@@ -59,10 +59,12 @@ class StudentHomeFragment : Fragment() {
 
         StudentEntity.getStudentDetails(username)
 
+
         val heading = view.findViewById<TextView>(R.id.headingText)
 
+
         GlobalScope.launch {
-            delay(600L)
+            delay(600)
             if (student != null) {
                 heading.text = "Welcome " + student.firstName.toString()
             }
@@ -71,18 +73,12 @@ class StudentHomeFragment : Fragment() {
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot!!.exists()) {
-
                             for (child in snapshot.children) {
                                 val a = child.key
-
                                 allAppointmentsList.add(a.toString())
-                                //Log.d("Tutors", tutorNamesOnlyList[0])
-
                             }
-
                         }
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
@@ -100,18 +96,12 @@ class StudentHomeFragment : Fragment() {
                             if (data.child("studentUserName").value!!.equals(username)) {
                                 val simpleDate = SimpleDateFormat("dd/MM/yyyy")
                                 val currentDate = simpleDate.format(Date())
-                                Log.d("Current Date", currentDate)
-
-
                                 var startTime = data.child("startTime").value.toString()
-
                                 var endTime = data.child("endTime").value.toString()
                                 var date = data.child("date").value.toString()
 
-
                                 val cmpDate = currentDate.compareTo(date)
                                 when {
-
                                     cmpDate <= 0 -> {
                                         Log.d("This should not be displayed", "Yes")
                                         val simpleTime = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
@@ -125,21 +115,13 @@ class StudentHomeFragment : Fragment() {
                                                 string1 += "Start Time :" + startTime + "\n" + "End Time :" +
                                                         endTime + "\n" + "date :" + date + "\n Tutor User Name :" + tutorUserName +
                                                         "\n"
-
                                                 appointmentTextView.text = string1
                                             }
-
                                         }
                                     }
-
                                 }
-
                             }
-
-
                         }
-
-
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -147,10 +129,7 @@ class StudentHomeFragment : Fragment() {
                     }
                 }
                 databaseref.addValueEventListener(appointmentListener)
-
             }
-
-
 
             database.getReference("StudentCourse/" + username)
                 .addValueEventListener(object : ValueEventListener {
@@ -159,28 +138,19 @@ class StudentHomeFragment : Fragment() {
                             for (child in snapshot.children) {
                                 val a = child.value
                                 courseList!!.add(a.toString())
-
-
                             }
                         }
                         rView.adapter = StudentCourseViewAdapter(courseList as List<String>)
-
-
                     }
 
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
                 })
-
-
         }
-
         setHasOptionsMenu(true)
         return view
-
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -224,8 +194,6 @@ class StudentHomeFragment : Fragment() {
             "Chat" -> {
                 startActivity(Intent(this.requireContext(), CometChatUI::class.java))
             }
-
-
         }
         return true
     }

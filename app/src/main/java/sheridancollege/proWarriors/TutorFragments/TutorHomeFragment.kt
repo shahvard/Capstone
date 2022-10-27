@@ -40,28 +40,21 @@ class TutorHomeFragment : Fragment() {
         val heading= view.findViewById<TextView>(R.id.headingText)
 
         GlobalScope.launch {
+            delay(600L)
+
             if (tutor != null) {
-                delay(500L)
                 heading.text = "Welcome "+ tutor.firstName.toString()
             }
             else{
-                delay(900L)
-
                 heading.text = "No name"
             }
         }
-
-
-
-
         view.findViewById<Button>(R.id.setAvailability).setOnClickListener(){
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_tutorHomeFragment_to_tutorAvailabilityFragment)
 
         }
-
-
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return view
     }
 
@@ -105,10 +98,8 @@ class TutorHomeFragment : Fragment() {
             }
             "Chat"->{
                 startActivity(Intent(this.requireContext(), CometChatUI::class.java))
-
             }
         }
         return true
     }
-
 }
