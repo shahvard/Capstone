@@ -22,7 +22,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import sheridancollege.proWarriors.AppConfig
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Student.Student
 import sheridancollege.proWarriors.Tutor.Tutor
 
 class TutorSignUpFragment : Fragment() {
@@ -85,8 +84,6 @@ class TutorSignUpFragment : Fragment() {
                                         )
                                         database.child("Tutors").child(username!!)
                                             .setValue(tutor)
-
-
                                         val fullName = name.text
                                         if (username != null) {
                                             signUpTapped( fullName.toString())
@@ -95,16 +92,11 @@ class TutorSignUpFragment : Fragment() {
                                         //redirecting to course selection page
                                         Navigation.findNavController(requireView())
                                             .navigate(R.id.action_tutorSignUpFragment_to_tutorCourseSelectionFragment)
-
-
                                         name.text = ""
                                         address.text = ""
                                         phoneNo.text = ""
                                         email.text = ""
                                         password.text = ""
-
-
-
                                     }
                                 }
                         } else {
@@ -126,20 +118,14 @@ class TutorSignUpFragment : Fragment() {
                 view.findNavController()
                     .navigate(R.id.action_tutorSignUpFragment_to_tutorLoginFragment)
             }
-                                    }
+        }
+        return view
+    }
 
-
-
-
-
-
-                        return view
-                    }
     fun signUpTapped(name:String){
         val user: User = User()
         user.uid  = username
         user.name =name
-
         registerUser(user)
     }
 
@@ -147,15 +133,10 @@ class TutorSignUpFragment : Fragment() {
         CometChat.createUser(user, AppConfig.AppDetails.AUTH_KEY, object : CometChat.CallbackListener<User>() {
             override fun onSuccess(user: User) {
                 Log.d("Comet Account","success")
-                // progressBar.visibility = View.GONE
-                //login(user)
             }
             override fun onError(e: CometChatException) {
                 Log.d("debug",e.toString())
                 Log.d("Comet Account","failure")
-                //sprogressBar.visibility = View.GONE
-                //  createUserBtn.isClickable = true
-                // Toast.makeText(this@RegistrationActivity, e.localizedMessage, Toast.LENGTH_LONG).show()
             }
         })
     }

@@ -70,7 +70,7 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         mImage = view.findViewById<ImageView>(R.id.profileImage)
 
         back.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_to_tutorHomeFragment)
+            Navigation.findNavController(requireView()).navigate(R.id.action_tutorDetailsFragment_to_tutorHomeFragment)
 
         }
 
@@ -108,9 +108,10 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         storageRef.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             mImage.setImageBitmap(bitmap)
+            //Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_self)
         }
 
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return view
     }
 
@@ -146,7 +147,7 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }*/
             "Logout"->{
                 Firebase.auth.signOut()
-                Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_to_tutorLoginFragment2)
+                //Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_to_tutorLoginFragment2)
                 Toast.makeText(
                     activity, "Successfully logged out.",
                     Toast.LENGTH_SHORT
@@ -215,13 +216,11 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                             }
                             else{
                                 Toast.makeText(requireContext(), "Error uploading profile feature.", Toast.LENGTH_SHORT).show()
-
                             }
                         }
                     }
                     else{
                         Toast.makeText(requireContext(), "Error uploading profile feature.", Toast.LENGTH_SHORT).show()
-
                     }
                 }
 

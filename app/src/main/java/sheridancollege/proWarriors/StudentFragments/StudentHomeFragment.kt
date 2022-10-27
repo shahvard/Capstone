@@ -45,21 +45,14 @@ class StudentHomeFragment : Fragment() {
         }
 
         StudentEntity.getStudentDetails(username)
-
         val heading= view.findViewById<TextView>(R.id.headingText)
 
         GlobalScope.launch {
-            delay(600L)
+            delay(600)
             if (student != null) {
                 heading.text = "Welcome "+ student.firstName.toString()
             }
         }
-
-
-
-
-
-
 
         rView.layoutManager= LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
@@ -71,23 +64,15 @@ class StudentHomeFragment : Fragment() {
                     for (child in snapshot.children) {
                         val a = child.value
                         courseList!!.add(a.toString())
-
-
                     }
                 }
                 rView.adapter= StudentCourseViewAdapter(courseList as List<String>)
-
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
         })
-
-
-
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(false)
         return view
     }
 

@@ -39,17 +39,16 @@ class TutorHomeFragment : Fragment() {
         val heading= view.findViewById<TextView>(R.id.headingText)
 
         GlobalScope.launch {
+            delay(600L)
+
             if (tutor != null) {
-                delay(500L)
                 heading.text = "Welcome "+ tutor.firstName.toString()
             }
             else{
-                delay(900L)
-
                 heading.text = "No name"
             }
         }
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return view
     }
 
