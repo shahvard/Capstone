@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.react.bridge.UiThreadUtil.runOnUiThread
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -18,6 +19,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.TimeSlotAdapter
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -42,6 +44,7 @@ class StudentAppointmentBookingFragment : Fragment() {
     private lateinit var day: String
     private lateinit var slotsArray: List<TimeSlot>
     private lateinit var slotsRV: RecyclerView
+    private lateinit var studentUserName:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,12 +59,12 @@ class StudentAppointmentBookingFragment : Fragment() {
         slotsRV = view.findViewById(R.id.slotsRV)
         slotsRV.layoutManager = LinearLayoutManager(this.context)
         slotsRV.setHasFixedSize(true)
-        /*calendarView.setOnDateChangeListener(CalendarView.OnDateChangeListener() {_ ,
-            public void onSelectedDayChange(calView: CalendarView, int year, int month, int dayOfMonth) {
+        val user = Firebase.auth.currentUser
+        user?.let {
+            val email = user.email
+            studentUserName = email?.split("@")?.get(0).toString()
+        }
 
-            val date = dayOfMonth.toString() + "−" + (month + 1) + "−" + year
-
-        })*/
         var slotTime = arrayOf<String>("Select Slot time", "1/2 hour", "1 hour")
         val adapter = ArrayAdapter(
             this.requireContext(),
@@ -99,11 +102,14 @@ class StudentAppointmentBookingFragment : Fragment() {
             // Now set calenderView with this calender object to highlight selected date on UI.
             calView.setDate(calender.timeInMillis, true, true)
 
-            Log.d("SelectedDate", "$dayOfMonth/${month + 1}/$year")
+           var date="$dayOfMonth/${month + 1}/$year"
             var dayOfWeekInt =
                 getDayOfWeekValue(LocalDateTime.of(year, month + 1, dayOfMonth, 0, 0, 0))
             Log.d("Day=", dayOfWeekInt.toString())
-
+            var monthFinal=month+1
+            //var dateString=monthFinal.toString()+"."+dayOfMonth.toString()+"."+year.toString()
+            //val formatter = SimpleDateFormat("MM.dd.yyyy")
+           /* var date = formatter.parse(dateString)*/
             when (dayOfWeekInt) {
                 1 -> day = "tuesday"
                 2 -> day = "wednesday"
@@ -143,7 +149,7 @@ class StudentAppointmentBookingFragment : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                         slotsArray = emptyList()
-                        slotsRV.adapter = TimeSlotAdapter(slotsArray)
+                        slotsRV.adapter = TimeSlotAdapter(slotsArray,tutorUserName,studentUserName,date)
 
 
                     } else {
@@ -162,11 +168,11 @@ class StudentAppointmentBookingFragment : Fragment() {
 
 
                         if (slotTimeSelected == "1 hour") {
-                            slotsArray = timeSlotObject.divide(1)
+                            slotsArray = timeSlotObject.divide(60)
 
                         }
                         if (slotTimeSelected == "1/2 hour") {
-                            slotsArray = timeSlotObject.divide(1)
+                            slotsArray = timeSlotObject.divide(30)
                         }
                         if (slotTimeSelected == "Select Slot time") {
                             Toast.makeText(
@@ -177,10 +183,10 @@ class StudentAppointmentBookingFragment : Fragment() {
                             slotsArray = emptyList()
 
                         }
-                        Log.d("slotsArray", slotsArray.toString())
 
-                        slotsRV.adapter = TimeSlotAdapter(slotsArray)
 
+                        slotsRV.adapter = TimeSlotAdapter(slotsArray,tutorUserName,studentUserName,date)
+                        Log.d("date",date.toString())
 
                     }
                 }
@@ -212,7 +218,9 @@ class StudentAppointmentBookingFragment : Fragment() {
         val timeSlots = mutableListOf<TimeSlot>()
         var nextStartTime = startTime
         while (true) {
-            val nextEndTime = nextStartTime.plusHours(lengthHours)
+            //nextStartTime.minute.plus(lengthHours)
+            val nextEndTime = nextStartTime.plusMinutes(lengthHours)
+            //nextEndTime.minute.plus(lengthHours)
             if (nextEndTime > endTime) {
                 break
             }

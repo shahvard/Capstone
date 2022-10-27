@@ -60,5 +60,9 @@
         android:id="@+id/studentAppointmentBookingFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentAppointmentBookingFragment"
         android:label="fragment_student_appointment_booking"
-        tools:layout="@layout/fragment_student_appointment_booking" />
+        tools:layout="@layout/fragment_student_appointment_booking" >
+        <action
+            android:id="@+id/action_studentAppointmentBookingFragment_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment" />
+    </fragment>
 </navigation>
