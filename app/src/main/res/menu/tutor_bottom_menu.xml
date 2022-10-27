@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tutorHomeFragment"
+        android:icon="@drawable/icons_home"
+        android:title="Home"
+
+        />
+
+    <item
+        android:title="Students"
+        android:icon="@drawable/icons_users"
+        />
+
+    <item
+        android:id="@+id/tutorDetailsFragment"
+        android:icon="@drawable/icons_user"
+        android:title="Profile"
+        />
+
+
+
+</menu>
