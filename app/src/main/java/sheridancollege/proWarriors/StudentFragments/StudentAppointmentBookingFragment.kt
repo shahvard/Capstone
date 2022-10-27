@@ -110,14 +110,15 @@ class StudentAppointmentBookingFragment : Fragment() {
             //var dateString=monthFinal.toString()+"."+dayOfMonth.toString()+"."+year.toString()
             //val formatter = SimpleDateFormat("MM.dd.yyyy")
            /* var date = formatter.parse(dateString)*/
+            Log.d("Day selected",dayOfWeekInt.toString())
             when (dayOfWeekInt) {
-                1 -> day = "tuesday"
-                2 -> day = "wednesday"
-                3 -> day = "thursday"
-                4 -> day = "friday"
-                5 -> day = "saturday"
-                6 -> day = "sunday"
-                7 -> day = "monday"
+                1 -> day = "sunday"
+                2 -> day = "monday"
+                3 -> day = "tuesday"
+                4 -> day = "wednesday"
+                5 -> day = "thursday"
+                6 -> day = "friday"
+                7 -> day = "saturday"
             }
 
             GlobalScope.launch {
@@ -142,6 +143,7 @@ class StudentAppointmentBookingFragment : Fragment() {
 
                 delay(500)
                 runOnUiThread {
+                    Log.d("Tuesday start",start)
                     if (start == "na") {
                         Toast.makeText(
                             requireContext(),
@@ -158,12 +160,18 @@ class StudentAppointmentBookingFragment : Fragment() {
                                 FormatStyle.SHORT
                             )
                         )
-
                         var endTime =
                             LocalTime.parse(
                                 end,
                                 DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
                             )
+
+                        Log.d("Start Time converted", startTime.toString())
+                        Log.d("Start Time ", start.toString())
+                        Log.d("Start Time converted", endTime.toString())
+                        Log.d("Start Time ", end.toString())
+
+
                         var timeSlotObject = TimeSlot(startTime, endTime)
 
 
@@ -221,9 +229,15 @@ class StudentAppointmentBookingFragment : Fragment() {
             //nextStartTime.minute.plus(lengthHours)
             val nextEndTime = nextStartTime.plusMinutes(lengthHours)
             //nextEndTime.minute.plus(lengthHours)
+            Log.d("NextEndTime",nextEndTime.toString())
+            Log.d("EndTime",endTime.toString())
+
+
             if (nextEndTime > endTime) {
+
                 break
             }
+           // Log.d("start time - End time",nextStartTime.toString()+" - "+nextEndTime.toString())
             timeSlots.add(TimeSlot(nextStartTime, nextEndTime))
             nextStartTime = nextEndTime
         }

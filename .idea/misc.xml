@@ -42,6 +42,7 @@
         <entry key="app/src/main/res/layout/activity_student_home_page.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/activity_tutor_details.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_tutor_home.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/content_profile.xml" value="0.10916919959473151" />
         <entry key="app/src/main/res/layout/fragment_course_info.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_course_selection.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />

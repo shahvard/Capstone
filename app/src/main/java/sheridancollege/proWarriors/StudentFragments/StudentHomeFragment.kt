@@ -25,6 +25,9 @@ import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.StudentCourseViewAdapter
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu.Companion.student
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class StudentHomeFragment : Fragment() {
@@ -34,17 +37,17 @@ class StudentHomeFragment : Fragment() {
     private lateinit var courseList: ArrayList<String>
     private lateinit var allAppointmentsList: ArrayList<String>
     private lateinit var appointmentTextView: TextView
-    private lateinit var databaseref:DatabaseReference
+    private lateinit var databaseref: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) :View?{
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_student_home, container, false)
         rView = view.findViewById<View>(R.id.courseView) as RecyclerView
         database = FirebaseDatabase.getInstance()
         courseList = ArrayList<String>()
-        databaseref=Firebase.database.reference
-        allAppointmentsList= arrayListOf()
+        databaseref = Firebase.database.reference
+        allAppointmentsList = arrayListOf()
         appointmentTextView = view.findViewById(R.id.appointmentsDisplay)
         rView.layoutManager = LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
@@ -85,31 +88,53 @@ class StudentHomeFragment : Fragment() {
                     }
                 })
             delay(500)
-            // Log.d("Tutor names from get method", tutorNamesOnlyList[0])
-var string1:String=""
+            var string1: String = ""
 
             //getting TutorNames from Firebase
             for (appointment in allAppointmentsList) {
-              //  Log.d("Appointments",appointment)
-
                 val appointmentListener = object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         if (dataSnapshot.child("Appointments/" + appointment) != null) {
 
                             val data = dataSnapshot.child("Appointments/" + appointment)
-                            //Log.d("Check",data.child("student"))
                             if (data.child("studentUserName").value!!.equals(username)) {
+                                val simpleDate = SimpleDateFormat("dd/MM/yyyy")
+                                val currentDate = simpleDate.format(Date())
+                                Log.d("Current Date", currentDate)
+
+
                                 var startTime = data.child("startTime").value.toString()
 
                                 var endTime = data.child("endTime").value.toString()
                                 var date = data.child("date").value.toString()
-                                var tutorUserName = data.child("tutorUserName").value.toString()
-                                string1 +="Start Time :" + startTime + "\n" + "End Time :" +
-                                endTime + "\n" + "date :" + date + "\n Tutor User Name :" + tutorUserName +
-                                        "\n"
 
-                                appointmentTextView.text =string1
-                                     }
+
+                                val cmpDate = currentDate.compareTo(date)
+                                when {
+
+                                    cmpDate <= 0 -> {
+                                        Log.d("This should not be displayed", "Yes")
+                                        val simpleTime = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+                                        val currentTimeWithDate = simpleTime.format(Date())
+                                        var currentTime=currentTimeWithDate.split(" ")?.get(1).toString()
+                                        val cmpTime = currentTime.compareTo(startTime+":00")
+                                        when {
+                                            cmpTime < 0 -> {
+                                                var tutorUserName =
+                                                    data.child("tutorUserName").value.toString()
+                                                string1 += "Start Time :" + startTime + "\n" + "End Time :" +
+                                                        endTime + "\n" + "date :" + date + "\n Tutor User Name :" + tutorUserName +
+                                                        "\n"
+
+                                                appointmentTextView.text = string1
+                                            }
+
+                                        }
+                                    }
+
+                                }
+
+                            }
 
 
                         }
@@ -124,37 +149,6 @@ var string1:String=""
                 databaseref.addValueEventListener(appointmentListener)
 
             }
-
-
-           /* database.getReference("Appointments")
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot!!.exists()) {
-                            for (child in snapshot.children) {
-                                val a = child.key
-
-                                if (a == "studentUserName" && child.value == username) {
-
-                                }
-                                Log.d("keys", a.toString())
-                                courseList!!.add(a.toString())
-
-
-                            }
-                        }
-                        //rView.adapter= StudentCourseViewAdapter(courseList as List<String>)
-
-
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-                })*/
-
-
-
-
 
 
 
@@ -188,52 +182,51 @@ var string1:String=""
     }
 
 
-
-        override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-            super.onCreateOptionsMenu(menu, inflater)
-            inflater?.inflate(R.menu.student_menu, menu)
-        }
-
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            when (item.title.toString()) {
-                "Profile" -> {
-                    Navigation.findNavController(requireView())
-                        .navigate(R.id.action_studentHomeFragment_to_studentDetailsFragment)
-                }
-                /*"View As Tutor" -> {
-                if(tut == true){
-                    var intent = Intent(this, TutorActivity::class.java)
-                    intent.putExtra("sName", StudentEntity.student.firstName)
-                    startActivity(intent)
-                }
-                else{
-                    val dialogBuilder = AlertDialog.Builder(this)
-                    dialogBuilder.setMessage("You do not have an access to tutor login.")
-                        .setCancelable(false)
-                        .setNegativeButton("Okay", DialogInterface.OnClickListener {
-                                dialog, id -> dialog.cancel()
-                        })
-                    val alert = dialogBuilder.create()
-                    alert.setTitle("Tutor Access denied.")
-                    alert.show()
-                }
-            }*/
-                "Logout" -> {
-                    AuthUI.getInstance().signOut(this.requireContext())
-                    // Firebase.auth.signOut()
-                    Navigation.findNavController(requireView())
-                        .navigate(R.id.action_studentHomeFragment_to_studentLoginFragment2)
-                    Toast.makeText(
-                        activity, "Successfully logged out.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-                "Chat" -> {
-                    startActivity(Intent(this.requireContext(), CometChatUI::class.java))
-                }
-
-
-            }
-            return true
-        }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.student_menu, menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.title.toString()) {
+            "Profile" -> {
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_studentHomeFragment_to_studentDetailsFragment)
+            }
+            /*"View As Tutor" -> {
+            if(tut == true){
+                var intent = Intent(this, TutorActivity::class.java)
+                intent.putExtra("sName", StudentEntity.student.firstName)
+                startActivity(intent)
+            }
+            else{
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder.setMessage("You do not have an access to tutor login.")
+                    .setCancelable(false)
+                    .setNegativeButton("Okay", DialogInterface.OnClickListener {
+                            dialog, id -> dialog.cancel()
+                    })
+                val alert = dialogBuilder.create()
+                alert.setTitle("Tutor Access denied.")
+                alert.show()
+            }
+        }*/
+            "Logout" -> {
+                AuthUI.getInstance().signOut(this.requireContext())
+                // Firebase.auth.signOut()
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_studentHomeFragment_to_studentLoginFragment2)
+                Toast.makeText(
+                    activity, "Successfully logged out.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            "Chat" -> {
+                startActivity(Intent(this.requireContext(), CometChatUI::class.java))
+            }
+
+
+        }
+        return true
+    }
+}
