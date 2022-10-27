@@ -67,7 +67,7 @@ class TutorHomeFragment : Fragment() {
         when (item.title.toString()) {
             "Profile" -> {
                 Navigation.findNavController(requireView())
-                    .navigate(R.id.action_tutorHomeFragment_to_studentDetailsFragment2)
+                    .navigate(R.id.action_tutorHomeFragment_to_tutorDetailsFragment)
             }
             /* "View As Tutor" -> {
                 if(tut == true){
