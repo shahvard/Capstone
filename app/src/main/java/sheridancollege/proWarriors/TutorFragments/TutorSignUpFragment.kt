@@ -60,19 +60,6 @@ class TutorSignUpFragment : Fragment() {
                             auth.currentUser?.sendEmailVerification()
                                 ?.addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
-                                        auth.currentUser!!.email?.let { it1 ->
-                                            Log.d(
-                                                ContentValues.TAG,
-                                                it1
-                                            )
-                                        }
-                                        Toast.makeText(
-                                            view.context,
-                                            "Registered Successfully and Verification " +
-                                                    "Email sent",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-
                                         val tutor = Tutor(
                                             username,
                                             firstName,
@@ -88,21 +75,34 @@ class TutorSignUpFragment : Fragment() {
                                         if (username != null) {
                                             signUpTapped( fullName.toString())
                                         }
-
-                                        //redirecting to course selection page
+                                       /* //redirecting to course selection page
                                         Navigation.findNavController(requireView())
-                                            .navigate(R.id.action_tutorSignUpFragment_to_tutorCourseSelectionFragment)
-                                        name.text = ""
-                                        address.text = ""
-                                        phoneNo.text = ""
-                                        email.text = ""
-                                        password.text = ""
+                                            .navigate(R.id.action_tutorSignUpFragment_to_tutorCourseSelectionFragment)*/
                                     }
+
+                                    val builder = android.app.AlertDialog.Builder(requireContext())
+                                    builder.setMessage("Verification email has been sent.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Ok") { dialog, id ->
+
+                                            val bundle = Bundle()
+                                            bundle.putString("name",firstName)
+                                            Navigation.findNavController(requireView())
+                                                .navigate(R.id.action_tutorSignUpFragment_to_tutorCourseSelectionFragment, bundle)
+
+                                        }
+                                    val alert = builder.create()
+                                    alert.show()
+
+                                    name.text = ""
+                                    address.text = ""
+                                    phoneNo.text = ""
+                                    email.text = ""
+                                    password.text = ""
                                 }
                         } else {
-                            Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(
-                                view.context, "Sign up failed.",
+                                view.context, "Sign up failed. Please try again.",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }

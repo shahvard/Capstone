@@ -4,28 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="5dp"
+    android:background="#4A40739C"
     tools:context=".StudentFragments.StudentCourseSelection">
 
-    <Button
-        android:id="@+id/Done"
+    <TextView
+        android:id="@+id/studentNameHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="160dp"
-        android:text="Submit"
+        android:layout_marginStart="10sp"
+        android:padding="4dp"
+        android:text="Hello Vardhaman,"
+        android:textColor="@color/blue"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectionDesc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/selectionDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:padding="4dp"
+        android:text="What would you like to learn?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studentNameHeading"/>
+
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Type course name..."
+        android:paddingTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseList" />
+        app:layout_constraintTop_toBottomOf="@+id/selectionDesc" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseList"
-        android:layout_width="392dp"
-        android:layout_height="654dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="515dp"
+        android:paddingTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/search" />
+
+    <Button
+        android:id="@+id/Done"
+        android:layout_width="112dp"
+        android:layout_height="54dp"
+        android:text="Select"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="661dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseList"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,10 +45,6 @@
             app:destination="@id/tutorHomeFragment2"
             app:popUpTo="@id/tutorHomeFragment2" />
         <action
-            android:id="@+id/action_tutorLoginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
-            app:popUpTo="@id/tutorLoginFragment" />
-        <action
             android:id="@+id/action_tutorLoginFragment_to_tutorSignUpFragment"
             app:destination="@id/tutorSignUpFragment" />
     </fragment>
@@ -67,14 +63,6 @@
             app:destination="@id/studentLoginFragment"
             app:popUpTo="@id/signUpFragment" />
         <action
-            android:id="@+id/action_signUpFragment_to_tutorLoginFragment"
-            app:destination="@id/tutorLoginFragment"
-            app:popUpTo="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_signUpFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment" />
-        <action
             android:id="@+id/action_signUpFragment_to_courseSelectionFragment"
             app:destination="@id/courseSelectionFragment" />
     </fragment>
@@ -89,8 +77,8 @@
         android:label="fragment_course_selection"
         tools:layout="@layout/student_course_selection" >
         <action
-            android:id="@+id/action_courseSelectionFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_courseSelectionFragment_to_studentLoginFragment"
+            app:destination="@id/studentLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorSignUpFragment"
@@ -110,7 +98,24 @@
         android:label="fragment_tutor_course_selection"
         tools:layout="@layout/fragment_tutor_course_selection" >
         <action
-            android:id="@+id/action_tutorCourseSelectionFragment_to_tutorLoginFragment"
+            android:id="@+id/action_tutorCourseSelectionFragment_to_tutorApplicationFragment"
+            app:destination="@id/tutorApplicationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorAvailabilityFragment2"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorAvailabilityFragment"
+        android:label="TutorAvailabilityFragment" >
+        <action
+            android:id="@+id/action_tutorAvailabilityFragment2_to_tutorLoginFragment"
             app:destination="@id/tutorLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorApplicationFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorApplicationFragment"
+        android:label="fragment_tutor_application"
+        tools:layout="@layout/fragment_tutor_application" >
+        <action
+            android:id="@+id/action_tutorApplicationFragment_to_tutorAvailabilityFragment2"
+            app:destination="@id/tutorAvailabilityFragment2" />
     </fragment>
 </navigation>

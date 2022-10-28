@@ -1,31 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".TutorFragments.TutorCourseSelection">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4A40739C"
+    android:paddingTop="5dp"
+    tools:context=".TutorFragments.TutorCourseSelection">
 
-<Button
-    android:id="@+id/Done"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="160dp"
-    android:layout_marginTop="7dp"
-    android:layout_marginEnd="160dp"
-    android:text="Submit"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/courseList" />
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/courseList"
-    android:layout_width="392dp"
-    android:layout_height="654dp"
-    android:layout_marginStart="5dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginEnd="5dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/nameHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:padding="4dp"
+        android:paddingTop="10dp"
+        android:text="Hello Vardhaman,"
+        android:textColor="@color/blue"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tutorDesc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tutorDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:padding="4dp"
+        android:text="What courses fall within your expertise?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tutorSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameHeading" />
+
+    <SearchView
+        android:id="@+id/tutorSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:queryHint="Type course name..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tutorDesc" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/courseList"
+        android:layout_width="match_parent"
+        android:layout_height="515dp"
+        android:paddingTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tutorSearch" />
+
+    <Button
+        android:id="@+id/Done"
+        android:layout_width="112dp"
+        android:layout_height="54dp"
+        android:text="Select"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="661dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseList" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

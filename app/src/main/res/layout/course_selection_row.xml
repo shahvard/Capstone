@@ -4,37 +4,38 @@
     android:layout_height="match_parent">
 
 </androidx.constraintlayout.widget.ConstraintLayout>-->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="2dp">
+    android:background="#4A40739C"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/courseName"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="69dp"
-        android:paddingTop="5dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="20dp"
+        android:layout_toRightOf="@+id/checkBox"
+        android:layout_marginRight="5dp"
         android:text="Water Managerment"
+        android:textAlignment="textEnd"
         android:textColor="@android:color/background_dark"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="40dp"
+        android:layout_width="37dp"
         android:layout_height="37dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/courseName"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/black"
+
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

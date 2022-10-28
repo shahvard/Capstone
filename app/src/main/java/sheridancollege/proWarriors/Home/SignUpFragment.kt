@@ -1,6 +1,7 @@
 package sheridancollege.proWarriors.Home
 
 import android.content.ContentValues.TAG
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 import androidx.navigation.findNavController
 
@@ -25,8 +27,12 @@ import com.google.firebase.database.ktx.database
 import com.cometchat.pro.models.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.AppConfig
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Student.Appointment
 import sheridancollege.proWarriors.Student.Student
 import java.lang.StringBuilder
 
@@ -44,8 +50,6 @@ class SignUpFragment : Fragment() {
         auth = Firebase.auth
         database = Firebase.database.reference
 
-
-
         view.findViewById<Button>(R.id.signUpButton).setOnClickListener() {
             val email = view.findViewById<TextView>(R.id.userNameText)
             val password = view.findViewById<TextView>(R.id.passwordText)
@@ -61,21 +65,12 @@ class SignUpFragment : Fragment() {
             val phoneNo = view.findViewById<TextView>(R.id.phoneNumberText)
 
             if (check == "sheridancollege.ca") {
-
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this.requireActivity()) { task ->
                         if (task.isSuccessful) {
                             auth.currentUser?.sendEmailVerification()
                                 ?.addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
-                                        auth.currentUser!!.email?.let { it1 -> Log.d(TAG, it1) }
-                                        Toast.makeText(
-                                            view.context,
-                                            "Registered Successfully and Verification " +
-                                                    "Email sent",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        
                                         val student = Student(
                                             username,
                                             firstName,
@@ -88,27 +83,40 @@ class SignUpFragment : Fragment() {
                                         database.child("Students").child(username!!)
                                             .setValue(student)
 
-
                                         val fullName = name.text
                                         if (username != null) {
                                             signUpTapped( fullName.toString())
                                         }
-
                                         //redirecting to course selection page
-                                        Navigation.findNavController(requireView())
-                                            .navigate(R.id.action_signUpFragment_to_courseSelectionFragment)
-
-
-                                        name.text = ""
-                                        address.text = ""
-                                        phoneNo.text = ""
-                                        email.text = ""
-                                        password.text = ""
-
+                                        /*Navigation.findNavController(requireView())
+                                            .navigate(R.id.action_signUpFragment_to_courseSelectionFragment)*/
 
 
                                     }
+
+                                    val builder = android.app.AlertDialog.Builder(requireContext())
+                                    builder.setMessage("Verification email has been sent.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Ok") { dialog, id ->
+
+                                            val bundle = Bundle()
+                                            bundle.putString("name",firstName)
+                                            Navigation.findNavController(requireView())
+                                                .navigate(R.id.action_signUpFragment_to_courseSelectionFragment, bundle)
+
+                                        }
+                                    val alert = builder.create()
+                                    alert.show()
+
+                                    name.text = ""
+                                    address.text = ""
+                                    phoneNo.text = ""
+                                    email.text = ""
+                                    password.text = ""
                                 }
+
+
+
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
                             Toast.makeText(
@@ -123,7 +131,6 @@ class SignUpFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
         }
 
         view.findViewById<TextView>(R.id.forgotPasswordText).setOnClickListener() {
@@ -145,7 +152,7 @@ class SignUpFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.signInText).setOnClickListener(){
             view.findNavController()
-                .navigate(R.id.action_signUpFragment_to_homeFragment)
+                .navigate(R.id.action_signUpFragment_to_studentLoginFragment)
         }
         return view
     }
@@ -154,7 +161,6 @@ class SignUpFragment : Fragment() {
         val user: User = User()
         user.uid  = username
         user.name =name
-
         registerUser(user)
     }
 
@@ -166,11 +172,7 @@ class SignUpFragment : Fragment() {
                 //login(user)
             }
             override fun onError(e: CometChatException) {
-                Log.d("debug",e.toString())
-                Log.d("Comet Account","failure")
-                //sprogressBar.visibility = View.GONE
-                //  createUserBtn.isClickable = true
-                // Toast.makeText(this@RegistrationActivity, e.localizedMessage, Toast.LENGTH_LONG).show()
+
             }
         })
     }
