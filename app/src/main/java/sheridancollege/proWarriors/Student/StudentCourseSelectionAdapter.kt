@@ -10,6 +10,7 @@ import sheridancollege.proWarriors.R
 
 class StudentCourseSelectionAdapter(private val cList:List<StudentCourseItem>): RecyclerView.Adapter<StudentCourseSelectionAdapter.MyViewHolder>() {
 
+
     class MyViewHolder(itemview: View):RecyclerView.ViewHolder(itemview){
         val nameView: TextView = itemview.findViewById(R.id.courseName)
         val checked:CheckBox = itemview.findViewById(R.id.checkBox)
@@ -32,5 +33,6 @@ class StudentCourseSelectionAdapter(private val cList:List<StudentCourseItem>): 
         }
 
     override fun getItemCount()=cList.size
+
 
 }

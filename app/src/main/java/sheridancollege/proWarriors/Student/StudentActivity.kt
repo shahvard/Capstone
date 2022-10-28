@@ -57,7 +57,7 @@ class StudentActivity : AppCompatActivity() {
             delay(900)
             if (stu.student != null) {
                findViewById<TextView>(R.id.drawerName).text = stu.student.firstName.toString()
-                if (student.isTutor != null){
+                if (student.isTutor == false){
                     findViewById<TextView>(R.id.drawerAccount).text = "Student"
                 }else{
                     findViewById<TextView>(R.id.drawerAccount).text = "Tutor"

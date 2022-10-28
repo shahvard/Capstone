@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
+import android.widget.*
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,14 +22,12 @@ import sheridancollege.proWarriors.Tutor.TutorCourseSelectionAdapter
 
 class TutorCourseSelection : Fragment() {
 
-
     private var courseList:ArrayList<TutorCourseItem>?=null
     private lateinit var database: FirebaseDatabase
     private lateinit var db: DatabaseReference
     private lateinit var rView: RecyclerView
     private lateinit var username:String
-
-
+    private lateinit var name: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,17 +35,16 @@ class TutorCourseSelection : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tutor_course_selection, container, false)
 
-
-
-
-
-
         database = FirebaseDatabase.getInstance()
         db = Firebase.database.reference
         rView = view.findViewById<View>(R.id.courseList) as RecyclerView
         courseList=ArrayList()
         rView.layoutManager= LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
+        name = view.findViewById(R.id.nameHeading)
+        val searchView: SearchView = view.findViewById(R.id.tutorSearch)
+
+        name.text = "Hello " + arguments?.getString("name").toString()
 
         database.getReference("Courses").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -68,6 +63,18 @@ class TutorCourseSelection : Fragment() {
             }
         })
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                filter(p0!!)
+                return false
+            }
+
+            override fun onQueryTextChange(msg: String?): Boolean {
+                filter(msg!!)
+                return false
+            }
+        })
+
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
@@ -83,15 +90,39 @@ class TutorCourseSelection : Fragment() {
                 }
             }
 
-            Toast.makeText(this.requireContext(),"Sign up completed. Log in to continue", Toast.LENGTH_SHORT)
+            val builder = android.app.AlertDialog.Builder(requireContext())
+            builder.setMessage("Confirming selection will redirect to next page.")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { dialog, id ->
 
-            Navigation.findNavController(requireView())
-                .navigate(R.id.action_tutorCourseSelectionFragment_to_tutorLoginFragment)
+                    Navigation.findNavController(requireView())
+                        .navigate(R.id.action_tutorCourseSelectionFragment_to_tutorApplicationFragment)
+
+                }
+                .setNegativeButton("No"){ dialog, id ->
+                    dialog.cancel()
+                }
+                .setTitle("Confirm selection for the courses?")
+            val alert = builder.create()
+            alert.show()
         }
-
-
         return view
     }
 
+    private fun filter(text: String) {
+        // creating a new array list to filter our data.
+        val filteredlist: ArrayList<TutorCourseItem> = ArrayList()
 
+        for (item in courseList!!) {
+            if (item.courseName.lowercase().contains(text.lowercase())) {
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            Toast.makeText(requireContext(), "No Data Found..", Toast.LENGTH_SHORT).show()
+        } else {
+            rView.adapter = TutorCourseSelectionAdapter(filteredlist)
+
+        }
+    }
 }
