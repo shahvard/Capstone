@@ -148,7 +148,7 @@ class StudentHomeFragment : Fragment() {
                     }
                 })
         }
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return view
     }
 

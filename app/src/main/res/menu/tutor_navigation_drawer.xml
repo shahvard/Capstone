@@ -12,12 +12,14 @@
 
         />
     <item
-        android:title="Chat"         android:icon="@drawable/icons_chat"/>
+        android:title="Chat"
+        android:icon="@drawable/icons_chat"/>
 
 
     <item android:title="Others">
         <menu>
             <item
+                android:id="@id/settingsFragment2"
                 android:title="Settings"
                 android:icon="@drawable/icons_settings"/>
 
