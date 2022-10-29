@@ -1,8 +1,10 @@
 package sheridancollege.proWarriors.Home
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings.ACTION_WIRELESS_SETTINGS
 import android.util.Log
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity() {
             Firebase.auth.useEmulator("10.0.2.2", 9099)
             Firebase.storage.useEmulator("10.0.2.2", 9199)
         }
+
+
 
     }
 
