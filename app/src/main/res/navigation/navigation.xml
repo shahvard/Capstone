@@ -104,7 +104,8 @@
     <fragment
         android:id="@+id/tutorAvailabilityFragment2"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorAvailabilityFragment"
-        android:label="TutorAvailabilityFragment" >
+        android:label="TutorAvailabilityFragment"
+        tools:layout="@layout/fragment_tutor_availability">
         <action
             android:id="@+id/action_tutorAvailabilityFragment2_to_tutorLoginFragment"
             app:destination="@id/tutorLoginFragment" />
