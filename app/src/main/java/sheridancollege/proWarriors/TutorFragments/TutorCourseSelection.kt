@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class TutorCourseSelection : Fragment() {
     private lateinit var rView: RecyclerView
     private lateinit var username:String
     private lateinit var name: TextView
+    private lateinit var headName:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,8 +45,10 @@ class TutorCourseSelection : Fragment() {
         rView.setHasFixedSize(true)
         name = view.findViewById(R.id.nameHeading)
         val searchView: SearchView = view.findViewById(R.id.tutorSearch)
+        headName = arguments?.getString("name").toString()
+        name.text = "Hello " + arguments?.getString("name").toString() + ","
+        username = arguments?.getString("tutorUserName").toString()
 
-        name.text = "Hello " + arguments?.getString("name").toString()
 
         database.getReference("Courses").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -75,11 +79,11 @@ class TutorCourseSelection : Fragment() {
             }
         })
 
-        val user = Firebase.auth.currentUser
+        /*val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
-        }
+        }*/
 
 
         view.findViewById<Button>(R.id.Done).setOnClickListener() {
@@ -95,8 +99,11 @@ class TutorCourseSelection : Fragment() {
                 .setCancelable(false)
                 .setPositiveButton("Yes") { dialog, id ->
 
+                    val bundle = Bundle()
+                    bundle.putString("name", headName)
+                    bundle.putString("tutorUserName", username)
                     Navigation.findNavController(requireView())
-                        .navigate(R.id.action_tutorCourseSelectionFragment_to_tutorApplicationFragment)
+                        .navigate(R.id.action_tutorCourseSelectionFragment_to_tutorApplicationFragment, bundle)
 
                 }
                 .setNegativeButton("No"){ dialog, id ->
