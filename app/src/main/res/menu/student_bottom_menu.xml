@@ -9,6 +9,7 @@
         />
 
     <item
+        android:id="@+id/studentCoursePage"
         android:title="Courses"
         android:icon="@drawable/icons_courses"
         />

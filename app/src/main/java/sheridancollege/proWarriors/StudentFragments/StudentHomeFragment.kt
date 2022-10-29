@@ -79,6 +79,7 @@ class StudentHomeFragment : Fragment() {
                             }
                         }
                     }
+
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
@@ -106,8 +107,9 @@ class StudentHomeFragment : Fragment() {
                                         Log.d("This should not be displayed", "Yes")
                                         val simpleTime = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
                                         val currentTimeWithDate = simpleTime.format(Date())
-                                        var currentTime=currentTimeWithDate.split(" ")?.get(1).toString()
-                                        val cmpTime = currentTime.compareTo(startTime+":00")
+                                        var currentTime =
+                                            currentTimeWithDate.split(" ")?.get(1).toString()
+                                        val cmpTime = currentTime.compareTo(startTime + ":00")
                                         when {
                                             cmpTime < 0 -> {
                                                 var tutorUserName =
@@ -152,6 +154,8 @@ class StudentHomeFragment : Fragment() {
         return view
     }
 
+}
+/*
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater?.inflate(R.menu.student_menu, menu)
@@ -159,11 +163,11 @@ class StudentHomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.title.toString()) {
-            "Profile" -> {
+            *//*"Profile" -> {
                 Navigation.findNavController(requireView())
                     .navigate(R.id.action_studentHomeFragment_to_studentDetailsFragment)
-            }
-            /*"View As Tutor" -> {
+            }*//*
+            *//*"View As Tutor" -> {
             if(tut == true){
                 var intent = Intent(this, TutorActivity::class.java)
                 intent.putExtra("sName", StudentEntity.student.firstName)
@@ -180,7 +184,7 @@ class StudentHomeFragment : Fragment() {
                 alert.setTitle("Tutor Access denied.")
                 alert.show()
             }
-        }*/
+        }*//*
             "Logout" -> {
                 AuthUI.getInstance().signOut(this.requireContext())
                 // Firebase.auth.signOut()
@@ -196,5 +200,5 @@ class StudentHomeFragment : Fragment() {
             }
         }
         return true
-    }
-}
+    }*/
+

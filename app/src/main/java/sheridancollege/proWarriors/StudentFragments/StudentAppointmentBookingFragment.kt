@@ -91,6 +91,7 @@ class StudentAppointmentBookingFragment : Fragment() {
                     }
                 }
         }
+
         calendarView.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
 
             // Create calender object with which will have system date time.

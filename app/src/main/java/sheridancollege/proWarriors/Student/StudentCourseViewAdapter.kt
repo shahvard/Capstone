@@ -31,7 +31,7 @@ class StudentCourseViewAdapter (private val cList:List<String>) : RecyclerView.A
             val bundle = Bundle()
             bundle.putString("CourseName",item)
             Navigation.findNavController(holder.nameView)
-                .navigate(R.id.action_studentHomeFragment_to_studentCourseInfoFragment,bundle)
+                .navigate(R.id.action_studentCoursePage_to_studentCourseInfoFragment,bundle)
         }
     }
 
