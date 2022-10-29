@@ -81,12 +81,13 @@ class TutorSignUpFragment : Fragment() {
                                     }
 
                                     val builder = android.app.AlertDialog.Builder(requireContext())
-                                    builder.setMessage("Verification email has been sent.")
+                                    builder.setMessage("Verification email has been sent. Please check")
                                         .setCancelable(false)
                                         .setPositiveButton("Ok") { dialog, id ->
 
                                             val bundle = Bundle()
                                             bundle.putString("name",firstName)
+                                            bundle.putString("tutorUserName", username)
                                             Navigation.findNavController(requireView())
                                                 .navigate(R.id.action_tutorSignUpFragment_to_tutorCourseSelectionFragment, bundle)
 
