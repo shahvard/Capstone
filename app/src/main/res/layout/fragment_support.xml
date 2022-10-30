@@ -26,8 +26,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="250dp">
+        android:layout_marginTop="150dp">
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="10sp"
+            android:padding="4dp"
+            android:text="Please contact us using one of the below methods. If you want to send an email please send it to support@shertut.com"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            android:textStyle="bold" />
 
 
 
@@ -40,13 +53,13 @@
             android:background="#F8F4F4"
             android:src="@drawable/github" />
 
-       <!-- <ImageButton
+        <ImageButton
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#F8F4F4"
-            android:src="@drawable/map" />-->
+            android:src="@drawable/map" />
 
         <ImageButton
             android:id="@+id/gmail"

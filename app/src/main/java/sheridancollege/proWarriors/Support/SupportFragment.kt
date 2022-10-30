@@ -21,6 +21,7 @@ class SupportFragment : Fragment() {
 
     lateinit var gitHubImageButton: ImageButton
     lateinit var gmailImageButton:ImageButton
+    lateinit var mapImageButton:ImageButton
     lateinit var contactMeImageButton:ImageButton
 
     override fun onCreateView(
@@ -35,6 +36,11 @@ class SupportFragment : Fragment() {
             openGitHub()
         }
 
+        mapImageButton = view.findViewById(R.id.map)
+        mapImageButton.setOnClickListener {
+            openMap()
+        }
+
         gmailImageButton=view.findViewById(R.id.gmail)
         gmailImageButton.setOnClickListener {
             sendEmail()
@@ -42,12 +48,12 @@ class SupportFragment : Fragment() {
 
         contactMeImageButton = view.findViewById(R.id.contact)
         contactMeImageButton.setOnClickListener {
-           /* if (ActivityCompat.checkSelfPermission(this.requireContext(), Manifest.permission.WRITE_CONTACTS)
-                != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this.requireActivity(),Array(1){Manifest.permission.READ_CONTACTS},111)
-            }
-            else
-                contactMeImageButton.isClickable = false*/
+            /* if (ActivityCompat.checkSelfPermission(this.requireContext(), Manifest.permission.WRITE_CONTACTS)
+                 != PackageManager.PERMISSION_GRANTED){
+                 ActivityCompat.requestPermissions(this.requireActivity(),Array(1){Manifest.permission.READ_CONTACTS},111)
+             }
+             else
+                 contactMeImageButton.isClickable = false*/
             contactMe()
 
         }
@@ -73,7 +79,7 @@ class SupportFragment : Fragment() {
     fun openGitHub() {
         val openIntent = Intent().apply {
             action =Intent.ACTION_VIEW
-            data = Uri.parse("https://github.com/MohammedFouadx")
+            data = Uri.parse("https://github.com/shahvard/Capstone/blob/master/README.md")
         }
         if (openIntent.resolveActivity(requireActivity().packageManager)!=null){
             startActivity(openIntent)
@@ -81,6 +87,17 @@ class SupportFragment : Fragment() {
 
     }
 
+    fun openMap(){
+        val openIntent = Intent().apply {
+            action = Intent.ACTION_VIEW
+            data = Uri.parse("https://www.google.ca/maps/place/Sheridan+College+-+Davis+Campus/@43.6559789,-79.7409238,17z/data=!3m2!4b1!5s0x882b3fdf76535661:0x8af2142b27df31a7!4m5!3m4!1s0x882b3fbfe8f0ad5b:0xcd97e708c1197e9e!8m2!3d43.6559789!4d-79.7387351")
+
+        }
+        if (openIntent.resolveActivity(requireActivity().packageManager)!=null){
+            startActivity(openIntent)
+        }
+
+    }
     fun sendEmail(){
         val sendIntent = Intent().apply {
             action= Intent.ACTION_SEND
@@ -110,8 +127,3 @@ class SupportFragment : Fragment() {
     }
 
 }
-
-
-
-
-
