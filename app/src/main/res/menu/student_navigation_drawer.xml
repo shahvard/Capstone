@@ -17,10 +17,12 @@
     <item android:title="Others">
         <menu>
             <item
+                android:id="@+id/settingsFragment3"
                 android:title="Settings"
                 android:icon="@drawable/icons_settings"/>
 
             <item
+                android:id="@+id/supportFragment"
                 android:title="Support"
                 android:icon="@drawable/icons_support"/>
 

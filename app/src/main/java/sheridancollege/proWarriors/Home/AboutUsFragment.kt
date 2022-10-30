@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import sheridancollege.proWarriors.R
 
 class AboutUsFragment : Fragment() {
@@ -18,22 +19,22 @@ class AboutUsFragment : Fragment() {
     ): View? {
         val view=inflater.inflate(R.layout.fragment_about_us, container, false)
 
-        view.findViewById<ImageButton>(R.id.vardhmanLinkedin).setOnClickListener(){
+        view.findViewById<ImageView>(R.id.vardhmanLinkedin).setOnClickListener(){
             openLinkedin("https://www.linkedin.com/in/vardhman-shah99/")
         }
 
-        view.findViewById<ImageButton>(R.id.shubhLinkedin).setOnClickListener(){
+        view.findViewById<ImageView>(R.id.shubhLinkedin).setOnClickListener(){
             openLinkedin("https://www.linkedin.com/in/patelshubh228/")
 
         }
 
-        view.findViewById<ImageButton>(R.id.chandanLinkedin).setOnClickListener(){
+        view.findViewById<ImageView>(R.id.chandanLinkedin).setOnClickListener(){
             openLinkedin("https://www.linkedin.com/in/chandan-chhaparia/")
 
         }
 
 
-        view.findViewById<ImageButton>(R.id.purvLinkedin).setOnClickListener(){
+        view.findViewById<ImageView>(R.id.purvLinkedin).setOnClickListener(){
             openLinkedin("https://www.linkedin.com/in/purvpatel/")
 
         }

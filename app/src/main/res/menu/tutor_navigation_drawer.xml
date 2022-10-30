@@ -12,22 +12,26 @@
 
         />
     <item
-        android:title="Chat"         android:icon="@drawable/icons_chat"/>
+        android:title="Chat"
+        android:icon="@drawable/icons_chat"/>
 
 
     <item android:title="Others">
         <menu>
             <item
+                android:id="@id/settingsFragment2"
                 android:title="Settings"
                 android:icon="@drawable/icons_settings"/>
 
 
             <item
+                android:id="@+id/supportFragment2"
                 android:title="Support"
                 android:icon="@drawable/icons_support"/>
 
 
             <item
+                android:id="@+id/aboutUsFragment2"
                 android:title="About Us"
                 android:icon="@drawable/icons_info"/>
 

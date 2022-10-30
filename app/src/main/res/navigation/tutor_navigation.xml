@@ -16,6 +16,19 @@
         <action
             android:id="@+id/action_tutorHomeFragment_to_tutorAvailabilityFragment"
             app:destination="@id/tutorAvailabilityFragment" />
+
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_tutorDetailsFragment"
+            app:destination="@id/tutorDetailsFragment" />
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment2" />
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_supportFragment2"
+            app:destination="@id/supportFragment2" />
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_aboutUsFragment2"
+            app:destination="@id/aboutUsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/tutorLoginFragment2"
@@ -39,4 +52,19 @@
         android:name="sheridancollege.proWarriors.TutorFragments.TutorAvailabilityFragment"
         android:label="fragment_tutor_availability"
         tools:layout="@layout/fragment_tutor_availability" />
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/aboutUsFragment2"
+        android:name="sheridancollege.proWarriors.Home.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/supportFragment2"
+        android:name="sheridancollege.proWarriors.Support.SupportFragment"
+        android:label="fragment_support"
+        tools:layout="@layout/fragment_support" />
 </navigation>

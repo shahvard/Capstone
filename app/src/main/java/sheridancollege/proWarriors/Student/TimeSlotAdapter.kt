@@ -1,3 +1,4 @@
+/*
 package sheridancollege.proWarriors.Student
 
 import android.app.AlertDialog
@@ -80,3 +81,4 @@ data class Appointment(
     var date: String
 )
 
+*/

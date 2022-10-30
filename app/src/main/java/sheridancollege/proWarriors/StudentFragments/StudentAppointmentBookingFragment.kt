@@ -1,3 +1,4 @@
+/*
 package sheridancollege.proWarriors.StudentFragments
 
 import android.os.Bundle
@@ -84,8 +85,9 @@ class StudentAppointmentBookingFragment : Fragment() {
                 R.id.halfHourRadio -> {
                     slotTimeSelected = "1/2 hour"
                 }
-            }
 
+        }
+        
             calendarView.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
 
                 // Create calender object with which will have system date time.
@@ -220,4 +222,4 @@ class StudentAppointmentBookingFragment : Fragment() {
 
 data class TimeSlot(val startTime: LocalTime, val endTime: LocalTime) {
 
-}
+}*/

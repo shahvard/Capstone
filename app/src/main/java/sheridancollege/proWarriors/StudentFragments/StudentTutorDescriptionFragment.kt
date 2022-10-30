@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
+import com.facebook.react.bridge.UiThreadUtil.runOnUiThread
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -20,6 +21,7 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.checkerframework.checker.units.qual.s
 import sheridancollege.proWarriors.R
 import java.io.File
 
@@ -27,7 +29,6 @@ import java.io.File
 class StudentTutorDescriptionFragment : Fragment() {
 
     private lateinit var reviewsList: ArrayList<String>
-    private lateinit var starsList: ArrayList<Long>
     private lateinit var tutorName:String
     private lateinit var displayName:TextView
     private lateinit var username:String
@@ -38,6 +39,7 @@ class StudentTutorDescriptionFragment : Fragment() {
     private lateinit var appointment:ImageView
     private lateinit var storageRef: StorageReference
     private lateinit var database:FirebaseDatabase
+
 
 
     override fun onCreateView(
@@ -57,11 +59,13 @@ class StudentTutorDescriptionFragment : Fragment() {
         appointment = view.findViewById(R.id.bookingImg)
         database = FirebaseDatabase.getInstance()
         reviewsList = arrayListOf()
-        starsList = arrayListOf()
-        var i = 0
-        var total = 0.0
-        var avgStars = 0.0
 
+        var i = 0
+        var size=0
+        var total :Double =0.0
+        var avgStars :Double=0.0
+
+        displayName.text=tutorName
         storageRef = FirebaseStorage.getInstance().reference.child("profile_images/$username.jpg")
         val localFile = File.createTempFile("tempImage", "jpg")
 
@@ -71,15 +75,20 @@ class StudentTutorDescriptionFragment : Fragment() {
                 if (bitmap != null){
                     photo.setImageBitmap(bitmap)
                 }else{
-                    photo.setImageResource(R.drawable.profile)
+
                 }
             }
+                .addOnFailureListener(){
+                    photo.setImageResource(R.drawable.profile)
+
+                }
 
             database.getReference("TutorReviews/$username/Reviews")
                 .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot!!.exists()) {
                         for (child in snapshot.children) {
+
                             val review = child.value
                             i++
                             reviewsList.add(review.toString())
@@ -100,11 +109,20 @@ class StudentTutorDescriptionFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot!!.exists()) {
                             for (child in snapshot.children) {
-                                val star = child.value as Long
-                                total += 0
-                                starsList.add(star)
+                                //var total:Double
+                                if(child.value!!::class.simpleName=="Double"){
+                                    val star :Double=   child.value as Double
+                                    total += star
+                                    size++
+
+                                }
+                                else{
+                                    val star :Long=   child.value as Long
+                                    total += star
+                                    size++
+                                }
                             }
-                            avgStars = total / starsList.size
+                            avgStars = (total / size)
                         }else{
                             i = 0
                             avgStars =0.0
@@ -116,7 +134,12 @@ class StudentTutorDescriptionFragment : Fragment() {
                     }
                 })*/
 
-            reviews.text = "$avgStars ( $i Reviews )"
+            delay(200)
+
+            runOnUiThread{
+                reviews.text = "${avgStars.toString()} ( $i Reviews )"
+
+            }
         }
 
         book.setOnClickListener {
@@ -125,6 +148,18 @@ class StudentTutorDescriptionFragment : Fragment() {
             bundle.putString("TutorUserName",username)
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_studentTutorDescriptionFragment_to_studentAppointmentBookingFragment,bundle)
+        }
+
+        reviewPhoto.setOnClickListener(){
+            val bundle = Bundle()
+            bundle.putString("TutorName",tutorName)
+            bundle.putString("TutorUserName",username)
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_studentTutorDescriptionFragment_to_tutorReviewFragment,bundle)
+        }
+
+        reviews.setOnClickListener(){
+
         }
         return view
     }

@@ -19,6 +19,15 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment3" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_supportFragment"
+            app:destination="@id/supportFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_settingsFragment3"
+            app:destination="@id/settingsFragment3" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -48,6 +57,9 @@
         <action
             android:id="@+id/action_studentTutorDescriptionFragment_to_studentAppointmentBookingFragment"
             app:destination="@id/studentAppointmentBookingFragment" />
+        <action
+            android:id="@+id/action_studentTutorDescriptionFragment_to_tutorReviewFragment"
+            app:destination="@id/tutorReviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentAppointmentBookingFragment"
@@ -81,4 +93,23 @@
         android:name="sheridancollege.proWarriors.Home.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
+        android:id="@+id/settingsFragment"
+        android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="sheridancollege.proWarriors.Support.SupportFragment"
+        android:label="Contact Us"
+        tools:layout="@layout/fragment_support" />
+    <fragment
+        android:id="@+id/settingsFragment3"
+        android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/tutorReviewFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.TutorReviewFragment"
+        android:label="fragment_tutor_review"
+        tools:layout="@layout/fragment_tutor_review" />
 </navigation>
