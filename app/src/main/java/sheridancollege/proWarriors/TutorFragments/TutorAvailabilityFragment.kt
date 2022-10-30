@@ -44,8 +44,12 @@ class TutorAvailabilityFragment : Fragment() {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }*/
-
-        username = arguments?.getString("tutorUserName").toString()
+        val user = Firebase.auth.currentUser
+        user?.let {
+            val email = user.email
+            username = email?.split("@")?.get(0).toString()
+        }
+        //username = arguments?.getString("tutorUserName").toString()
         database = Firebase.database.reference
         availList = arrayListOf()
         heading = view.findViewById(R.id.timeHeading)
@@ -162,10 +166,19 @@ class TutorAvailabilityFragment : Fragment() {
             }
             else if(startWithoutMinutes.toInt()>12){
                 startWithoutMinutes=(startWithoutMinutes.toInt()-12).toString()
-                startWithoutMinutes=startWithoutMinutes+start.split(":").get(1)+" PM"
+                startWithoutMinutes=startWithoutMinutes+":"+start.split(":").get(1)+" PM"
                 start=startWithoutMinutes
             }
             end = eTime.text.toString()
+            var endWithoutMinutes = end.split(":").get(0)
+            if(endWithoutMinutes.toInt()<12){
+                end=end+" AM"
+            }
+            else if(endWithoutMinutes.toInt()>12){
+                endWithoutMinutes=(endWithoutMinutes.toInt()-12).toString()
+                endWithoutMinutes=endWithoutMinutes+":"+end.split(":").get(1)+" PM"
+                end=endWithoutMinutes
+            }
             var item = Availability(startTime = start, endTime = end, notAvailable = nAvail)
             database.child("Availability").child(username).child(day).setValue(item)
 

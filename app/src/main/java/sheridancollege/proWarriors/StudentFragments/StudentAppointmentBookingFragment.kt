@@ -1,4 +1,3 @@
-/*
 package sheridancollege.proWarriors.StudentFragments
 
 import android.os.Bundle
@@ -123,6 +122,15 @@ class StudentAppointmentBookingFragment : Fragment() {
 
                     if (notAvailable == "true") {
                         slotsArray = emptyList()
+                        runOnUiThread{
+                            slotsRV.adapter =
+                                TimeSlotAdapter(slotsArray, tutorUserName, studentUserName, date)
+                            Toast.makeText(
+                                requireContext(),
+                                "No slots Available on this day select another day",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
                     }else if(notAvailable == "false"){
                         database.child("Availability").child(tutorUserName).child(day)
@@ -142,16 +150,8 @@ class StudentAppointmentBookingFragment : Fragment() {
                             }
 
                         delay(500)
-                        runOnUiThread {
-                            if(notAvailable == "false"){
-                                slotsRV.adapter =
-                                    TimeSlotAdapter(slotsArray, tutorUserName, studentUserName, date)
-                                Toast.makeText(
-                                    requireContext(),
-                                    "No slots Available on this day select another day",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+                       // runOnUiThread {
+
 
 
                             var startTime = LocalTime.parse(
@@ -168,19 +168,48 @@ class StudentAppointmentBookingFragment : Fragment() {
 
                             if (slotTimeSelected == "1 hour") {
                                 slotsArray = timeSlotObject.divide(60)
+                                runOnUiThread {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Select the slot time to continue",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    slotsRV.adapter =
+                                        TimeSlotAdapter(
+                                            slotsArray,
+                                            tutorUserName,
+                                            studentUserName,
+                                            date
+                                        )
+                                }
                             } else if (slotTimeSelected == "1/2 hour") {
                                 slotsArray = timeSlotObject.divide(30)
+                                runOnUiThread {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Select the slot time to continue",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    slotsRV.adapter =
+                                        TimeSlotAdapter(
+                                            slotsArray,
+                                            tutorUserName,
+                                            studentUserName,
+                                            date
+                                        )
+                                }
                             } else {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Select the slot time to continue",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                slotsArray = emptyList()
+                                runOnUiThread {
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Please select the time slot",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
-                            slotsRV.adapter =
-                                TimeSlotAdapter(slotsArray, tutorUserName, studentUserName, date)
-                        }
+
                     }
                 }
             }
@@ -222,4 +251,4 @@ class StudentAppointmentBookingFragment : Fragment() {
 
 data class TimeSlot(val startTime: LocalTime, val endTime: LocalTime) {
 
-}*/
+}

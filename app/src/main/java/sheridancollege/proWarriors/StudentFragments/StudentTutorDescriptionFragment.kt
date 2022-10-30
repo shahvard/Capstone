@@ -24,6 +24,9 @@ import kotlinx.coroutines.launch
 import org.checkerframework.checker.units.qual.s
 import sheridancollege.proWarriors.R
 import java.io.File
+import java.math.BigDecimal
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 class StudentTutorDescriptionFragment : Fragment() {
@@ -104,7 +107,7 @@ class StudentTutorDescriptionFragment : Fragment() {
                 }
             })
 
-            /*database.getReference("TutorReviews/$username/Stars")
+            database.getReference("TutorReviews/$username/Stars")
                 .addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot!!.exists()) {
@@ -121,8 +124,14 @@ class StudentTutorDescriptionFragment : Fragment() {
                                     total += star
                                     size++
                                 }
+
                             }
-                            avgStars = (total / size)
+                           /* var dF=DecimalFormat("#.##")
+                            dF.roundingMode=RoundingMode.DOWN*/
+                            avgStars = String.format("%.1f",(total/size)).toDouble()
+
+                            //dF.format((total / size))
+
                         }else{
                             i = 0
                             avgStars =0.0
@@ -132,7 +141,7 @@ class StudentTutorDescriptionFragment : Fragment() {
                         i = 0
                         avgStars =0.0
                     }
-                })*/
+                })
 
             delay(200)
 
