@@ -25,6 +25,7 @@
                 android:icon="@drawable/icons_support"/>
 
             <item
+                android:id="@+id/aboutUsFragment"
                 android:title="About Us"
                 android:icon="@drawable/icons_info"/>
         </menu>
