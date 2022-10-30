@@ -76,6 +76,7 @@
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/sherTutor-local/app/src/main/res/menu/details_menu.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/sherTutor-local/app/src/main/res/menu/student_menu.xml" value="0.2" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/sherTutor-local/app/src/main/res/menu/tutor_menu.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/calendar_bg.xml" value="0.1825" />
         <entry key="app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.12777777777777777" />
         <entry key="app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.15501519756838905" />
@@ -92,7 +93,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.25138092041015625" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_student_appointment_booking.xml" value="0.14922943115234374" />
+        <entry key="app/src/main/res/layout/fragment_student_appointment_booking.xml" value="0.31803283691406237" />
         <entry key="app/src/main/res/layout/fragment_student_details.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.19276885986328127" />
@@ -104,7 +105,7 @@
         <entry key="app/src/main/res/layout/fragment_tutor_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_tutor_review.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tutor_review.xml" value="0.3347839355468751" />
         <entry key="app/src/main/res/layout/fragment_tutor_sign_up.xml" value="0.28192901611328125" />
         <entry key="app/src/main/res/layout/row_item.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/row_item_courseSelection.xml" value="0.13095238095238096" />

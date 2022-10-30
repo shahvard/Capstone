@@ -2,26 +2,20 @@ package sheridancollege.proWarriors.StudentFragments
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import com.facebook.react.bridge.UiThreadUtil.runOnUiThread
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.checkerframework.checker.units.qual.s
 import sheridancollege.proWarriors.R
 import java.io.File
 import java.math.BigDecimal
@@ -42,8 +36,6 @@ class StudentTutorDescriptionFragment : Fragment() {
     private lateinit var appointment:ImageView
     private lateinit var storageRef: StorageReference
     private lateinit var database:FirebaseDatabase
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,12 +70,10 @@ class StudentTutorDescriptionFragment : Fragment() {
                 if (bitmap != null){
                     photo.setImageBitmap(bitmap)
                 }else{
-
                 }
             }
                 .addOnFailureListener(){
                     photo.setImageResource(R.drawable.profile)
-
                 }
 
             database.getReference("TutorReviews/$username/Reviews")
@@ -91,7 +81,6 @@ class StudentTutorDescriptionFragment : Fragment() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot!!.exists()) {
                         for (child in snapshot.children) {
-
                             val review = child.value
                             i++
                             reviewsList.add(review.toString())
@@ -112,7 +101,6 @@ class StudentTutorDescriptionFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot!!.exists()) {
                             for (child in snapshot.children) {
-                                //var total:Double
                                 if(child.value!!::class.simpleName=="Double"){
                                     val star :Double=   child.value as Double
                                     total += star
@@ -124,14 +112,8 @@ class StudentTutorDescriptionFragment : Fragment() {
                                     total += star
                                     size++
                                 }
-
                             }
-                           /* var dF=DecimalFormat("#.##")
-                            dF.roundingMode=RoundingMode.DOWN*/
                             avgStars = String.format("%.1f",(total/size)).toDouble()
-
-                            //dF.format((total / size))
-
                         }else{
                             i = 0
                             avgStars =0.0
