@@ -14,9 +14,9 @@
         android:id="@+id/img_profile"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/profile_img"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"/>
+        android:layout_marginTop="18dp"
+        android:src="@drawable/profile_img" />
 
     <TextView
         android:id="@+id/name_profile"
@@ -31,7 +31,7 @@
         android:textStyle="bold|italic" />
 
     <TextView
-        android:id="@+id/tutorLabel"
+        android:id="@+id/tutorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name_profile"
@@ -45,7 +45,7 @@
         android:id="@+id/star"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_below="@+id/tutorLabel"
+        android:layout_below="@+id/tutorName"
         android:layout_centerHorizontal="false"
         android:layout_marginStart="120dp"
         android:src="@drawable/star_purple" />
@@ -103,9 +103,8 @@
                     android:id="@+id/reviewImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icons_review"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/icons_review" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"

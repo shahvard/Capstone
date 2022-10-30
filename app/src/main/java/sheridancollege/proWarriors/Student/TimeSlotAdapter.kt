@@ -1,3 +1,4 @@
+/*
 package sheridancollege.proWarriors.Student
 
 import android.app.AlertDialog
@@ -67,3 +68,4 @@ class TimeSlotAdapter (private val cList:List<TimeSlot>,private val tutorUserNam
 data class Appointment(var studentUserName: String,var tutorUserName: String,var startTime:String,var endTime:String,
 var date:String)
 
+*/
