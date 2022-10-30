@@ -16,6 +16,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.BuildConfig
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import sheridancollege.proWarriors.AppConfig
 import sheridancollege.proWarriors.R
 
 class MainActivity : AppCompatActivity() {
@@ -37,8 +38,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun init(){
-        val appID = "219516273de5cfeb"
-        val region = "us"
+        val appID = AppConfig.AppDetails.APP_ID
+        val region = AppConfig.AppDetails.REGION
         val appSettings = AppSettings.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build()
 
         CometChat.init(this, appID, appSettings, object : CometChat.CallbackListener<String>() {
