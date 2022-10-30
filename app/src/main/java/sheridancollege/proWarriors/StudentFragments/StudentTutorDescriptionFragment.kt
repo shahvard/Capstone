@@ -29,7 +29,6 @@ import java.io.File
 class StudentTutorDescriptionFragment : Fragment() {
 
     private lateinit var reviewsList: ArrayList<String>
-
     private lateinit var tutorName:String
     private lateinit var displayName:TextView
     private lateinit var username:String
@@ -105,7 +104,7 @@ class StudentTutorDescriptionFragment : Fragment() {
                 }
             })
 
-            database.getReference("TutorReviews/$username/Stars")
+            /*database.getReference("TutorReviews/$username/Stars")
                 .addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot!!.exists()) {
@@ -120,16 +119,10 @@ class StudentTutorDescriptionFragment : Fragment() {
                                 else{
                                     val star :Long=   child.value as Long
                                     total += star
-
                                     size++
-
                                 }
-
-
-
                             }
                             avgStars = (total / size)
-
                         }else{
                             i = 0
                             avgStars =0.0
@@ -139,7 +132,7 @@ class StudentTutorDescriptionFragment : Fragment() {
                         i = 0
                         avgStars =0.0
                     }
-                })
+                })*/
 
             delay(200)
 

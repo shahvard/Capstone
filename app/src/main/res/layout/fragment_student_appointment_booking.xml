@@ -4,7 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
+    android:layout_marginBottom="?actionBarSize"
+    android:background="#4A40739C"
     tools:context=".StudentFragments.StudentAppointmentBookingFragment">
+
+    <TextView
+        android:id="@+id/bookPageHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select dates to see available spots."
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/bookPageHeading"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginLeft="30dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/oneHourRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="One Hour"
+            android:textSize="18dp"
+            android:layout_weight="0.5"
+            android:paddingRight="0dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <RadioButton
+            android:id="@+id/halfHourRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Half Hour"
+            android:textSize="18dp"
+            android:layout_weight="0.5"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+    </RadioGroup>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/calendar_bg"
+        android:weekDayTextAppearance="@color/purple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available Time slots:"
+        android:layout_below="@+id/calendarView"
+        android:textSize="22dp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/slotRecView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/calendarView"
+        android:layout_marginTop="50dp"/>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
