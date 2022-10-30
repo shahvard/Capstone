@@ -16,6 +16,7 @@
         <action
             android:id="@+id/action_tutorHomeFragment_to_tutorAvailabilityFragment"
             app:destination="@id/tutorAvailabilityFragment" />
+
         <action
             android:id="@+id/action_tutorHomeFragment_to_tutorDetailsFragment"
             app:destination="@id/tutorDetailsFragment" />

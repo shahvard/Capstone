@@ -65,10 +65,10 @@ class TutorHomeFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.title.toString()) {
-            "Profile" -> {
+            /*"Profile" -> {
                 Navigation.findNavController(requireView())
                     .navigate(R.id.action_tutorHomeFragment_to_tutorDetailsFragment)
-            }
+            }*/
             /* "View As Tutor" -> {
                 if(tut == true){
                     var intent = Intent(this, TutorActivity::class.java)

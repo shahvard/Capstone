@@ -36,7 +36,7 @@ class StudentTutorListAdapter(private val cList:List<User>) : RecyclerView.Adapt
             bundle.putString("TutorName",item.name)
             bundle.putString("TutorUserName",item.username)
             Navigation.findNavController(holder.tutorNameView)
-                .navigate(R.id.action_studentCourseInfoFragment_to_studentTutorDescriptionFragment,bundle)
+                .navigate(R.id.action_courseDetailsFragment_to_studentTutorDescriptionFragment,bundle)
 
         }
     }

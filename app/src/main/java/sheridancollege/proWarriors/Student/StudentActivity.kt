@@ -86,7 +86,7 @@ class StudentActivity : AppCompatActivity() {
         }
 
         navController.addOnDestinationChangedListener(listener)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.studentHomeFragment, R.id.studentDetailsFragment, R.id.studentCourseInfoFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.studentHomeFragment, R.id.studentDetailsFragment, R.id.courseDetailsFragment), drawerLayout)
         navView.setupWithNavController(navController)
         bottomView.setupWithNavController(navController)
     }

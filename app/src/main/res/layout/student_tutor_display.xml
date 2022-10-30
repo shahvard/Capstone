@@ -9,8 +9,8 @@
         android:id="@+id/courseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5sp"
-
+        android:padding="12dp"
+        android:textStyle="bold"
         android:text="TextView"
         android:background="#4A40739C"
 

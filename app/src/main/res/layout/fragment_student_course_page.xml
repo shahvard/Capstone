@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
+    android:background="#4A40739C"
+    tools:context=".StudentFragments.StudentCoursePage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/courseHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Courses"
+            android:textStyle="bold"
+            android:textSize="28dp"
+            android:textColor="@color/blue"
+            android:layout_marginStart="5dp"
+            android:padding="4dp"/>
+
+        <TextView
+            android:id="@+id/coursePageInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/courseHeading"
+            android:layout_marginStart="5dp"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Select a course to see the available tutors."/>
+
+        <SearchView
+            android:id="@+id/searchCourseList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coursePageInfo"
+            android:queryHint="Search courses here..." />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/coursesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/searchCourseList"
+            android:layout_marginTop="10dp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
