@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_supportFragment"
+            app:destination="@id/supportFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -81,4 +87,13 @@
         android:name="sheridancollege.proWarriors.Home.AboutUsFragment"
         android:label="fragment_about_us"
         tools:layout="@layout/fragment_about_us" />
+        android:id="@+id/settingsFragment"
+        android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="sheridancollege.proWarriors.Support.SupportFragment"
+        android:label="Contact Us"
+        tools:layout="@layout/fragment_support" />
 </navigation>

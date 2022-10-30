@@ -16,6 +16,7 @@
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone-Local/app/src/main/res/layout/row_item_courseselection.xml" value="0.1859375" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone-Local/app/src/main/res/layout/student_course_display.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable-v24/ic_arrow_right_24dp.xml" value="0.184" />
+
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.184" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable/account.xml" value="0.184" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable/back_to_home_button.xml" value="0.164" />
@@ -45,14 +46,17 @@
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_appointment_booking.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_course_page.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_details.xml" value="0.22" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/activity_tutor_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_home.xml" value="0.16259057971014493" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_home.xml" value="0.17552083333333332" />
+
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_tutor_description.xml" value="0.22" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_application.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_availability.xml" value="0.21495327102803738" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_details.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_home.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_login.xml" value="0.16259057971014493" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_sign_up.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/nav_drawer_header.xml" value="0.21951219512195122" />
@@ -79,17 +83,25 @@
         <entry key="app/src/main/res/layout/activity_landing.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.15501519756838905" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_student.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_student_details.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/activity_student_home_page.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/activity_tutor_details.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_tutor_home.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/content_profile.xml" value="0.10916919959473151" />
         <entry key="app/src/main/res/layout/fragment_course_info.xml" value="0.2554347826086957" />
         <entry key="app/src/main/res/layout/fragment_course_selection.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.25138092041015625" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_student_appointment_booking.xml" value="0.14922943115234374" />
         <entry key="app/src/main/res/layout/fragment_student_details.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.190625" />
         <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.19276885986328127" />
+        <entry key="app/src/main/res/layout/fragment_student_tutor_description.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_support.xml" value="0.10739614994934144" />
+        <entry key="app/src/main/res/layout/fragment_tutor_application.xml" value="0.16210739614994935" />
+        <entry key="app/src/main/res/layout/fragment_tutor_availability.xml" value="0.21385040283203133" />
         <entry key="app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.15353260869565216" />
@@ -98,13 +110,19 @@
         <entry key="app/src/main/res/layout/row_item.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/row_item_courseSelection.xml" value="0.13095238095238096" />
         <entry key="app/src/main/res/layout/row_item_studenthomepage.xml" value="0.13095238095238096" />
+        <entry key="app/src/main/res/layout/settings_activity.xml" value="0.12360688956433637" />
+        <entry key="app/src/main/res/layout/student_course_display.xml" value="0.10131712259371833" />
         <entry key="app/src/main/res/layout/student_course_selection.xml" value="0.16210739614994935" />
+        <entry key="app/src/main/res/layout/student_tutor_display.xml" value="0.10131712259371833" />
         <entry key="app/src/main/res/menu/details_menu.xml" value="0.370585632324219" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/menu/student_details_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/student_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/student_navigation_drawer.xml" value="0.1925925925925926" />
         <entry key="app/src/main/res/menu/tutor_details_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/tutor_menu.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/menu/tutor_navigation_drawer.xml" value="0.17314814814814813" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.16210739614994935" />
       </map>
     </option>
   </component>
