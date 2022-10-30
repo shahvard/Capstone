@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_studentCoursePage"
             app:destination="@id/studentCoursePage" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -37,15 +40,6 @@
         android:name="sheridancollege.proWarriors.StudentFragments.StudentLoginFragment"
         android:label="Student Login"
         tools:layout="@layout/fragment_student_login" />
-    <fragment
-        android:id="@+id/studentCourseInfoFragment"
-        android:name="sheridancollege.proWarriors.StudentFragments.StudentCourseInfoFragment"
-        android:label="Course Info"
-        tools:layout="@layout/fragment_course_info">
-        <action
-            android:id="@+id/action_studentCourseInfoFragment_to_studentTutorDescriptionFragment"
-            app:destination="@id/studentTutorDescriptionFragment" />
-    </fragment>
     <fragment
         android:id="@+id/studentTutorDescriptionFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentTutorDescriptionFragment"
@@ -70,7 +64,21 @@
         android:label="Courses"
         tools:layout="@layout/fragment_student_course_page">
         <action
-            android:id="@+id/action_studentCoursePage_to_studentCourseInfoFragment"
-            app:destination="@id/studentCourseInfoFragment" />
+            android:id="@+id/action_studentCoursePage_to_courseDetailsFragment"
+            app:destination="@id/courseDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/courseDetailsFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.CourseDetailsFragment"
+        android:label="Couurse Details"
+        tools:layout="@layout/fragment_course_details">
+        <action
+            android:id="@+id/action_courseDetailsFragment_to_studentTutorDescriptionFragment"
+            app:destination="@id/studentTutorDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="sheridancollege.proWarriors.Home.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>

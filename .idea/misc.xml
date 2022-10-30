@@ -26,6 +26,7 @@
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable/more.xml" value="0.321" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable/profile_back_button.xml" value="0.164" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable/profile_bk.xml" value="0.164" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/drawable/profile_book_appointment.xml" value="0.184" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/activity_main.xml" value="0.13405797101449277" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/activity_student.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/activity_student_content.xml" value="0.36302083333333335" />
@@ -35,6 +36,8 @@
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/app_bar_main.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/content_profile.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/course_selection_row.xml" value="0.36302083333333335" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_about_us.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_course_details.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_course_info.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_details.xml" value="0.22" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_home.xml" value="0.16259057971014493" />
@@ -44,6 +47,7 @@
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_details.xml" value="0.22" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_home.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_login.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_student_tutor_description.xml" value="0.22" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_application.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_availability.xml" value="0.21495327102803738" />
         <entry key="..\:/Users/patel/Desktop/Capstone Project/Capstone/app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.14130434782608695" />
