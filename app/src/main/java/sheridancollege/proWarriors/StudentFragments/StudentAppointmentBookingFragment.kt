@@ -1,3 +1,4 @@
+/*
 package sheridancollege.proWarriors.StudentFragments
 
 import android.os.Bundle
@@ -110,7 +111,9 @@ class StudentAppointmentBookingFragment : Fragment() {
             var monthFinal=month+1
             //var dateString=monthFinal.toString()+"."+dayOfMonth.toString()+"."+year.toString()
             //val formatter = SimpleDateFormat("MM.dd.yyyy")
-           /* var date = formatter.parse(dateString)*/
+           */
+/* var date = formatter.parse(dateString)*//*
+
             Log.d("Day selected",dayOfWeekInt.toString())
             when (dayOfWeekInt) {
                 1 -> day = "sunday"
@@ -249,4 +252,4 @@ class StudentAppointmentBookingFragment : Fragment() {
 
 data class TimeSlot(val startTime: LocalTime, val endTime: LocalTime) {
 
-}
+}*/
