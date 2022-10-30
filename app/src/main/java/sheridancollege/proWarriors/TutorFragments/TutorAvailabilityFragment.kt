@@ -156,6 +156,15 @@ class TutorAvailabilityFragment : Fragment() {
         if(!notAvail.isChecked){
             nAvail = false
             start = sTime.text.toString()
+            var startWithoutMinutes = start.split(":").get(0)
+            if(startWithoutMinutes.toInt()<12){
+                start=start+" AM"
+            }
+            else if(startWithoutMinutes.toInt()>12){
+                startWithoutMinutes=(startWithoutMinutes.toInt()-12).toString()
+                startWithoutMinutes=startWithoutMinutes+start.split(":").get(1)+" PM"
+                start=startWithoutMinutes
+            }
             end = eTime.text.toString()
             var item = Availability(startTime = start, endTime = end, notAvailable = nAvail)
             database.child("Availability").child(username).child(day).setValue(item)

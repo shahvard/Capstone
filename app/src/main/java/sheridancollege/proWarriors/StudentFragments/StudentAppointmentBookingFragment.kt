@@ -151,7 +151,10 @@ class StudentAppointmentBookingFragment : Fragment() {
                                 ).show()
                             }
 
-                            var startTime = LocalTime.parse(start)
+
+                            var startTime = LocalTime.parse(
+                                start,
+                                DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))
 
                             var endTime =
                                 LocalTime.parse(
