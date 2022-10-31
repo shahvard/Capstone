@@ -35,6 +35,11 @@
     </item>
     <item android:title="Account">
         <menu>
+            <item
+                android:title="View as Tutor"
+                android:onClick="viewAsTutorOnClick"
+                >
+            </item>
             <item android:id="@+id/studentDetailsFragment"
                 android:title="Profile" android:icon="@drawable/icons_user"/>
             <item android:title="Logout" android:icon="@drawable/icons_logout"

@@ -18,7 +18,7 @@
 
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+            android:id="@+id/tabLayoutTutor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabIndicatorColor="@color/purple"
@@ -35,7 +35,7 @@
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewPager"
+        android:id="@+id/viewPagerTutor"
         android:background="@color/white"/>
 
 

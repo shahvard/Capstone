@@ -16,7 +16,6 @@ import com.cometchat.pro.uikit.ui_components.shared.cometchatSharedMedia.fragmen
 import com.cometchat.pro.uikit.ui_components.shared.cometchatSharedMedia.fragments.CometChatSharedImages
 import com.cometchat.pro.uikit.ui_components.shared.cometchatSharedMedia.fragments.CometChatSharedVideos
 import com.cometchat.pro.uikit.ui_resources.utils.Utils
-import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import com.google.android.material.tabs.TabLayout
 
@@ -54,8 +53,8 @@ class CometChatSharedMedia : RelativeLayout {
         bundle.putString("Id", Id)
         bundle.putString("type", type)
         if (type != null) {
-            viewPager = findViewById(R.id.viewPager)
-            tabLayout = view.findViewById(R.id.tabLayout)
+            viewPager = findViewById(R.id.viewPagerTutor)
+            tabLayout = view.findViewById(R.id.tabLayoutTutor)
             adapter = TabAdapter((context as FragmentActivity).supportFragmentManager)
             val images = CometChatSharedImages()
             images.arguments = bundle

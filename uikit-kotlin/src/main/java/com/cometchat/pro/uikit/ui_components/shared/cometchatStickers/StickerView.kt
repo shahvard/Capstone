@@ -17,7 +17,6 @@ import com.cometchat.pro.uikit.R
 import com.cometchat.pro.uikit.ui_components.shared.cometchatStickers.adapter.StickerTabAdapter
 import com.cometchat.pro.uikit.ui_components.shared.cometchatStickers.listener.StickerClickListener
 import com.cometchat.pro.uikit.ui_components.shared.cometchatStickers.model.Sticker
-import com.cometchat.pro.uikit.ui_settings.FeatureRestriction
 import com.cometchat.pro.uikit.ui_settings.UIKitSettings
 import com.google.android.material.tabs.TabLayout
 import java.util.*
@@ -63,8 +62,8 @@ class StickerView : RelativeLayout, StickerClickListener {
         addView(view)
 
         if (type != null) {
-            viewPager = findViewById(R.id.viewPager)
-            tabLayout = view.findViewById(R.id.tabLayout)
+            viewPager = findViewById(R.id.viewPagerTutor)
+            tabLayout = view.findViewById(R.id.tabLayoutTutor)
             adapter = StickerTabAdapter(context!!, (context as FragmentActivity).supportFragmentManager)
             for (str in stickerMap.keys) {
                 val bundle = Bundle()

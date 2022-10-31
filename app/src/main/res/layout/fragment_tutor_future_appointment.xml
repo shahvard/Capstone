@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_marginTop="?actionBarSize"
+android:layout_marginBottom="?actionBarSize"
+android:background="@color/primary"
+tools:context=".TutorFragments.TutorFutureAppointment">
+
+<TextView
+    android:id="@+id/futureHeading"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Future Appointments"
+    android:textColor="@color/black"
+    android:textStyle="italic|bold"
+    android:textSize="24dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="15dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/futureRVTutor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/futureHeading"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp" />
+
+
+</RelativeLayout>

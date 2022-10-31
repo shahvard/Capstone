@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_tutorHomeFragment_to_aboutUsFragment2"
             app:destination="@id/aboutUsFragment2" />
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_tutorAppointmentDisplayFragment"
+            app:destination="@id/tutorAppointmentDisplayFragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorLoginFragment2"
@@ -67,4 +70,9 @@
         android:name="sheridancollege.proWarriors.Support.SupportFragment"
         android:label="fragment_support"
         tools:layout="@layout/fragment_support" />
+    <fragment
+        android:id="@+id/tutorAppointmentDisplayFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorAppointmentDisplayFragment"
+        android:label="fragment_tutor_appointment_display"
+        tools:layout="@layout/fragment_tutor_appointment_display" />
 </navigation>

@@ -1,11 +1,15 @@
 package sheridancollege.proWarriors.Tutor
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -23,6 +27,9 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
+import sheridancollege.proWarriors.Student.Student
+import sheridancollege.proWarriors.Student.StudentActivity
+import sheridancollege.proWarriors.Student.stu
 import java.io.File
 
 class TutorActivity : AppCompatActivity() {
@@ -96,4 +103,26 @@ class TutorActivity : AppCompatActivity() {
         val navController = findNavController(R.id.tutorNavHost)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    fun viewAsStudentOnClick(item: MenuItem){
+        if(tut.tutor.isStudent == true){
+            var intent = Intent(this, StudentActivity::class.java)
+            // intent.putExtra("sName", StudentEntity.student.firstName)
+            startActivity(intent)
+        }
+        else{
+            val dialogBuilder = AlertDialog.Builder(this)
+            dialogBuilder.setMessage("You do not have an access to student login.")
+                .setCancelable(false)
+                .setNegativeButton("Okay", DialogInterface.OnClickListener {
+                        dialog, id -> dialog.cancel()
+                })
+
+            val alert = dialogBuilder.create()
+            alert.setTitle("Student Access denied.")
+            alert.show()
+        }
+
+    }
+
 }

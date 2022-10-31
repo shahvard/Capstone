@@ -1,4 +1,4 @@
-package sheridancollege.proWarriors.StudentFragments
+package sheridancollege.proWarriors.TutorFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,54 +11,43 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import sheridancollege.proWarriors.R
-import kotlin.collections.ArrayList
+import sheridancollege.proWarriors.StudentFragments.StudentAppointmentDisplayFragment
+import sheridancollege.proWarriors.StudentFragments.StudentFutureAppointment
+import sheridancollege.proWarriors.StudentFragments.StudentPastAppointment
 
 
-class StudentAppointmentDisplayFragment : Fragment() {
+class TutorAppointmentDisplayFragment : Fragment() {
 
-
-    private lateinit var viewPager:ViewPager
+    private lateinit var viewPager: ViewPager
     private lateinit var tabLayout: TabLayout
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_student_appointment_display, container, false)
-
-
+        val view=inflater.inflate(R.layout.fragment_tutor_appointment_display, container, false)
         viewPager = view.findViewById(R.id.viewPagerTutor)
         tabLayout = view.findViewById(R.id.tabLayoutTutor)
 
-        //val fragmentAdapter = AppointmentFragmentAdapter(requireActivity().supportFragmentManager)
-        /*fragmentAdapter.addFragment(StudentPastAppointment(), "Past")
-        fragmentAdapter.addFragment(StudentFutureAppointment(), "Upcoming")*/
         setupViewPager(viewPager)
-
-        // If we dont use setupWithViewPager() method then
-        // tabs are not used or shown when activity opened
         tabLayout.setupWithViewPager(viewPager)
 
-       /* viewPager.adapter = fragmentAdapter
-        tabLayout.setupWithViewPager(viewPager)*/
-        return view
+
+
+        return  view
 
     }
 
-    private fun setupViewPager(viewpager: ViewPager) {
-        var adapter: ViewPagerAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
 
-        // LoginFragment is the name of Fragment and the Login
-        // is a title of tab
-        adapter.addFragment(StudentPastAppointment(), "Past")
-        adapter.addFragment(StudentFutureAppointment(), "Upcoming")
+    private fun setupViewPager(viewpager: ViewPager) {
+        var adapter: ViewPagerAdapter =
+           ViewPagerAdapter(requireActivity().supportFragmentManager)
+
+        adapter.addFragment(TutorPastAppointment(), "Past")
+        adapter.addFragment(TutorFutureAppointment(), "Upcoming")
 
         // setting adapter to view pager.
         viewpager.setAdapter(adapter)
     }
-
 
     class ViewPagerAdapter : FragmentPagerAdapter {
 
@@ -93,6 +82,5 @@ class StudentAppointmentDisplayFragment : Fragment() {
             fragmentTitleList1.add(title)
         }
     }
-
 
 }

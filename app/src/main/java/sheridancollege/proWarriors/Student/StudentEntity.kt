@@ -32,7 +32,7 @@ object StudentEntity {
                val email = data.child(username.toString()).child("email").value.toString()
                val phoneNo = data.child(username.toString()).child("phoneNo").value.toString()
                val address = data.child(username.toString()).child("address").value.toString()
-               val tutor = data.child(username.toString()).child("isTutor").value.toString().toBoolean()
+               val tutor = data.child(username.toString()).child("tutor").value.toString().toBoolean()
 
                stu.student = Student(
                   username.toString(),

@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_studentAppointmentDisplayFragment"
             app:destination="@id/studentAppointmentDisplayFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_tutorCourseSelection"
+            app:destination="@id/tutorCourseSelection" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -123,4 +126,31 @@
         android:name="sheridancollege.proWarriors.StudentFragments.StudentAppointmentDisplayFragment"
         android:label="Appointments"
         tools:layout="@layout/fragment_student_appointment_display" />
+    <fragment
+        android:id="@+id/tutorCourseSelection"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorCourseSelection"
+        android:label="fragment_tutor_course_selection"
+        tools:layout="@layout/fragment_tutor_course_selection" >
+        <action
+            android:id="@+id/action_tutorCourseSelection_to_tutorApplicationFragment2"
+            app:destination="@id/tutorApplicationFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorApplicationFragment2"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorApplicationFragment"
+        android:label="fragment_tutor_application"
+        tools:layout="@layout/fragment_tutor_application" >
+        <action
+            android:id="@+id/action_tutorApplicationFragment2_to_tutorAvailabilityFragment3"
+            app:destination="@id/tutorAvailabilityFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorAvailabilityFragment3"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorAvailabilityFragment"
+        android:label="fragment_tutor_availability"
+        tools:layout="@layout/fragment_tutor_availability" >
+        <action
+            android:id="@+id/action_tutorAvailabilityFragment3_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment" />
+    </fragment>
 </navigation>
