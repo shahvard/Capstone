@@ -19,10 +19,6 @@
         android:theme="@style/Theme.SherTutor"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Settings.SettingsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_settings" />
-        <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
         <activity

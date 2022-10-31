@@ -14,4 +14,5 @@
     <color name="profileBackground">#fff</color>
     <color name="blackTextColor">#000</color>
     <color name="profileEditTextColor">#707070</color>
+    <color name="primary">#4A40739C</color>
 </resources>

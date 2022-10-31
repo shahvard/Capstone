@@ -4,67 +4,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:layout_marginTop="?actionBarSize"
+    android:layout_marginBottom="?actionBarSize"
     tools:context=".StudentFragments.StudentHomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#4A40739C"
-        android:paddingTop="?actionBarSize"
-        >
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/headingText"
-            android:layout_width="250dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="116dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="117dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/welcome"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="26sp"
-            android:textStyle="bold|italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="180dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Course Lists"
-            android:textColor="#050404"
-            android:textSize="24sp"
+            android:id="@+id/timeHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good afternoon,"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headingText" />
+            android:textSize="12dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/topName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeHead"
+            android:layout_marginTop="2dp"
+            android:layout_toLeftOf="@+id/imgHome"
+            android:textStyle="bold"
+            android:text="Vardhman"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgHome"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/timeHead"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/upcomingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Appointment"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/topName"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/seeAllAppointments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="SEE ALL"
+            android:textColor="@color/purple"
+            android:layout_below="@+id/topName"
+            android:textSize="15dp"
+            android:layout_marginLeft="135dp"
+            android:layout_toRightOf="@+id/upcomingLabel"
+            android:layout_marginTop="26dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/upcomingLabel"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/homepage_card_bg">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/tutorImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/tutorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/tutorImage"
+                android:text="Shubh Patel"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tutorName"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"
+                android:layout_toRightOf="@+id/tutorImage"
+                android:text="Tutor"
+                android:textColor="@color/white" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tutorImage"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/aptDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:text="Mar 10, 2022"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/aptTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="90dp"
+                    android:textSize="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/aptDate"
+                    android:text="5:00 PM to 5:15 PM"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/findTutorLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rv1"
+            android:layout_marginStart="10dp"
+            android:text="Find Your Tutor"
+            android:textColor="@color/black"
+            android:textSize="19dp"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/seeAllCourses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEE ALL"
+            android:textColor="@color/purple"
+            android:layout_below="@id/rv1"
+            android:layout_toRightOf="@+id/findTutorLabel"
+            android:layout_marginTop="17dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="205dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/courseView"
-            android:layout_width="401dp"
-            android:layout_height="344dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            android:id="@+id/courseRecView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/findTutorLabel"
+            android:layout_marginTop="5dp"/>
 
-        <TextView
-            android:id="@+id/appointmentsDisplay"
-            android:layout_width="379dp"
-            android:layout_height="151dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="56dp"
-            android:text="No appointments booked"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/courseView" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+    </RelativeLayout>
 
 </FrameLayout>
