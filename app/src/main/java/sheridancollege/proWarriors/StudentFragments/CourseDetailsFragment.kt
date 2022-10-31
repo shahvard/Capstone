@@ -122,7 +122,7 @@ class CourseDetailsFragment : Fragment() {
             }
             delay(200)
             UiThreadUtil.runOnUiThread {
-                rView.adapter = StudentTutorListAdapter(tutorFullNamesList as List<User>)
+                rView.adapter = StudentTutorListAdapter(tutorFullNamesList as List<User>,courseName)
             }
         }
         // Inflate the layout for this fragment

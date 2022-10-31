@@ -21,7 +21,8 @@ class TimeSlotAdapter(
     private val cList: List<TimeSlot>,
     private val tutorUserName: String,
     private val studentUserName: String,
-    private val date: String
+    private val date: String,
+    private val courseName:String
 ) : RecyclerView.Adapter<TimeSlotAdapter.MyViewHolder>() {
 
 
@@ -50,7 +51,8 @@ class TimeSlotAdapter(
                         tutorUserName,
                         item.startTime.toString(),
                         item.endTime.toString(),
-                        date
+                        date,
+                        courseName
                     )
                     database.child("Appointments").push().setValue(appointment)
                     Navigation.findNavController(holder.nameView)
@@ -77,6 +79,7 @@ data class Appointment(
     var tutorUserName: String,
     var startTime: String,
     var endTime: String,
-    var date: String
+    var date: String,
+    var courseName:String
 )
 

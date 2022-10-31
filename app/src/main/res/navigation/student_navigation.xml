@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_settingsFragment3"
             app:destination="@id/settingsFragment3" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_studentAppointmentDisplayFragment"
+            app:destination="@id/studentAppointmentDisplayFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -60,6 +63,9 @@
         <action
             android:id="@+id/action_studentTutorDescriptionFragment_to_tutorReviewFragment"
             app:destination="@id/tutorReviewFragment" />
+        <action
+            android:id="@+id/action_studentTutorDescriptionFragment_to_studentAppointmentDisplayFragment"
+            app:destination="@id/studentAppointmentDisplayFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentAppointmentBookingFragment"
@@ -112,4 +118,9 @@
         android:name="sheridancollege.proWarriors.StudentFragments.TutorReviewFragment"
         android:label="fragment_tutor_review"
         tools:layout="@layout/fragment_tutor_review" />
+    <fragment
+        android:id="@+id/studentAppointmentDisplayFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.StudentAppointmentDisplayFragment"
+        android:label="Appointments"
+        tools:layout="@layout/fragment_student_appointment_display" />
 </navigation>

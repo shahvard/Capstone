@@ -15,12 +15,12 @@
             android:id="@+id/courseNameHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoSizeMaxTextSize="28dp"
             android:padding="5dp"
             android:text="3D Programming and Data Science"
-            android:textSize="28dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:autoSizeMaxTextSize="28dp"/>
+            android:textSize="28dp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/courseDescView"

@@ -38,6 +38,7 @@ class StudentAppointmentBookingFragment : Fragment() {
     private lateinit var database: DatabaseReference
     lateinit var start: String
     lateinit var end: String
+    lateinit var courseName:String
 
     //private lateinit var slotSpinner: Spinner
     private lateinit var halfHourCheck: RadioButton
@@ -67,6 +68,7 @@ class StudentAppointmentBookingFragment : Fragment() {
         halfHourCheck = view.findViewById(R.id.halfHourRadio)
         oneHourCheck = view.findViewById(R.id.oneHourRadio)
         slotsArray = arrayListOf()
+        courseName=arguments?.getString("courseName").toString()
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
@@ -121,7 +123,7 @@ class StudentAppointmentBookingFragment : Fragment() {
                         slotsArray = emptyList()
                         runOnUiThread{
                             slotsRV.adapter =
-                                TimeSlotAdapter(slotsArray, tutorUserName, studentUserName, date)
+                                TimeSlotAdapter(slotsArray, tutorUserName, studentUserName, date,courseName)
                             Toast.makeText(
                                 requireContext(),
                                 "No slots Available on this day select another day",
@@ -177,7 +179,8 @@ class StudentAppointmentBookingFragment : Fragment() {
                                             slotsArray,
                                             tutorUserName,
                                             studentUserName,
-                                            date
+                                            date,
+                                            courseName
                                         )
                                 }
                             } else if (slotTimeSelected == "1/2 hour") {
@@ -194,7 +197,9 @@ class StudentAppointmentBookingFragment : Fragment() {
                                             slotsArray,
                                             tutorUserName,
                                             studentUserName,
-                                            date
+                                            date,
+                                            courseName
+
                                         )
                                 }
                             } else {

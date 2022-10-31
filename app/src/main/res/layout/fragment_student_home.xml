@@ -107,11 +107,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tutorName"
                 android:layout_marginLeft="10dp"
-                android:textStyle="bold"
                 android:layout_marginTop="6dp"
                 android:layout_toRightOf="@+id/tutorImage"
                 android:text="Tutor"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
 
             <RelativeLayout
@@ -126,21 +126,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="20dp"
-                    android:textStyle="bold"
-                    android:textSize="16dp"
                     android:text="Mar 10, 2022"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/aptTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
-                    android:textSize="16dp"
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@id/aptDate"
                     android:text="5:00 PM to 5:15 PM"
                     android:textColor="@color/white"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
             </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.react.bridge.UiThreadUtil.runOnUiThread
@@ -99,6 +100,14 @@ class StudentHomeFragment : Fragment() {
             username = email?.split("@")?.get(0).toString()
         }
 
+        seeAppointments.setOnClickListener(){
+            Navigation.findNavController(requireView()).navigate(R.id.action_studentHomeFragment_to_studentAppointmentDisplayFragment)
+        }
+
+        seeCourses.setOnClickListener(){
+            Navigation.findNavController(requireView()).navigate(R.id.action_studentHomeFragment_to_studentCoursePage)
+
+        }
 
         storageRef.child("profile_images/$username.jpg").getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -112,12 +121,12 @@ class StudentHomeFragment : Fragment() {
         GlobalScope.launch {
             var name = " "
             StudentEntity.getStudentDetails(username)
-            delay(100)
+            delay(300)
             var student: Student = stu.student
             if (student != null) {
                 name = student.firstName.toString() + " " + student.lastName.toString()
             }
-            delay(600)
+            //delay(600)
             runOnUiThread{
                 headingText.text = name
             }
@@ -151,11 +160,12 @@ class StudentHomeFragment : Fragment() {
                             val data = dataSnapshot.child("Appointments/$appointment")
                             if (data.child("studentUserName").value!!.equals(username)) {
                                 val simpleDate = SimpleDateFormat("dd/MM/yyyy")
-                                val currentDate = simpleDate.format(Date())
+
                                 var startTime = data.child("startTime").value.toString()
                                 var endTime = data.child("endTime").value.toString()
                                 var date = data.child("date").value.toString()
-                                val cmpDate = currentDate.compareTo(date)
+
+                                val cmpDate = Date().compareTo(  simpleDate.parse(date))
 
                                 when {
                                     cmpDate <= 0 -> {
@@ -173,7 +183,7 @@ class StudentHomeFragment : Fragment() {
                                         time = "$startTime to $endTime"
                                         TutorEntity.getTutorDetails(tutorUserName)
                                         GlobalScope.launch {
-                                        delay(200)
+                                        delay(800)
 
                                         var tutor: Tutor = tut.tutor
                                         runOnUiThread {
