@@ -19,11 +19,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.TimeSlotAdapter
-import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
-import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit

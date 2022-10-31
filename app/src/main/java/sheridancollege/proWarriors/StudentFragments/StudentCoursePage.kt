@@ -28,12 +28,14 @@ class StudentCoursePage : Fragment() {
     private lateinit var courseList: ArrayList<String>
     private lateinit var databaseref: DatabaseReference
     private lateinit var search:SearchView
+    private var searchStr: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_student_course_page, container, false)
+
         rView = view.findViewById<View>(R.id.coursesRecycler) as RecyclerView
         database = FirebaseDatabase.getInstance()
         courseList = ArrayList<String>()
@@ -42,6 +44,11 @@ class StudentCoursePage : Fragment() {
         rView.layoutManager = LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
 
+        if (arguments?.getBoolean("firstTime") == true){
+            searchStr = arguments?.getString("searchItem").toString()
+            filter(searchStr)
+            arguments?.putBoolean("firstTime", false)
+        }
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
