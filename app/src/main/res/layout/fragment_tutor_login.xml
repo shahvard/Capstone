@@ -14,14 +14,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/tutTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
                 android:layout_marginTop="30sp"
                 android:padding="4dp"
-                android:text="SignIn"
-                android:layout_marginStart="10sp"
+                android:text="Tutor SignIn"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="bold"

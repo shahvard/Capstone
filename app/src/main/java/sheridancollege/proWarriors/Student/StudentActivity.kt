@@ -118,10 +118,11 @@ class StudentActivity : AppCompatActivity() {
         Toast.makeText(this, "No new notifications", Toast.LENGTH_SHORT).show()
     }
 
-    fun logoutOnClick(){
+    fun logoutOnClick(item: MenuItem){
         Firebase.auth.signOut()
-        val navController = findNavController(R.id.studentNavHost)
-        navController.navigate(R.id.action_studentHomeFragment_to_homeFragment2)
+
+        var intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
         Toast.makeText(
             applicationContext, "Successfully logged out.",
             Toast.LENGTH_SHORT
@@ -138,8 +139,10 @@ class StudentActivity : AppCompatActivity() {
             dialogBuilder.setMessage("You do not have an access to tutor login. Do you want to apply?")
                 .setPositiveButton("Yes",DialogInterface.OnClickListener{
                     dialog,id->
+                    val bundle = Bundle()
+                    bundle.putBoolean("fromStudent", true)
                     val navController = findNavController(R.id.studentNavHost)
-                    navController.navigate(R.id.action_studentHomeFragment_to_tutorCourseSelection)
+                    navController.navigate(R.id.action_studentHomeFragment_to_tutorCourseSelection, bundle)
                     stu.student.isTutor=true
 
                     val student = Student(

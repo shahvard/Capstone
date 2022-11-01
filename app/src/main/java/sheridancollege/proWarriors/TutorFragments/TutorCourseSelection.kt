@@ -49,6 +49,10 @@ class TutorCourseSelection : Fragment() {
         name.text = "Hello " + arguments?.getString("name").toString() + ","
         username = arguments?.getString("tutorUserName").toString()
 
+        var fromStudent = arguments?.getBoolean("fromStudent")
+        if (fromStudent == true){
+
+        }
 
         database.getReference("Courses").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
