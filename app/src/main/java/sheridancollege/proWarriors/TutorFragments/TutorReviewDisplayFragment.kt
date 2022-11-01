@@ -32,95 +32,101 @@ import java.util.*
 
 class TutorReviewDisplayFragment : Fragment() {
 
-private lateinit var username:String
+    private lateinit var username: String
     private lateinit var database: FirebaseDatabase
-    private lateinit var commentsArray:ArrayList<String>
-    private lateinit var starsArray:ArrayList<String>
+    private lateinit var commentsArray: ArrayList<String>
+    private lateinit var starsArray: ArrayList<String>
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view=inflater.inflate(R.layout.fragment_tutor_display_review, container, false)
+        val view = inflater.inflate(R.layout.fragment_tutor_display_review, container, false)
         val user = Firebase.auth.currentUser
         database = FirebaseDatabase.getInstance()
-        commentsArray= arrayListOf()
-        starsArray= arrayListOf()
-        var rView=     view.findViewById<RecyclerView>(R.id.rvReview)
-        rView.layoutManager= LinearLayoutManager(this.context)
+        commentsArray = arrayListOf()
+        starsArray = arrayListOf()
+        var rView = view.findViewById<RecyclerView>(R.id.rvReview)
+        rView.layoutManager = LinearLayoutManager(this.context)
         rView.setHasFixedSize(true)
+
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-GlobalScope.launch {
-    database.getReference("TutorReviews/$username/Reviews")
-        .addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot!!.exists()) {
-                    for (child in snapshot.children) {
-                        val a = child.value
-                        commentsArray.add(a.toString())
+
+        GlobalScope.launch {
+
+            database.getReference("TutorReviews/$username/Reviews")
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot!!.exists()) {
+                            for (child in snapshot.children) {
+                                val a = child.value
+                                commentsArray.add(a.toString())
+                            }
+                        }
                     }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    database.getReference("TutorReviews/$username/Stars")
-        .addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot!!.exists()) {
-                    for (child in snapshot.children) {
-                        val a = child.value
-                        starsArray.add(a.toString())
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
                     }
-                }
+                })
+
+            database.getReference("TutorReviews/$username/Stars")
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot!!.exists()) {
+                            for (child in snapshot.children) {
+                                val a = child.value
+                                starsArray.add(a.toString())
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+            delay(500)
+            Log.d("commentsArray", commentsArray.toString())
+
+            runOnUiThread {
+                rView.adapter = TutorReviewDisplayAdapter(commentsArray, starsArray)
+
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    delay(500)
-    Log.d("commentsArray",commentsArray.toString())
-
-    runOnUiThread{
-        rView.adapter=TutorReviewDisplayAdapter(commentsArray,starsArray)
-
-    }
-
-}
+        }
         return view
     }
 
 
 }
 
-class TutorReviewDisplayAdapter(private val commentsArray: List<String>, private val starsArray: List<String>) : RecyclerView.Adapter<TutorReviewDisplayAdapter.MyViewHolder>() {
-    class MyViewHolder(itemview:View): RecyclerView.ViewHolder(itemview){
+class TutorReviewDisplayAdapter(
+    private val commentsArray: List<String>,
+    private val starsArray: List<String>
+) : RecyclerView.Adapter<TutorReviewDisplayAdapter.MyViewHolder>() {
+    class MyViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
         val commentView: TextView = itemview.findViewById(R.id.commentsReview)
         val starView: TextView = itemview.findViewById(R.id.starsReview)
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):MyViewHolder {
-        val itemview =LayoutInflater.from(parent.context).inflate(R.layout.tutor_review_display_row,parent,false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemview = LayoutInflater.from(parent.context)
+            .inflate(R.layout.tutor_review_display_row, parent, false)
         return MyViewHolder(itemview)
     }
 
 
-
-    override fun getItemCount()=commentsArray.size
+    override fun getItemCount() = commentsArray.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       val comment:String=commentsArray[position]
-        val star:String=starsArray[position]
-        holder.commentView.text=comment
-        holder.starView.text=star
+        val comment: String = commentsArray[position]
+        val star: String = starsArray[position]
+        holder.commentView.text = comment
+        holder.starView.text = star
     }
 
 }
