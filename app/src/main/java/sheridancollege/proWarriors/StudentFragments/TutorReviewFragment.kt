@@ -10,8 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.navigation.Navigation
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -47,8 +47,9 @@ class TutorReviewFragment : Fragment() {
         database=Firebase.database.reference
 
         username = arguments?.getString("TutorUserName").toString()
-        tutorName.text = arguments?.getString("TutorName").toString()
+        var tutName = arguments?.getString("TutorName").toString()
 
+        tutorName.text = tutName
         storageRef = FirebaseStorage.getInstance().reference.child("profile_images/$username.jpg")
         val localFile = File.createTempFile("tempImage", "jpg")
 
@@ -59,30 +60,26 @@ class TutorReviewFragment : Fragment() {
                     photo.setImageBitmap(bitmap)
                 } else {
                 }
-
             }
                 .addOnFailureListener(){
                     photo.setImageResource(R.drawable.profile)
-
                 }
+        }
+
+        commentTxt.setOnClickListener {
+            commentTxt.text = " "
         }
 
         submitBtn.setOnClickListener(){
             database.child("TutorReviews").child(username).child("Reviews").push().setValue(commentTxt.text.toString())
-            val rating=ratingBar.rating.toFloat()
+            val rating = ratingBar.rating
             database.child("TutorReviews").child(username).child("Stars").push().setValue(rating.toFloat())
-
-
+            val bundle = Bundle()
+            bundle.putString("TutorName",tutName)
+            bundle.putString("TutorUserName",username)
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_tutorReviewFragment_to_studentTutorDescriptionFragment, bundle)
         }
-
-
-
-
-
-
-
-
         return view
     }
-
 }

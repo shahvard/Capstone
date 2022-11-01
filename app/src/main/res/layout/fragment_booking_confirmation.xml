@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,16 +8,42 @@
     android:layout_marginBottom="?actionBarSize"
     tools:context=".StudentFragments.BookingConfirmationFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/thumpsUpImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Booking Confirmation"
-        android:textSize="28dp"
+        android:src="@drawable/thumbsup"
+        android:layout_marginTop="70dp"
+        android:layout_centerVertical="false"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/confirmedText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmed"
+        android:textSize="40dp"
+        android:layout_below="@+id/thumpsUpImg"
+        android:textColor="@color/black"
+        android:textStyle="bold|italic"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_centerInParent="true"/>
 
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="You will recieve an email along with your boooking information."
+        android:layout_below="@+id/confirmedText"
+        android:layout_centerInParent="true"/>
 
+    <Button
+        android:id="@+id/goToHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmedText"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/back_home_button"
+        android:text="Back Home" />
 
-</FrameLayout>
+</RelativeLayout>

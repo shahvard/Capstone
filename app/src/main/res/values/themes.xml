@@ -109,4 +109,8 @@
 
     </style>
 
+    <style name="Button.Blue" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@android:color/holo_blue_dark</item>
+    </style>
+
 </resources>

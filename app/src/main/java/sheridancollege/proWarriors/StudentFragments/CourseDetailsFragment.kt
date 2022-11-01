@@ -87,7 +87,7 @@ class CourseDetailsFragment : Fragment() {
             delay(100)
 
             for (tutor in allTutorsList!!) {
-                database.getReference("TutorCourse/" + tutor)
+                database.getReference("TutorCourse/$tutor")
                     .addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             if (snapshot!!.exists()) {

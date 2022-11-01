@@ -150,14 +150,14 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     alert.show()
                 }
             }*/
-            "Logout"->{
+            /*"Logout"->{
                 Firebase.auth.signOut()
                 Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment_to_studentLoginFragment2)
                 Toast.makeText(
                     activity, "Successfully logged out.",
                     Toast.LENGTH_SHORT
                 ).show()
-            }
+            }*/
         }
         return true
     }

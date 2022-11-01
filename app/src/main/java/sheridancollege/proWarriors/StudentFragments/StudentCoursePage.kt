@@ -55,7 +55,7 @@ class StudentCoursePage : Fragment() {
             username = email?.split("@")?.get(0).toString()
         }
 
-        database.getReference("StudentCourse/" + username)
+        database.getReference("StudentCourse/$username")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot!!.exists()) {

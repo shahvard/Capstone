@@ -29,44 +29,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-
-
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerTutor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/viewPagerTutor"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
 
 </RelativeLayout>
-
-    <!--
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rView"
-            android:layout_width="387dp"
-            android:layout_height="465dp"
-            android:layout_marginTop="156dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/pastBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="86dp"
-            android:text="Past"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/futureBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="101dp"
-            android:layout_marginTop="86dp"
-            android:text="Upcoming"
-            app:layout_constraintStart_toEndOf="@+id/pastBtn"
-            app:layout_constraintTop_toTopOf="parent" />-->

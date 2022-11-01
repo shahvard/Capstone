@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_tutorCourseSelection"
             app:destination="@id/tutorCourseSelection" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_studentDetailsFragment"
+            app:destination="@id/studentDetailsFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
     </fragment>
     <fragment
         android:id="@+id/studentDetailsFragment"
@@ -43,9 +49,6 @@
         <action
             android:id="@+id/action_studentDetailsFragment_to_studentHomeFragment"
             app:destination="@id/studentHomeFragment" />
-        <action
-            android:id="@+id/action_studentDetailsFragment_to_studentLoginFragment2"
-            app:destination="@id/studentLoginFragment2" />
         <action
             android:id="@+id/action_studentDetailsFragment_self"
             app:destination="@id/studentDetailsFragment" />
@@ -58,7 +61,7 @@
     <fragment
         android:id="@+id/studentTutorDescriptionFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentTutorDescriptionFragment"
-        android:label="Tutor Info"
+        android:label="Tutor Details"
         tools:layout="@layout/fragment_student_tutor_description">
         <action
             android:id="@+id/action_studentTutorDescriptionFragment_to_studentAppointmentBookingFragment"
@@ -76,13 +79,13 @@
         android:label="Appointment Booking"
         tools:layout="@layout/fragment_student_appointment_booking">
         <action
-            android:id="@+id/action_studentAppointmentBookingFragment_to_studentHomeFragment"
-            app:destination="@id/studentHomeFragment" />
+            android:id="@+id/action_studentAppointmentBookingFragment_to_bookingConfirmationFragment"
+            app:destination="@id/bookingConfirmationFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentCoursePage"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentCoursePage"
-        android:label="Courses"
+        android:label="Course List"
         tools:layout="@layout/fragment_student_course_page">
         <action
             android:id="@+id/action_studentCoursePage_to_courseDetailsFragment"
@@ -91,7 +94,7 @@
     <fragment
         android:id="@+id/courseDetailsFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.CourseDetailsFragment"
-        android:label="Couurse Details"
+        android:label="Course Details"
         tools:layout="@layout/fragment_course_details">
         <action
             android:id="@+id/action_courseDetailsFragment_to_studentTutorDescriptionFragment"
@@ -100,7 +103,7 @@
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="sheridancollege.proWarriors.Home.AboutUsFragment"
-        android:label="fragment_about_us"
+        android:label="About Us"
         tools:layout="@layout/fragment_about_us" />
         android:id="@+id/settingsFragment"
         android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
@@ -109,18 +112,22 @@
     <fragment
         android:id="@+id/supportFragment"
         android:name="sheridancollege.proWarriors.Support.SupportFragment"
-        android:label="Contact Us"
+        android:label="Support"
         tools:layout="@layout/fragment_support" />
     <fragment
         android:id="@+id/settingsFragment3"
         android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/tutorReviewFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.TutorReviewFragment"
-        android:label="fragment_tutor_review"
-        tools:layout="@layout/fragment_tutor_review" />
+        android:label="Tutor Review"
+        tools:layout="@layout/fragment_tutor_review">
+        <action
+            android:id="@+id/action_tutorReviewFragment_to_studentTutorDescriptionFragment"
+            app:destination="@id/studentTutorDescriptionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studentAppointmentDisplayFragment"
         android:name="sheridancollege.proWarriors.StudentFragments.StudentAppointmentDisplayFragment"
@@ -153,4 +160,18 @@
             android:id="@+id/action_tutorAvailabilityFragment3_to_studentHomeFragment"
             app:destination="@id/studentHomeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/bookingConfirmationFragment"
+        android:name="sheridancollege.proWarriors.StudentFragments.BookingConfirmationFragment"
+        android:label="Confirmation Page"
+        tools:layout="@layout/fragment_booking_confirmation">
+        <action
+            android:id="@+id/action_bookingConfirmationFragment_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="sheridancollege.proWarriors.Home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

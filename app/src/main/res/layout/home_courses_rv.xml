@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardview"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="140dp"
     android:layout_marginTop="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
@@ -33,7 +33,7 @@
         android:maxWidth="90dp"
         android:maxHeight="30dp"
         android:textColor="@color/white"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="100dp"
         android:layout_marginLeft="0dp"/>
 
 

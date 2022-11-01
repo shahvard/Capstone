@@ -2,7 +2,6 @@ package sheridancollege.proWarriors.StudentFragments
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,11 +19,8 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.*
-import sheridancollege.proWarriors.Student.stu.Companion.student
 import sheridancollege.proWarriors.Tutor.Tutor
 import sheridancollege.proWarriors.Tutor.TutorEntity
 import sheridancollege.proWarriors.Tutor.tut
@@ -36,23 +32,33 @@ import kotlin.collections.ArrayList
 
 class StudentHomeFragment : Fragment() {
 
-    private lateinit var headingText:TextView
-    private lateinit var tutorName:TextView
+    private lateinit var headingText: TextView
+    private lateinit var tutorName: TextView
     private lateinit var aptDate: TextView
-    private lateinit var aptTime:TextView
-    private lateinit var seeAppointments:TextView
-    private lateinit var seeCourses:TextView
-    private lateinit var courseIconRV:RecyclerView
-    private lateinit var studentPhoto:ImageView
-    private lateinit var tutorPhoto:ImageView
-    private var images:List<Int> = listOf(R.drawable.computer, R.drawable.chemistry, R.drawable.civil, R.drawable.gaming, R.drawable.law, R.drawable.mechanical, R.drawable.childcare, R.drawable.sports, R.drawable.all )
+    private lateinit var aptTime: TextView
+    private lateinit var seeAppointments: TextView
+    private lateinit var seeCourses: TextView
+    private lateinit var courseIconRV: RecyclerView
+    private lateinit var studentPhoto: ImageView
+    private lateinit var tutorPhoto: ImageView
+    private var images: List<Int> = listOf(
+        R.drawable.computer,
+        R.drawable.chemistry,
+        R.drawable.civil,
+        R.drawable.gaming,
+        R.drawable.law,
+        R.drawable.mechanical,
+        R.drawable.childcare,
+        R.drawable.sports,
+        R.drawable.all
+    )
     private lateinit var storageRef: StorageReference
     private var iconArrayList: ArrayList<StudentHome> = arrayListOf<StudentHome>()
-
     private lateinit var username: String
     private lateinit var database: FirebaseDatabase
     private lateinit var allAppointmentsList: ArrayList<String>
     private lateinit var databaseref: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -74,19 +80,18 @@ class StudentHomeFragment : Fragment() {
         allAppointmentsList = arrayListOf()
         courseIconRV.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
         courseIconRV.setHasFixedSize(true)
-        //courseIconRV.adapter = StudentHomeCourseAdapter(images)
 
-        for (i in images){
-            when(i){
-                R.drawable.computer-> iconArrayList.add(StudentHome("Computer", R.drawable.computer))
-                R.drawable.chemistry-> iconArrayList.add(StudentHome("Chemistry", R.drawable.chemistry))
-                R.drawable.civil-> iconArrayList.add(StudentHome("Civil", R.drawable.civil))
-                R.drawable.gaming-> iconArrayList.add(StudentHome("Gaming", R.drawable.gaming))
-                R.drawable.law-> iconArrayList.add(StudentHome("Law", R.drawable.law))
-                R.drawable.mechanical-> iconArrayList.add(StudentHome("Mechanical", R.drawable.mechanical))
-                R.drawable.childcare-> iconArrayList.add(StudentHome("Childcare", R.drawable.childcare))
-                R.drawable.sports-> iconArrayList.add(StudentHome("Sports", R.drawable.sports))
-                R.drawable.all-> iconArrayList.add(StudentHome("All", R.drawable.all))
+        for (i in images) {
+            when (i) {
+                R.drawable.computer -> iconArrayList.add(StudentHome("Computer", R.drawable.computer))
+                R.drawable.chemistry -> iconArrayList.add(StudentHome("Chemistry", R.drawable.chemistry))
+                R.drawable.civil -> iconArrayList.add(StudentHome("Civil", R.drawable.civil))
+                R.drawable.gaming -> iconArrayList.add(StudentHome("Gaming", R.drawable.gaming))
+                R.drawable.law -> iconArrayList.add(StudentHome("Law", R.drawable.law))
+                R.drawable.mechanical -> iconArrayList.add(StudentHome("Mechanical", R.drawable.mechanical))
+                R.drawable.childcare -> iconArrayList.add(StudentHome("Childcare", R.drawable.childcare))
+                R.drawable.sports -> iconArrayList.add(StudentHome("Sports", R.drawable.sports))
+                R.drawable.all -> iconArrayList.add(StudentHome("All", R.drawable.all))
             }
         }
 
@@ -100,20 +105,28 @@ class StudentHomeFragment : Fragment() {
             username = email?.split("@")?.get(0).toString()
         }
 
-        seeAppointments.setOnClickListener(){
-            Navigation.findNavController(requireView()).navigate(R.id.action_studentHomeFragment_to_studentAppointmentDisplayFragment)
+
+        studentPhoto.setOnClickListener {
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_studentHomeFragment_to_studentDetailsFragment)
         }
 
-        seeCourses.setOnClickListener(){
-            Navigation.findNavController(requireView()).navigate(R.id.action_studentHomeFragment_to_studentCoursePage)
+        seeAppointments.setOnClickListener() {
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_studentHomeFragment_to_studentAppointmentDisplayFragment)
+        }
+
+        seeCourses.setOnClickListener() {
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_studentHomeFragment_to_studentCoursePage)
 
         }
 
         storageRef.child("profile_images/$username.jpg").getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-            if (bitmap != null){
+            if (bitmap != null) {
                 studentPhoto.setImageBitmap(bitmap)
-            }else{
+            } else {
                 studentPhoto.setImageResource(R.drawable.profile)
             }
         }
@@ -127,7 +140,7 @@ class StudentHomeFragment : Fragment() {
                 name = student.firstName.toString() + " " + student.lastName.toString()
             }
             //delay(600)
-            runOnUiThread{
+            runOnUiThread {
                 headingText.text = name
             }
 
@@ -142,6 +155,7 @@ class StudentHomeFragment : Fragment() {
                             }
                         }
                     }
+
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
@@ -165,11 +179,10 @@ class StudentHomeFragment : Fragment() {
                                 var endTime = data.child("endTime").value.toString()
                                 var date = data.child("date").value.toString()
 
-                                val cmpDate = Date().compareTo(  simpleDate.parse(date))
+                                val cmpDate = Date().compareTo(simpleDate.parse(date))
 
                                 when {
                                     cmpDate <= 0 -> {
-                                        Log.d("This should not be displayed", "Yes")
                                         val simpleTime = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
                                         val currentTimeWithDate = simpleTime.format(Date())
                                         var currentTime =
@@ -179,35 +192,33 @@ class StudentHomeFragment : Fragment() {
                                         //cmpTime < 0 -> {
                                         var tutorUserName =
                                             data.child("tutorUserName").value.toString()
-                                        Log.d("DATATAAAA", tutorUserName)
                                         time = "$startTime to $endTime"
                                         TutorEntity.getTutorDetails(tutorUserName)
                                         GlobalScope.launch {
-                                        delay(800)
+                                            delay(800)
 
-                                        var tutor: Tutor = tut.tutor
-                                        runOnUiThread {
+                                            var tutor: Tutor = tut.tutor
+                                            runOnUiThread {
 
-                                            if (tutor != null) {
-                                                tutorName.text =
-                                                    tutor.firstName + " " + tutor.lastName
+                                                if (tutor != null) {
+                                                    tutorName.text =
+                                                        tutor.firstName + " " + tutor.lastName
+                                                }
                                             }
                                         }
-                                    }
-                                                val localFile2 = File.createTempFile("tutorImage", "jpg")
-                                                storageRef.child("profile_images/$tutorUserName.jpg").getFile(localFile2).addOnSuccessListener {
-                                                    val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                                                    if (bitmap != null){
-                                                        tutorPhoto.setImageBitmap(bitmap)
-                                                    }else{
-                                                        tutorPhoto.setImageResource(R.drawable.profile)
-                                                    }
-                                                }
-                                                aptTime.text = time
-                                                aptDate.text = date
-
-                                         //   }
-                                       // }
+                                        val localFile2 = File.createTempFile("tutorImage", "jpg")
+                                        storageRef.child("profile_images/$tutorUserName.jpg")
+                                            .getFile(localFile2).addOnSuccessListener {
+                                            val bitmap =
+                                                BitmapFactory.decodeFile(localFile.absolutePath)
+                                            if (bitmap != null) {
+                                                tutorPhoto.setImageBitmap(bitmap)
+                                            } else {
+                                                tutorPhoto.setImageResource(R.drawable.profile)
+                                            }
+                                        }
+                                        aptTime.text = time
+                                        aptDate.text = date
                                     }
                                 }
                             }

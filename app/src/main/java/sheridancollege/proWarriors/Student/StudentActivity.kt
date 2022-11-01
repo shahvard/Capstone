@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -29,6 +30,7 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import sheridancollege.proWarriors.Home.MainActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Tutor.Tutor
 import sheridancollege.proWarriors.Tutor.TutorActivity
@@ -97,7 +99,6 @@ class StudentActivity : AppCompatActivity() {
             head.text = destination.label
         }
 
-
         navController.addOnDestinationChangedListener(listener)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.studentHomeFragment, R.id.studentDetailsFragment, R.id.courseDetailsFragment), drawerLayout)
         navView.setupWithNavController(navController)
@@ -113,10 +114,23 @@ class StudentActivity : AppCompatActivity() {
         startActivity(Intent(applicationContext, CometChatUI::class.java))
     }
 
+    fun notificationsOnClick(item: MenuItem){
+        Toast.makeText(this, "No new notifications", Toast.LENGTH_SHORT).show()
+    }
+
+    fun logoutOnClick(){
+        Firebase.auth.signOut()
+        val navController = findNavController(R.id.studentNavHost)
+        navController.navigate(R.id.action_studentHomeFragment_to_homeFragment2)
+        Toast.makeText(
+            applicationContext, "Successfully logged out.",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
     fun viewAsTutorOnClick(item: MenuItem){
         if(stu.student.isTutor == true){
             var intent = Intent(this, TutorActivity::class.java)
-           // intent.putExtra("sName", StudentEntity.student.firstName)
             startActivity(intent)
         }
         else{
