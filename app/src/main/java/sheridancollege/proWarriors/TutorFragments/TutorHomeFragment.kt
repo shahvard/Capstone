@@ -30,7 +30,7 @@ class TutorHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tutor_home, container, false)
-        // Inflate the layout for this fragment
+
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
@@ -41,7 +41,6 @@ class TutorHomeFragment : Fragment() {
 
         GlobalScope.launch {
             delay(600L)
-
             if (tutor != null) {
                 heading.text = "Welcome "+ tutor.firstName.toString()
             }
@@ -50,8 +49,10 @@ class TutorHomeFragment : Fragment() {
             }
         }
         view.findViewById<Button>(R.id.setAvailability).setOnClickListener(){
+            val bundle = Bundle()
+            bundle.putBoolean("edit", true)
             Navigation.findNavController(requireView())
-                .navigate(R.id.action_tutorHomeFragment_to_tutorAvailabilityFragment)
+                .navigate(R.id.action_tutorHomeFragment_to_tutorAvailabilityFragment, bundle)
 
         }
 
@@ -59,52 +60,6 @@ class TutorHomeFragment : Fragment() {
             Navigation.findNavController(requireView()).navigate(R.id.action_tutorHomeFragment_to_tutorAppointmentDisplayFragment)
 
         }
-        //setHasOptionsMenu(true)
         return view
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.tutor_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.title.toString()) {
-            /*"Profile" -> {
-                Navigation.findNavController(requireView())
-                    .navigate(R.id.action_tutorHomeFragment_to_tutorDetailsFragment)
-            }*/
-            /* "View As Tutor" -> {
-                if(tut == true){
-                    var intent = Intent(this, TutorActivity::class.java)
-                    intent.putExtra("sName", StudentEntity.student.firstName)
-                    startActivity(intent)
-                }
-                else{
-                    val dialogBuilder = AlertDialog.Builder(this)
-                    dialogBuilder.setMessage("You do not have an access to tutor login.")
-                        .setCancelable(false)
-                        .setNegativeButton("Okay", DialogInterface.OnClickListener {
-                                dialog, id -> dialog.cancel()
-                        })
-                    val alert = dialogBuilder.create()
-                    alert.setTitle("Tutor Access denied.")
-                    alert.show()
-                }
-            }*/
-            "Logout" -> {
-                Firebase.auth.signOut()
-                Navigation.findNavController(requireView())
-                    .navigate(R.id.action_tutorHomeFragment_to_tutorLoginFragment2)
-                Toast.makeText(
-                    activity, "Successfully logged out.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            "Chat"->{
-                startActivity(Intent(this.requireContext(), CometChatUI::class.java))
-            }
-        }
-        return true
     }
 }

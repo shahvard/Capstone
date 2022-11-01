@@ -3,18 +3,15 @@
     <item
         android:title="Home"
         android:icon="@drawable/icons_home"
-
-        />
+        android:id="@+id/tutorHomeFragment" />
     <item
         android:title="Notifications"
         android:icon="@drawable/icons_bell"
-
-
-        />
+        android:onClick="tutorNotifications" />
     <item
         android:title="Chat"
-        android:icon="@drawable/icons_chat"/>
-
+        android:icon="@drawable/icons_chat"
+        android:onClick="tutorChatMenuClick"/>
 
     <item android:title="Others">
         <menu>
@@ -42,12 +39,13 @@
         <menu>
             <item
                 android:title="View as Tutor"
-                android:onClick="viewAsStudentOnClick"
-                >
-            </item>
+                android:onClick="viewAsStudentOnClick"/>
             <item android:id="@+id/tutorDetailsFragment"
                 android:title="Profile" android:icon="@drawable/icons_user"/>
-            <item android:title="Logout" android:icon="@drawable/icons_logout"
+            <item
+                android:title="Logout"
+                android:icon="@drawable/icons_logout"
+                android:onClick="tutorLogOut"
                 />
         </menu>
     </item>

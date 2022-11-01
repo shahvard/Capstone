@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
+            app:layout_goneMarginTop="100dp"
             android:padding="4dp"
             android:text="Please specify the time you would be available to conduct tutoring sessions."
             android:textColor="@color/black"
@@ -55,7 +56,6 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@+id/tutorDesc" />
 
 

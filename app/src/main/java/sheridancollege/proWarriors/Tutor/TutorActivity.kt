@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,6 +18,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
@@ -58,7 +60,6 @@ class TutorActivity : AppCompatActivity() {
         val head = findViewById<TextView>(R.id.pageTitle)
         val localFile = File.createTempFile("tempImage", "jpg")
 
-        Log.d("USERNAME", username)
         GlobalScope.launch {
             TutorEntity.getTutorDetails(username)
             var tutor: Tutor = tut.tutor
@@ -123,6 +124,22 @@ class TutorActivity : AppCompatActivity() {
             alert.show()
         }
 
+    }
+
+    fun tutorLogOut(item: MenuItem) {
+        Firebase.auth.signOut()
+        val navController = findNavController(R.id.tutorNavHost)
+        navController.navigate(R.id.action_tutorHomeFragment_to_homeFragment3)
+        Toast.makeText(
+            applicationContext, "Successfully logged out.",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+    fun tutorNotifications(item: MenuItem) {
+        Toast.makeText(this, "No new notifications", Toast.LENGTH_SHORT).show()
+    }
+    fun tutorChatMenuClick(item: MenuItem) {
+        startActivity(Intent(applicationContext, CometChatUI::class.java))
     }
 
 }

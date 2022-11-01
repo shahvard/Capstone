@@ -39,17 +39,12 @@ class TutorAvailabilityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tutor_availability, container, false)
-        /*val user = Firebase.auth.currentUser
-        user?.let {
-            val email = user.email
-            username = email?.split("@")?.get(0).toString()
-        }*/
+
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
         }
-        //username = arguments?.getString("tutorUserName").toString()
         database = Firebase.database.reference
         availList = arrayListOf()
         heading = view.findViewById(R.id.timeHeading)
@@ -65,6 +60,14 @@ class TutorAvailabilityFragment : Fragment() {
         confirmButton = view.findViewById(R.id.confirm)
         addButton = view.findViewById(R.id.addButton)
         notAvail = view.findViewById(R.id.notAvailable)
+
+        var edit = arguments?.getBoolean("edit")
+
+        if (edit == true){
+            view.findViewById<TextView>(R.id.nameHeading).visibility = View.GONE
+            view.findViewById<TextView>(R.id.tutorDesc).visibility = View.GONE
+            edit = false
+        }
         var provided:Int = 0
 
         sunday.setOnClickListener {
