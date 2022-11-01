@@ -31,13 +31,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10sp"
         android:padding="4dp"
+        android:layout_marginTop="?actionBarSize"
         android:text="What courses fall within your expertise?"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tutorSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameHeading" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
         android:id="@+id/tutorSearch"
