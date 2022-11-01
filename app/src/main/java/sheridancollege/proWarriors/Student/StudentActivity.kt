@@ -1,13 +1,11 @@
 package sheridancollege.proWarriors.Student
 
-import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.cometchat.pro.uikit.ui_components.cometchat_ui.CometChatUI
@@ -34,7 +31,6 @@ import sheridancollege.proWarriors.Home.MainActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Tutor.Tutor
 import sheridancollege.proWarriors.Tutor.TutorActivity
-import sheridancollege.proWarriors.Tutor.tut
 import java.io.File
 
 class StudentActivity : AppCompatActivity() {
@@ -156,7 +152,6 @@ class StudentActivity : AppCompatActivity() {
                     )
                     database.child("Students").child(username!!)
                         .setValue(student)
-
                     val tutor= Tutor(
                         stu.student.email?.split("@")?.get(0),
                         stu.student.firstName,
@@ -166,17 +161,13 @@ class StudentActivity : AppCompatActivity() {
                         stu.student.phoneNo.toString(),
                         stu.student.isTutor
                     )
-
                     database.child("Tutors").child(username!!)
                         .setValue(tutor)
-
-
                 })
                 .setCancelable(false)
                 .setNegativeButton("NO", DialogInterface.OnClickListener {
                         dialog, id -> dialog.cancel()
                 })
-
             val alert = dialogBuilder.create()
             alert.setTitle("Tutor Access denied.")
             alert.show()

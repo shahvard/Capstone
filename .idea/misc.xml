@@ -121,7 +121,7 @@
         <entry key="app/src/main/res/layout/fragment_tutor_application.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/fragment_tutor_appointment_display.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_tutor_availability.xml" value="0.21385040283203133" />
-        <entry key="app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.4020233154296875" />
         <entry key="app/src/main/res/layout/fragment_tutor_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_future_appointment.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.15353260869565216" />
