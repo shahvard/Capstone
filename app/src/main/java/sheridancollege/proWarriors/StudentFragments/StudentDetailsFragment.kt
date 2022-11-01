@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.TextView
@@ -102,6 +103,9 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             add.text = student.address
             id.text = student.email
             idInfo.text = student.email
+            if(student.isTutor==false){
+                view.findViewById<Button>(R.id.setAvailability).visibility = View.GONE
+            }
         }
         else{
             Toast.makeText(activity,"Student info not found. Please try again later.", Toast.LENGTH_SHORT).show()
@@ -125,42 +129,6 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         inflater?.inflate(R.menu.student_details_menu, menu)
     }
 
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.title.toString()){
-            "Home"->{
-                return NavigationUI.onNavDestinationSelected(item,
-                    requireView().findNavController()) || super.onOptionsItemSelected(item)
-            }
-          /* *//* "View As Tutor" -> {
-                if(student.isTutor == true){
-                    var intent = Intent(activity?.applicationContext, TutorActivity::class.java)
-                    intent.putExtra("TutorName", student.firstName)
-                    startActivity(intent)
-                }*//*
-                else{
-                    val dialogBuilder = AlertDialog.Builder(activity?.applicationContext!!)
-                    dialogBuilder.setMessage("You do not have an access to tutor login.")
-                        .setCancelable(false)
-                        .setNegativeButton("Okay", DialogInterface.OnClickListener {
-                                dialog, id -> dialog.cancel()
-                        })
-                    val alert = dialogBuilder.create()
-                    alert.setTitle("Tutor Access denied.")
-                    alert.show()
-                }
-            }*/
-            /*"Logout"->{
-                Firebase.auth.signOut()
-                Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment_to_studentLoginFragment2)
-                Toast.makeText(
-                    activity, "Successfully logged out.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }*/
-        }
-        return true
-    }
 
     private fun hasLocationAndContactsPermission(): Boolean {
         return EasyPermissions.hasPermissions(requireContext(), *LOCATION_AND_CONTACTS)
@@ -202,11 +170,11 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 filepath.putFile(resultUri).addOnCompleteListener{ task ->
                     if (task.isSuccessful){
                         Log.d("HELLO", "inside first")
-                        val download_url = task.result.storage.downloadUrl.toString()
+                        val download_url = task.result?.storage?.downloadUrl.toString()
                         val uploadTask = thumb_filepath.putBytes(thumb_byte)
 
                         uploadTask.addOnCompleteListener{
-                            val thumb_downUrl = it.result.storage.downloadUrl.toString()
+                            val thumb_downUrl = it.result?.storage?.downloadUrl.toString()
                             if(it.isSuccessful){
                                 Log.d("HELLO", "inside second")
                                 val update_hashMap = HashMap<String, Any>()
