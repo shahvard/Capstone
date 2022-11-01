@@ -96,6 +96,7 @@
         <entry key="app/src/main/res/layout/activity_tutor_content.xml" value="0.31875" />
         <entry key="app/src/main/res/layout/activity_tutor_details.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_tutor_home.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/appointment_view_row.xml" value="0.335" />
         <entry key="app/src/main/res/layout/content_profile.xml" value="0.10916919959473151" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.1" />
@@ -121,10 +122,11 @@
         <entry key="app/src/main/res/layout/fragment_tutor_application.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/fragment_tutor_appointment_display.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_tutor_availability.xml" value="0.21385040283203133" />
-        <entry key="app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tutor_course_selection.xml" value="0.4020233154296875" />
         <entry key="app/src/main/res/layout/fragment_tutor_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tutor_display_review.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/fragment_tutor_future_appointment.xml" value="0.22056159420289856" />
-        <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.30953979492187506" />
         <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_tutor_past_appointment.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_tutor_review.xml" value="0.3347839355468751" />
@@ -142,6 +144,7 @@
         <entry key="app/src/main/res/menu/student_details_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/student_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/student_navigation_drawer.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/menu/tutor_bottom_menu.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/menu/tutor_details_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/tutor_menu.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/tutor_navigation_drawer.xml" value="0.17314814814814813" />

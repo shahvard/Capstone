@@ -4,85 +4,226 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TutorFragments.TutorHomeFragment">
+    android:layout_marginTop="?actionBarSize"
+    android:layout_marginBottom="?actionBarSize"
+    android:background="@color/primary"
+    tools:context=".StudentFragments.StudentHomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#4A40739C"
-        android:paddingTop="?actionBarSize"
-        tools:context=".Tutor.TutorActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/headingText"
-            android:layout_width="219dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="96dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Welcome $Teacher"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="411dp"
-            android:layout_height="264dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headingText">
-
-            <ListView
-                android:id="@+id/course_list"
-                android:layout_width="match_parent"
-                android:layout_height="269dp"
-                app:layout_column="0"
-                app:layout_row="0" />
-
-        </androidx.gridlayout.widget.GridLayout>
-
-        <TextView
-            android:id="@+id/studentNames"
-            android:layout_width="425dp"
-            android:layout_height="255dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Students"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-            app:layout_constraintVertical_bias="0.145" />
-
-        <Button
-            android:id="@+id/setAvailability"
+        <RelativeLayout
+            android:id="@+id/rvApt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="216dp"
-            android:layout_marginTop="36dp"
-            android:text="Edit Availability"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/studentNames" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="375dp"
+            android:background="@drawable/homepage_card_bg"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/headingNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="# of appointments"
+                android:textColor="@color/white"
+                android:textSize="21dp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/headingNum"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/homepage_card_bg">
+
+                <TextView
+                    android:id="@+id/aptNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="32dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="375dp"
+            android:layout_toRightOf="@+id/rvApt"
+            android:background="@drawable/homepage_card_bg"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/headRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Average Ratings"
+                android:textColor="@color/white"
+                android:textSize="21dp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/headRate"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/homepage_card_bg">
+
+                <TextView
+                    android:id="@+id/starsNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="32dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/timeHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="26dp"
+            android:text="Good morning,"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/topName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timeHead"
+            android:layout_marginTop="2dp"
+            android:layout_toLeftOf="@+id/imgHome"
+            android:text="Vardhman"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgHome"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/timeHead"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/upcomingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topName"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="35dp"
+            android:text="Upcoming Appointment"
+            android:textColor="@color/black"
+
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/seeAllTutorAppointments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="36dp"
-            android:text="see All"
-            app:layout_constraintStart_toEndOf="@+id/headingText"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_below="@+id/topName"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/upcomingLabel"
+            android:text="SEE ALL"
+            android:textColor="@color/purple"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:id="@+id/rv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/upcomingLabel"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/homepage_card_bg"
+            android:padding="10dp">
 
+
+            <TextView
+                android:id="@+id/tutorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Shubh Patel"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/courseName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tutorName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="0dp"
+                android:text="Course"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/courseName"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/aptDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Mar 10, 2022"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/aptTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="75dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/aptDate"
+                    android:text="5:00 PM to 5:15 PM"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
 </FrameLayout>

@@ -28,6 +28,7 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import sheridancollege.proWarriors.Home.MainActivity
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.Student
 import sheridancollege.proWarriors.Student.StudentActivity
@@ -95,7 +96,7 @@ class TutorActivity : AppCompatActivity() {
             head.text = destination.label
         }
         navController.addOnDestinationChangedListener(listener)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.tutorHomeFragment, R.id.tutorDetailsFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.tutorHomeFragment, R.id.tutorDetailsFragment, R.id.tutorReviewDisplayFragment), drawerLayout)
         navView.setupWithNavController(navController)
         bottomView.setupWithNavController(navController)
     }
@@ -129,11 +130,8 @@ class TutorActivity : AppCompatActivity() {
     fun tutorLogOut(item: MenuItem) {
         Firebase.auth.signOut()
         val navController = findNavController(R.id.tutorNavHost)
-        navController.navigate(R.id.action_tutorHomeFragment_to_homeFragment3)
-        Toast.makeText(
-            applicationContext, "Successfully logged out.",
-            Toast.LENGTH_SHORT
-        ).show()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
     fun tutorNotifications(item: MenuItem) {
         Toast.makeText(this, "No new notifications", Toast.LENGTH_SHORT).show()

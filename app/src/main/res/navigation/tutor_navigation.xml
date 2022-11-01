@@ -10,9 +10,6 @@
         android:name="sheridancollege.proWarriors.TutorFragments.TutorHomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_tutor_home">
-        <action
-            android:id="@+id/action_tutorHomeFragment_to_tutorAvailabilityFragment"
-            app:destination="@id/tutorAvailabilityFragment" />
 
         <action
             android:id="@+id/action_tutorHomeFragment_to_settingsFragment2"
@@ -29,6 +26,12 @@
         <action
             android:id="@+id/action_tutorHomeFragment_to_homeFragment3"
             app:destination="@id/homeFragment3" />
+        <action
+        android:id="@+id/action_tutorHomeFragment_to_tutorDetailsFragment"
+        app:destination="@id/tutorDetailsFragment" />
+        <action
+            android:id="@+id/action_tutorHomeFragment_to_tutorReviewDisplayFragment"
+            app:destination="@id/tutorReviewDisplayFragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorDetailsFragment"
@@ -41,12 +44,19 @@
         <action
             android:id="@+id/action_tutorDetailsFragment_to_tutorHomeFragment"
             app:destination="@id/tutorHomeFragment" />
+        <action
+            android:id="@+id/action_tutorDetailsFragment_to_tutorAvailabilityFragment"
+            app:destination="@id/tutorAvailabilityFragment" />
     </fragment>
     <fragment
         android:id="@+id/tutorAvailabilityFragment"
         android:name="sheridancollege.proWarriors.TutorFragments.TutorAvailabilityFragment"
         android:label="Edit Availablitiy"
-        tools:layout="@layout/fragment_tutor_availability" />
+        tools:layout="@layout/fragment_tutor_availability" >
+        <action
+            android:id="@+id/action_tutorAvailabilityFragment_to_tutorHomeFragment"
+            app:destination="@id/tutorHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment2"
         android:name="sheridancollege.proWarriors.Settings.SettingsFragment"
@@ -72,4 +82,9 @@
         android:name="sheridancollege.proWarriors.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/tutorReviewDisplayFragment"
+        android:name="sheridancollege.proWarriors.TutorFragments.TutorReviewDisplayFragment"
+        android:label="fragment_tutor_display_review"
+        tools:layout="@layout/fragment_tutor_display_review" />
 </navigation>

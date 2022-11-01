@@ -132,19 +132,36 @@ class TutorAvailabilityFragment : Fragment() {
             if (provided < 7){
                 Toast.makeText(requireContext(), "Please provide availability for each day to continue.", Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(requireContext(), "Congratulations tutor! You have completed whole boarding process.", Toast.LENGTH_SHORT).show()
-                builder.setMessage("Redirecting to login, please login using sheridan email and password.")
-                    .setCancelable(false)
-                    .setPositiveButton("Yes") { dialog, id ->
-                        Navigation.findNavController(requireView())
-                            .navigate(R.id.action_tutorAvailabilityFragment2_to_tutorLoginFragment)
-                    }
-                    .setNegativeButton("No"){ dialog, id ->
-                        dialog.cancel()
-                    }
-                    .setTitle("Confirm the availability has been provided.")
-                val alert = builder.create()
-                alert.show()
+                if (edit == true){
+                    Toast.makeText(requireContext(), "Congratulations tutor! You have completed the boarding process.", Toast.LENGTH_SHORT).show()
+                    builder.setMessage("Redirecting to login, please login using sheridan email and password.")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes") { dialog, id ->
+                            Navigation.findNavController(requireView())
+                                .navigate(R.id.action_tutorAvailabilityFragment_to_tutorHomeFragment)
+                        }
+                        .setNegativeButton("No"){ dialog, id ->
+                            dialog.cancel()
+                        }
+                        .setTitle("Confirm the availability has been provided.")
+                    val alert = builder.create()
+                    alert.show()
+                }else{
+                    Toast.makeText(requireContext(), "Congratulations tutor! You have completed the boarding process.", Toast.LENGTH_SHORT).show()
+                    builder.setMessage("Redirecting to login, please login using sheridan email and password.")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes") { dialog, id ->
+                            Navigation.findNavController(requireView())
+                                .navigate(R.id.action_tutorAvailabilityFragment2_to_tutorLoginFragment)
+                        }
+                        .setNegativeButton("No"){ dialog, id ->
+                            dialog.cancel()
+                        }
+                        .setTitle("Confirm the availability has been provided.")
+                    val alert = builder.create()
+                    alert.show()
+                }
+
             }
         }
         return view

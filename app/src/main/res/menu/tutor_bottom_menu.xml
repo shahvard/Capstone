@@ -9,7 +9,8 @@
         />
 
     <item
-        android:title="Students"
+        android:id="@+id/tutorReviewDisplayFragment"
+        android:title="Reviews"
         android:icon="@drawable/icons_users"
         />
 

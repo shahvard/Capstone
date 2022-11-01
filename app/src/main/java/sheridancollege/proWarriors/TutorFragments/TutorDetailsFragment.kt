@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.TextView
@@ -69,6 +70,14 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         var back = view.findViewById<TextView>(R.id.backToHome)
         mImage = view.findViewById<ImageView>(R.id.profileImage)
 
+        view.findViewById<Button>(R.id.setAvailability).setOnClickListener() {
+            val bundle = Bundle()
+            bundle.putBoolean("edit", true)
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_tutorDetailsFragment_to_tutorAvailabilityFragment, bundle)
+
+        }
+
         back.setOnClickListener {
             Navigation.findNavController(requireView()).navigate(R.id.action_tutorDetailsFragment_to_tutorHomeFragment)
 
@@ -108,54 +117,11 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         storageRef.getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
             mImage.setImageBitmap(bitmap)
-            //Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_self)
         }
 
-        //setHasOptionsMenu(true)
         return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.tutor_details_menu, menu)
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.title.toString()){
-            "Home"->{
-                return NavigationUI.onNavDestinationSelected(item,
-                    requireView().findNavController()) || super.onOptionsItemSelected(item)
-            }
-            /* *//* "View As Tutor" -> {
-                if(student.isTutor == true){
-                    var intent = Intent(activity?.applicationContext, TutorActivity::class.java)
-                    intent.putExtra("TutorName", student.firstName)
-                    startActivity(intent)
-                }*//*
-                else{
-                    val dialogBuilder = AlertDialog.Builder(activity?.applicationContext!!)
-                    dialogBuilder.setMessage("You do not have an access to tutor login.")
-                        .setCancelable(false)
-                        .setNegativeButton("Okay", DialogInterface.OnClickListener {
-                                dialog, id -> dialog.cancel()
-                        })
-                    val alert = dialogBuilder.create()
-                    alert.setTitle("Tutor Access denied.")
-                    alert.show()
-                }
-            }*/
-            "Logout"->{
-                Firebase.auth.signOut()
-                //Navigation.findNavController(requireView()).navigate(R.id.action_studentDetailsFragment2_to_tutorLoginFragment2)
-                Toast.makeText(
-                    activity, "Successfully logged out.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-        return true
-    }
 
     private fun hasLocationAndContactsPermission(): Boolean {
         return EasyPermissions.hasPermissions(requireContext(), *LOCATION_AND_CONTACTS)

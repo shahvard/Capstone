@@ -104,6 +104,15 @@
 
         <View style="@style/proifleDetailsView" />
 
+        <RelativeLayout style="@style/profileDetailsLayout">
+            <Button
+                android:id="@+id/setAvailability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Availability"
+                android:background="@drawable/back_home_button"/>
+        </RelativeLayout>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
