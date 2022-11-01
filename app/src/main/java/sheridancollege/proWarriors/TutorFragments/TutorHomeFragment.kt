@@ -34,6 +34,8 @@ import kotlin.collections.ArrayList
 
 class TutorHomeFragment : Fragment() {
     private lateinit var username: String
+    private var count = 0
+    private var starsCount = 0.0
 
 
     private lateinit var headingText: TextView
@@ -60,6 +62,8 @@ class TutorHomeFragment : Fragment() {
     )
     private lateinit var storageRef: StorageReference
     private var iconArrayList: ArrayList<StudentHome> = arrayListOf<StudentHome>()
+    private lateinit var bookingCount:TextView
+    private lateinit var ratingCount:TextView
 
     //private lateinit var username: String
     private lateinit var database: FirebaseDatabase
@@ -73,6 +77,8 @@ class TutorHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_tutor_home, container, false)
 
+        bookingCount = view.findViewById(R.id.aptNum)
+        ratingCount = view.findViewById(R.id.starsNum)
         headingText = view.findViewById(R.id.topName)
         studentName = view.findViewById(R.id.tutorName)
         aptDate = view.findViewById(R.id.aptDate)
@@ -125,8 +131,6 @@ class TutorHomeFragment : Fragment() {
             }
         }
 
-        //courseIconRV.adapter = StudentHomeCourseAdapter(iconArrayList)
-
         val localFile = File.createTempFile("studentImage", "jpg")
 
 
@@ -141,12 +145,6 @@ class TutorHomeFragment : Fragment() {
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_tutorHomeFragment_to_tutorDetailsFragment)
         }
-
-/*        seeAppointments.setOnClickListener() {
-            Navigation.findNavController(requireView())
-                .navigate(R.id.action_tutorHomeFragment_to_tutorAppointmentDisplayFragment)
-
-        }*/
 
         storageRef.child("profile_images/$username.jpg").getFile(localFile).addOnSuccessListener {
             val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -197,23 +195,20 @@ class TutorHomeFragment : Fragment() {
             delay(600)
             var time: String = ""
 
+
             for (appointment in allAppointmentsList) {
-
                 val appointmentListener = object : ValueEventListener {
-
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-
                         if (dataSnapshot.child("Appointments/$appointment") != null) {
                             val data = dataSnapshot.child("Appointments/$appointment")
-                            if (data.child("tutorUserName").value!!.equals(username)) {
+                            if (data.child("tutorUserName").value!! == username) {
                                 val simpleDate = SimpleDateFormat("dd/MM/yyyy")
-
                                 var startTime = data.child("startTime").value.toString()
                                 var endTime = data.child("endTime").value.toString()
                                 var date = data.child("date").value.toString()
                                 var courseName= data.child("courseName").value.toString()
                                 val cmpDate = Date().compareTo(simpleDate.parse(date))
-
+                                count++
                                 when {
                                     cmpDate <= 0 -> {
                                         var studentUserName =
@@ -222,15 +217,14 @@ class TutorHomeFragment : Fragment() {
                                         StudentEntity.getStudentDetails(studentUserName)
                                         GlobalScope.launch {
                                             delay(800)
-
                                             var student: Student = stu.student
                                             UiThreadUtil.runOnUiThread {
-
                                                 if (student != null) {
                                                     studentName.text =
                                                         student.firstName + " " + student.lastName
                                                     courseNameTV.text=courseName
                                                 }
+                                                bookingCount.text = count.toString()
                                             }
                                         }
                                         aptTime.text = time
@@ -245,6 +239,40 @@ class TutorHomeFragment : Fragment() {
                     }
                 }
                 databaseref.addValueEventListener(appointmentListener)
+            }
+
+            var len = 0
+            var total :Double =0.0
+
+            database.getReference("TutorReviews/$username/Stars")
+                .addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot!!.exists()) {
+                            for (child in snapshot.children) {
+                                if(child.value!!::class.simpleName=="Double"){
+                                    val star :Double =  child.value as Double
+                                    total += star
+                                    len++
+                                }
+                                else{
+                                    val star :Long=   child.value as Long
+                                    total += star
+                                    len++
+                                }
+                            }
+                            starsCount = String.format("%.1f",(total/len)).toDouble()
+                        }else{
+                            starsCount =0.0
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+            delay(500)
+            UiThreadUtil.runOnUiThread {
+                ratingCount.text = starsCount.toString()
             }
         }
         return view
