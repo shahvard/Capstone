@@ -21,6 +21,7 @@ import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.Student.TimeSlotAdapter
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
@@ -38,8 +39,7 @@ class StudentAppointmentBookingFragment : Fragment() {
     private lateinit var database: DatabaseReference
     lateinit var start: String
     lateinit var end: String
-
-    //private lateinit var slotSpinner: Spinner
+    lateinit var courseName: String
     private lateinit var halfHourCheck: RadioButton
     private lateinit var oneHourCheck: RadioButton
     private lateinit var slotTimeSelected: String
@@ -56,10 +56,12 @@ class StudentAppointmentBookingFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_student_appointment_booking, container, false)
 
         calendarView = view.findViewById(R.id.calendarView)
+        val currentDate = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        val cDateInMillis = currentDate * 1000
+        calendarView.date = cDateInMillis
         database = Firebase.database.reference
         tutorName = arguments?.getString("TutorName").toString()
         tutorUserName = arguments?.getString("TutorUserName").toString()
-        Log.d("TUTOR NAME", tutorUserName)
         slotsRV = view.findViewById(R.id.slotRecView)
         slotsRV.layoutManager = LinearLayoutManager(this.context)
         slotsRV.setHasFixedSize(true)
@@ -67,6 +69,7 @@ class StudentAppointmentBookingFragment : Fragment() {
         halfHourCheck = view.findViewById(R.id.halfHourRadio)
         oneHourCheck = view.findViewById(R.id.oneHourRadio)
         slotsArray = arrayListOf()
+        courseName = arguments?.getString("courseName").toString()
         val user = Firebase.auth.currentUser
         user?.let {
             val email = user.email
@@ -81,22 +84,33 @@ class StudentAppointmentBookingFragment : Fragment() {
                 R.id.halfHourRadio -> {
                     slotTimeSelected = "1/2 hour"
                 }
-
+            }
         }
-        
-            calendarView.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
 
-                // Create calender object with which will have system date time.
+        calendarView.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
+
+            if (group.checkedRadioButtonId == -1){
+                Toast.makeText(
+                    requireContext(),
+                    "Please select the time slot first.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }else{
                 val calender: Calendar = Calendar.getInstance()
-                // Set attributes in calender object as per selected date.
                 calender.set(year, month, dayOfMonth)
-                // Now set calenderView with this calender object to highlight selected date on UI.
                 calView.setDate(calender.timeInMillis, true, true)
+
+                if(calender.timeInMillis< cDateInMillis){
+                    Toast.makeText(
+                        requireContext(),
+                        "Please select a valid date.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
                 var date = "$dayOfMonth/${month + 1}/$year"
                 var dayOfWeekInt =
                     getDayOfWeekValue(LocalDateTime.of(year, month + 1, dayOfMonth, 0, 0, 0))
-                var monthFinal = month + 1
                 when (dayOfWeekInt) {
                     1 -> day = "Sunday"
                     2 -> day = "Monday"
@@ -111,17 +125,19 @@ class StudentAppointmentBookingFragment : Fragment() {
                         .child("notAvailable").get()
                         .addOnSuccessListener {
                             notAvailable = it.value.toString()
-                            Log.d("NOT AVAIL in FIRST", notAvailable)
                         }
-
                     delay(200)
-                    Log.d("NOT AVAIL after FIRST", notAvailable)
-
                     if (notAvailable == "true") {
                         slotsArray = emptyList()
-                        runOnUiThread{
+                        runOnUiThread {
                             slotsRV.adapter =
-                                TimeSlotAdapter(slotsArray, tutorUserName, studentUserName, date)
+                                TimeSlotAdapter(
+                                    slotsArray,
+                                    tutorUserName,
+                                    studentUserName,
+                                    date,
+                                    courseName
+                                )
                             Toast.makeText(
                                 requireContext(),
                                 "No slots Available on this day select another day",
@@ -129,7 +145,7 @@ class StudentAppointmentBookingFragment : Fragment() {
                             ).show()
                         }
 
-                    }else if(notAvailable == "false"){
+                    } else if (notAvailable == "false") {
                         database.child("Availability").child(tutorUserName).child(day)
                             .child("startTime").get()
                             .addOnSuccessListener {
@@ -146,24 +162,22 @@ class StudentAppointmentBookingFragment : Fragment() {
                                 Log.e("firebase", "Error getting data", it)
                             }
 
-                        delay(500)
-                       // runOnUiThread {
+                        delay(400)
 
+                        var startTime = LocalTime.parse(
+                            start,
+                            DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+                        )
 
+                        var endTime = LocalTime.parse(
+                            end,
+                            DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
+                        )
 
-                            var startTime = LocalTime.parse(
-                                start,
-                                DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))
+                        var timeSlotObject = TimeSlot(startTime, endTime)
 
-                            var endTime =
-                                LocalTime.parse(
-                                    end,
-                                    DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)
-                                )
-
-                            var timeSlotObject = TimeSlot(startTime, endTime)
-
-                            if (slotTimeSelected == "1 hour") {
+                        when (slotTimeSelected) {
+                            "1 hour" -> {
                                 slotsArray = timeSlotObject.divide(60)
                                 runOnUiThread {
                                     Toast.makeText(
@@ -177,10 +191,12 @@ class StudentAppointmentBookingFragment : Fragment() {
                                             slotsArray,
                                             tutorUserName,
                                             studentUserName,
-                                            date
+                                            date,
+                                            courseName
                                         )
                                 }
-                            } else if (slotTimeSelected == "1/2 hour") {
+                            }
+                            "1/2 hour" -> {
                                 slotsArray = timeSlotObject.divide(30)
                                 runOnUiThread {
                                     Toast.makeText(
@@ -194,19 +210,12 @@ class StudentAppointmentBookingFragment : Fragment() {
                                             slotsArray,
                                             tutorUserName,
                                             studentUserName,
-                                            date
+                                            date,
+                                            courseName
                                         )
                                 }
-                            } else {
-                                runOnUiThread {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Please select the time slot",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
                             }
-
+                        }
                     }
                 }
             }

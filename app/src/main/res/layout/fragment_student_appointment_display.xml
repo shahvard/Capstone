@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
+    tools:context=".StudentFragments.StudentAppointmentDisplayFragment">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:background="#0F9D58"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutTutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/purple"
+            app:tabSelectedTextColor="@color/purple_200"
+            app:tabTextAppearance="@style/TabLayoutStyle"
+            app:tabTextColor="@color/black"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerTutor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+
+
+</RelativeLayout>

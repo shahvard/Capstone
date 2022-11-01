@@ -13,7 +13,7 @@
         app:navigationIcon="@drawable/ic_back"/>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tabLayoutTutor"
         android:layout_width="match_parent"
         android:layout_margin="12dp"
         android:layout_height="wrap_content"
@@ -28,10 +28,10 @@
         android:layout_below="@id/start_chat_toolbar">
     </com.google.android.material.tabs.TabLayout>
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/viewPagerTutor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tabLayout">
+        android:layout_below="@id/tabLayoutTutor">
     </androidx.viewpager.widget.ViewPager>
 
 </RelativeLayout>

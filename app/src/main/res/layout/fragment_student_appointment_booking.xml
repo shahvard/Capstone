@@ -18,7 +18,7 @@
         android:textSize="24dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"/>
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -56,25 +56,24 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="260dp"
-        android:layout_height="260dp"
+        android:layout_height="310dp"
         android:layout_below="@+id/radioGroup"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
         android:background="@drawable/calendar_bg"
-        android:weekDayTextAppearance="@style/TextAppearance.Material3.BodyLarge"
-        android:dateTextAppearance="@style/TextAppearance.Material3.BodyLarge"
-        />
+        android:dateTextAppearance="@style/TextAppearance.Material3.BodyMedium"
+        android:weekDayTextAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/calendarView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:text="Available Time slots:"
-        android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:textStyle="bold" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -82,7 +81,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/calendarView"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="4dp" />
 
 
 

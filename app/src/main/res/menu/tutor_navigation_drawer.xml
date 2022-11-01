@@ -40,6 +40,11 @@
     </item>
     <item android:title="Account">
         <menu>
+            <item
+                android:title="View as Tutor"
+                android:onClick="viewAsStudentOnClick"
+                >
+            </item>
             <item android:id="@+id/tutorDetailsFragment"
                 android:title="Profile" android:icon="@drawable/icons_user"/>
             <item android:title="Logout" android:icon="@drawable/icons_logout"

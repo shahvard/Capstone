@@ -36,6 +36,7 @@ class StudentTutorDescriptionFragment : Fragment() {
     private lateinit var appointment:ImageView
     private lateinit var storageRef: StorageReference
     private lateinit var database:FirebaseDatabase
+    private lateinit var courseName:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +55,7 @@ class StudentTutorDescriptionFragment : Fragment() {
         appointment = view.findViewById(R.id.bookingImg)
         database = FirebaseDatabase.getInstance()
         reviewsList = arrayListOf()
+        courseName=arguments?.getString("courseName").toString()
 
         var i = 0
         var size=0
@@ -137,6 +139,7 @@ class StudentTutorDescriptionFragment : Fragment() {
             val bundle = Bundle()
             bundle.putString("TutorName",tutorName)
             bundle.putString("TutorUserName",username)
+            bundle.putString("courseName",courseName)
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_studentTutorDescriptionFragment_to_studentAppointmentBookingFragment,bundle)
         }
@@ -151,6 +154,15 @@ class StudentTutorDescriptionFragment : Fragment() {
 
         reviews.setOnClickListener(){
 
+        }
+
+        appointment.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("TutorName",tutorName)
+            bundle.putString("TutorUserName",username)
+            bundle.putString("courseName",courseName)
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_studentTutorDescriptionFragment_to_studentAppointmentDisplayFragment,bundle)
         }
         return view
     }

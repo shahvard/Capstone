@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tabLayoutTutor"
         android:layout_width="match_parent"
         android:layout_margin="16dp"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         app:tabMode="fixed">
     </com.google.android.material.tabs.TabLayout>
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/viewPagerTutor"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.viewpager.widget.ViewPager>

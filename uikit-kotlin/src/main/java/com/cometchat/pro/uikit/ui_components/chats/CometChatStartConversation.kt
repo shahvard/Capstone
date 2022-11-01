@@ -29,8 +29,8 @@ class CometChatStartConversation : AppCompatActivity() {
         setContentView(R.layout.activity_start_conversation_from_chat)
 
         toolbar = findViewById(R.id.start_chat_toolbar)
-        tabLayout = findViewById(R.id.tabLayout)
-        viewPager = findViewById(R.id.viewPager)
+        tabLayout = findViewById(R.id.tabLayoutTutor)
+        viewPager = findViewById(R.id.viewPagerTutor)
         adapter = TabAdapter(supportFragmentManager)
 
         val cometChatUserList = CometChatUserList()

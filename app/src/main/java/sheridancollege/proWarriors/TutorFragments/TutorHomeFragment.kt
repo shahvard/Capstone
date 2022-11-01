@@ -54,6 +54,11 @@ class TutorHomeFragment : Fragment() {
                 .navigate(R.id.action_tutorHomeFragment_to_tutorAvailabilityFragment)
 
         }
+
+        view.findViewById<TextView>(R.id.seeAllTutorAppointments).setOnClickListener(){
+            Navigation.findNavController(requireView()).navigate(R.id.action_tutorHomeFragment_to_tutorAppointmentDisplayFragment)
+
+        }
         //setHasOptionsMenu(true)
         return view
     }

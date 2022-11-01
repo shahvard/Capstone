@@ -60,8 +60,8 @@ class CometChatCallList constructor() : Fragment() {
             }
         })
         phoneAddIv!!.setOnClickListener(View.OnClickListener { openUserListScreen() })
-        viewPager = v.findViewById(R.id.viewPager)
-        tabLayout = v.findViewById(R.id.tabLayout)
+        viewPager = v.findViewById(R.id.viewPagerTutor)
+        tabLayout = v.findViewById(R.id.tabLayoutTutor)
         if (activity != null) {
             tabAdapter = TabAdapter(activity!!.supportFragmentManager)
             tabAdapter!!.addFragment(AllCall(), context!!.resources.getString(R.string.all))

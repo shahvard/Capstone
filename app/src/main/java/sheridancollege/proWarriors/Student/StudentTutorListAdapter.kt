@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import sheridancollege.proWarriors.R
 import sheridancollege.proWarriors.StudentFragments.User
 
-class StudentTutorListAdapter(private val cList:List<User>) : RecyclerView.Adapter<StudentTutorListAdapter.MyViewHolder>(){
+class StudentTutorListAdapter(private val cList:List<User>,var courseName:String) : RecyclerView.Adapter<StudentTutorListAdapter.MyViewHolder>(){
 
     class MyViewHolder(itemview: View):RecyclerView.ViewHolder(itemview){
         val tutorNameView: TextView = itemview.findViewById(R.id.courseName)
@@ -35,6 +35,7 @@ class StudentTutorListAdapter(private val cList:List<User>) : RecyclerView.Adapt
             val bundle = Bundle()
             bundle.putString("TutorName",item.name)
             bundle.putString("TutorUserName",item.username)
+            bundle.putString("courseName",courseName)
             Navigation.findNavController(holder.tutorNameView)
                 .navigate(R.id.action_courseDetailsFragment_to_studentTutorDescriptionFragment,bundle)
 
