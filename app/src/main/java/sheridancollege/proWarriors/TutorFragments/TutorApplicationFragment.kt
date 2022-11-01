@@ -60,6 +60,10 @@ class TutorApplicationFragment : Fragment() {
         name.text = "Hello " + arguments?.getString("name").toString() + ","
         progressDialog = ProgressDialog(requireContext())
 
+        var fromStudent = arguments?.getBoolean("fromStudent")
+        if (fromStudent == true){
+            name.visibility = View.GONE
+        }
         database = FirebaseDatabase.getInstance().reference.child("Transcripts")
         imageStore = FirebaseStorage.getInstance().getReference()
         storageRef = FirebaseStorage.getInstance().reference.child("transcripts/$username.pdf")
@@ -116,11 +120,22 @@ class TutorApplicationFragment : Fragment() {
                                 .setCancelable(false)
                                 .setPositiveButton("Yes") { dialog, id ->
 
-                                    val bundle = Bundle()
-                                    bundle.putString("name", headName)
-                                    bundle.putString("tutorUserName", username)
-                                    Navigation.findNavController(requireView())
-                                        .navigate(R.id.action_tutorApplicationFragment_to_tutorAvailabilityFragment2, bundle)
+                                    var fromStudent = arguments?.getBoolean("fromStudent")
+                                    if(fromStudent==true){
+                                        val bundle = Bundle()
+                                        bundle.putBoolean("fromStudent", true)
+                                        bundle.putString("name", headName)
+                                        bundle.putString("tutorUserName", username)
+                                        Navigation.findNavController(requireView())
+                                            .navigate(R.id.action_tutorApplicationFragment2_to_tutorAvailabilityFragment3, bundle)
+                                    }
+                                    else{
+                                        val bundle = Bundle()
+                                        bundle.putString("name", headName)
+                                        bundle.putString("tutorUserName", username)
+                                        Navigation.findNavController(requireView())
+                                            .navigate(R.id.action_tutorApplicationFragment_to_tutorAvailabilityFragment2, bundle)
+                                    }
                                 }
                                 .setNegativeButton("No"){ dialog, id ->
                                     dialog.cancel()

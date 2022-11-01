@@ -29,7 +29,7 @@ object TutorEntity {
                     val email = data.child(username).child("email").value.toString()
                     val phoneNo = data.child(username).child("phoneNo").value.toString()
                     val address = data.child(username).child("address").value.toString()
-                    val student = data.child(username).child("isStudent").value.toString().toBoolean()
+                    val student = data.child(username).child("student").value.toString().toBoolean()
 
                     tut.tutor = Tutor(
                         username,

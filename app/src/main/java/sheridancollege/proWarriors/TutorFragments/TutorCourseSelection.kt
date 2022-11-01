@@ -51,7 +51,7 @@ class TutorCourseSelection : Fragment() {
 
         var fromStudent = arguments?.getBoolean("fromStudent")
         if (fromStudent == true){
-
+            name.visibility = View.GONE
         }
 
         database.getReference("Courses").addValueEventListener(object: ValueEventListener {
@@ -83,13 +83,6 @@ class TutorCourseSelection : Fragment() {
             }
         })
 
-        /*val user = Firebase.auth.currentUser
-        user?.let {
-            val email = user.email
-            username = email?.split("@")?.get(0).toString()
-        }*/
-
-
         view.findViewById<Button>(R.id.Done).setOnClickListener() {
             for (course in courseList!!) {
 
@@ -103,12 +96,21 @@ class TutorCourseSelection : Fragment() {
                 .setCancelable(false)
                 .setPositiveButton("Yes") { dialog, id ->
 
-                    val bundle = Bundle()
-                    bundle.putString("name", headName)
-                    bundle.putString("tutorUserName", username)
-                    Navigation.findNavController(requireView())
-                        .navigate(R.id.action_tutorCourseSelectionFragment_to_tutorApplicationFragment, bundle)
-
+                    if (fromStudent==true){
+                        val bundle = Bundle()
+                        bundle.putBoolean("fromStudent", true)
+                        bundle.putString("name", headName)
+                        bundle.putString("tutorUserName", username)
+                        Navigation.findNavController(requireView())
+                            .navigate(R.id.action_tutorCourseSelection_to_tutorApplicationFragment2, bundle)
+                    }
+                    else{
+                        val bundle = Bundle()
+                        bundle.putString("name", headName)
+                        bundle.putString("tutorUserName", username)
+                        Navigation.findNavController(requireView())
+                            .navigate(R.id.action_tutorCourseSelectionFragment_to_tutorApplicationFragment, bundle)
+                    }
                 }
                 .setNegativeButton("No"){ dialog, id ->
                     dialog.cancel()

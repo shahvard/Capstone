@@ -38,7 +38,9 @@
     <item android:title="Account">
         <menu>
             <item
-                android:title="View as Tutor"
+                android:id="@+id/viewAsMenu"
+                android:icon="@drawable/icons_switch"
+                android:title="View as Student"
                 android:onClick="viewAsStudentOnClick"/>
             <item android:id="@+id/tutorDetailsFragment"
                 android:title="Profile" android:icon="@drawable/icons_user"/>

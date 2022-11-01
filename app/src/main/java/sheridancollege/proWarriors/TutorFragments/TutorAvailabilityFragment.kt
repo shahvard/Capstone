@@ -1,5 +1,6 @@
 package sheridancollege.proWarriors.TutorFragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import sheridancollege.proWarriors.Home.MainActivity
 import sheridancollege.proWarriors.R
 
 
@@ -61,12 +63,16 @@ class TutorAvailabilityFragment : Fragment() {
         addButton = view.findViewById(R.id.addButton)
         notAvail = view.findViewById(R.id.notAvailable)
 
+        var fromStudent = arguments?.getBoolean("fromStudent")
+        if (fromStudent == true){
+            view.findViewById<TextView>(R.id.nameHeading).visibility = View.GONE
+        }
+
         var edit = arguments?.getBoolean("edit")
 
         if (edit == true){
             view.findViewById<TextView>(R.id.nameHeading).visibility = View.GONE
             view.findViewById<TextView>(R.id.tutorDesc).visibility = View.GONE
-            edit = false
         }
         var provided:Int = 0
 
@@ -133,11 +139,23 @@ class TutorAvailabilityFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please provide availability for each day to continue.", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(requireContext(), "Congratulations tutor! You have completed whole boarding process.", Toast.LENGTH_SHORT).show()
+
+
                 builder.setMessage("Redirecting to login, please login using sheridan email and password.")
                     .setCancelable(false)
                     .setPositiveButton("Yes") { dialog, id ->
-                        Navigation.findNavController(requireView())
-                            .navigate(R.id.action_tutorAvailabilityFragment2_to_tutorLoginFragment)
+                        if(fromStudent==true){
+                            val bundle = Bundle()
+                            bundle.putBoolean("fromStudent", true)
+                            bundle.putString("tutorUserName", username)
+                            var intent = Intent(context, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else{
+                            Navigation.findNavController(requireView())
+                                .navigate(R.id.action_tutorAvailabilityFragment2_to_tutorLoginFragment)
+                        }
+
                     }
                     .setNegativeButton("No"){ dialog, id ->
                         dialog.cancel()

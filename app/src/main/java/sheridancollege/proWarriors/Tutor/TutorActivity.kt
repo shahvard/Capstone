@@ -29,9 +29,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import sheridancollege.proWarriors.R
-import sheridancollege.proWarriors.Student.Student
 import sheridancollege.proWarriors.Student.StudentActivity
-import sheridancollege.proWarriors.Student.stu
 import java.io.File
 
 class TutorActivity : AppCompatActivity() {
