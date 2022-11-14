@@ -91,12 +91,9 @@ class StudentPastAppointment : Fragment() {
                                 var courseName = data.child("courseName").value.toString()
                                 var tutorUserName =
                                     data.child("tutorUserName").value.toString()
-                               // Log.d("Tutor user name",tutorUserName)
-
                                 val cmpDate = Date().compareTo(  simpleDate.parse(date))
                                 when {
                                     cmpDate > 0 -> {
-                                        Log.d("Inside","Yes")
                                         appointmentsListPast.add(
                                             Appointment(
                                                 username,
@@ -113,18 +110,13 @@ class StudentPastAppointment : Fragment() {
                                             delay(500)
                                             runOnUiThread(){
                                                 appointmentListTutorNames.add(tut.tutor.firstName +" "+tut.tutor.lastName)
-                                                Log.d("Tutor name : ",tut.tutor.firstName +" "+tut.tutor.lastName)
-
                                             }
                                         }
-
-
                                         }
                                 }
                             }
                         }
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
@@ -134,9 +126,7 @@ class StudentPastAppointment : Fragment() {
             delay(500)
 
             runOnUiThread{
-
                 if(appointmentsListPast.size !=0){
-                    println("Inside if")
                     pastRV.adapter=StudentAppointmentListAdapter(appointmentsListPast, appointmentListTutorNames)
                     noAptTextView.visibility=View.GONE
 
@@ -144,16 +134,9 @@ class StudentPastAppointment : Fragment() {
                 else{
                     pastRV.visibility=View.GONE
                     noAptTextView.text="No Past Appointments Available"
-
                 }
-
-
             }
-
         }
-
-
-        Log.d("appointment List",appointmentsListPast.toString())
         return view
     }
 }

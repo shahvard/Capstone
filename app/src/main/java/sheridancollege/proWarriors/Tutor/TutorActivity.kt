@@ -66,11 +66,7 @@ class TutorActivity : AppCompatActivity() {
             if (tut.tutor != null) {
                 Log.d("TUTOR", tut.tutor.firstName.toString())
                 findViewById<TextView>(R.id.drawerName).text = tut.tutor.firstName.toString()
-                if (tutor.isStudent != null){
-                    findViewById<TextView>(R.id.drawerAccount).text = "Tutor"
-                }else{
-                    findViewById<TextView>(R.id.drawerAccount).text = "Student"
-                }
+                findViewById<TextView>(R.id.drawerAccount).text = "Tutor"
             }
             storageRef.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -107,7 +103,7 @@ class TutorActivity : AppCompatActivity() {
     fun viewAsStudentOnClick(item: MenuItem){
         if(tut.tutor.isStudent == true){
             var intent = Intent(this, StudentActivity::class.java)
-            // intent.putExtra("sName", StudentEntity.student.firstName)
+            intent.putExtra("fromTutor", true)
             startActivity(intent)
         }
         else{
@@ -127,7 +123,6 @@ class TutorActivity : AppCompatActivity() {
 
     fun tutorLogOut(item: MenuItem) {
         Firebase.auth.signOut()
-        val navController = findNavController(R.id.tutorNavHost)
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
