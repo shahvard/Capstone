@@ -2,6 +2,7 @@ package sheridancollege.proWarriors.StudentFragments
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -34,9 +35,11 @@ class StudentHomeFragment : Fragment() {
 
     private lateinit var headingText: TextView
     private lateinit var tutorName: TextView
+    private lateinit var tutorLabel:TextView
     private lateinit var aptDate: TextView
     private lateinit var aptTime: TextView
     private lateinit var seeAppointments: TextView
+    private lateinit var noAptText:TextView
     private lateinit var seeCourses: TextView
     private lateinit var courseIconRV: RecyclerView
     private lateinit var studentPhoto: ImageView
@@ -65,11 +68,14 @@ class StudentHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_student_home, container, false)
 
+        tutorLabel = view.findViewById(R.id.tutorLabel)
         headingText = view.findViewById(R.id.topName)
         tutorName = view.findViewById(R.id.tutorName)
         aptDate = view.findViewById(R.id.aptDate)
         aptTime = view.findViewById(R.id.aptTime)
         seeAppointments = view.findViewById(R.id.seeAllAppointments)
+        noAptText = view.findViewById(R.id.noApt)
+        noAptText.visibility = View.GONE
         seeCourses = view.findViewById(R.id.seeAllCourses)
         courseIconRV = view.findViewById(R.id.courseRecView)
         studentPhoto = view.findViewById(R.id.imgHome)
@@ -160,6 +166,7 @@ class StudentHomeFragment : Fragment() {
                         TODO("Not yet implemented")
                     }
                 })
+
             delay(500)
             var time: String = ""
 
@@ -171,8 +178,15 @@ class StudentHomeFragment : Fragment() {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                         if (dataSnapshot.child("Appointments/$appointment") != null) {
+                            Log.d("inside", "first if loop")
+
                             val data = dataSnapshot.child("Appointments/$appointment")
                             if (data.child("studentUserName").value!!.equals(username)) {
+                                noAptText.visibility = View.GONE
+                                tutorPhoto.visibility = View.VISIBLE
+                                tutorLabel.text = "Tutor"
+
+                                Log.d("inside", "if loop")
                                 val simpleDate = SimpleDateFormat("dd/MM/yyyy")
 
                                 var startTime = data.child("startTime").value.toString()
@@ -188,8 +202,6 @@ class StudentHomeFragment : Fragment() {
                                         var currentTime =
                                             currentTimeWithDate.split(" ")?.get(1).toString()
                                         val cmpTime = currentTime.compareTo("$startTime:00")
-                                        //when {
-                                        //cmpTime < 0 -> {
                                         var tutorUserName =
                                             data.child("tutorUserName").value.toString()
                                         time = "$startTime to $endTime"
@@ -204,34 +216,46 @@ class StudentHomeFragment : Fragment() {
                                                     tutorName.text =
                                                         tutor.firstName + " " + tutor.lastName
                                                 }
+                                                aptTime.text = time
+                                                aptDate.text = date
                                             }
                                         }
                                         val localFile2 = File.createTempFile("tutorImage", "jpg")
                                         storageRef.child("profile_images/$tutorUserName.jpg")
                                             .getFile(localFile2).addOnSuccessListener {
                                             val bitmap =
-                                                BitmapFactory.decodeFile(localFile.absolutePath)
+                                                BitmapFactory.decodeFile(localFile2.absolutePath)
                                             if (bitmap != null) {
                                                 tutorPhoto.setImageBitmap(bitmap)
                                             } else {
                                                 tutorPhoto.setImageResource(R.drawable.profile)
                                             }
                                         }
-                                        aptTime.text = time
-                                        aptDate.text = date
                                     }
                                 }
+                            }
+                            else{
+                                noAptText.visibility = View.VISIBLE
+                                tutorName.text = ""
+                                tutorPhoto.visibility = View.GONE
+                                tutorLabel.text = ""
+                                aptDate.text = ""
+                                aptTime.text = ""
                             }
                         }
                     }
 
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
+                        noAptText.visibility = View.VISIBLE
+                        tutorName.text = ""
+                        tutorPhoto.visibility = View.GONE
+                        tutorLabel.text = " "
+                        aptDate.text = ""
+                        aptTime.text = ""
                     }
                 }
                 databaseref.addValueEventListener(appointmentListener)
             }
-
         }
         return view
     }
