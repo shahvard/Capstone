@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.react.bridge.UiThreadUtil.runOnUiThread
@@ -30,7 +31,7 @@ class StudentPastAppointment : Fragment() {
     private lateinit var appointmentsListPast: ArrayList<Appointment>
     //private lateinit var appointmentsListFuture: ArrayList<Appointment>
     private lateinit var appointmentListTutorNames: ArrayList<String>
-
+    private lateinit var noAptTextView:TextView
     private lateinit var username: String
     private lateinit var pastRV: RecyclerView
     private lateinit var database: FirebaseDatabase
@@ -46,7 +47,7 @@ class StudentPastAppointment : Fragment() {
         allAppointmentsList = arrayListOf()
         appointmentsListPast = arrayListOf()
         appointmentListTutorNames= arrayListOf()
-
+        noAptTextView=view.findViewById(R.id.noAppointmentTextView)
         //appointmentsListFuture = arrayListOf()
         pastRV = view.findViewById(R.id.pastRVTutor)
         pastRV.layoutManager = LinearLayoutManager(this.context)
@@ -131,8 +132,21 @@ class StudentPastAppointment : Fragment() {
                 databaseref.addValueEventListener(appointmentListener)
             }
             delay(500)
+
             runOnUiThread{
-                pastRV.adapter=StudentAppointmentListAdapter(appointmentsListPast, appointmentListTutorNames)
+
+                if(appointmentsListPast.size !=0){
+                    println("Inside if")
+                    pastRV.adapter=StudentAppointmentListAdapter(appointmentsListPast, appointmentListTutorNames)
+                    noAptTextView.visibility=View.GONE
+
+                }
+                else{
+                    pastRV.visibility=View.GONE
+                    noAptTextView.text="No Past Appointments Available"
+
+                }
+
 
             }
 

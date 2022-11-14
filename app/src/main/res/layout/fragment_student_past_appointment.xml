@@ -18,7 +18,16 @@
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="italic|bold" />
-
+    <TextView
+        android:id="@+id/noAppointmentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pastHeading"
+        android:layout_marginTop="150dp"
+        android:layout_centerInParent="true"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pastRVTutor"
         android:layout_width="match_parent"
