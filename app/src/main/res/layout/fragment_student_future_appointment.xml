@@ -19,6 +19,17 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="15dp"/>
 
+    <TextView
+        android:id="@+id/noFutureAppointmentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/futureHeading"
+        android:layout_marginTop="150dp"
+        android:layout_centerInParent="true"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/futureRVTutor"
         android:layout_width="match_parent"

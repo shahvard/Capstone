@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.react.bridge.UiThreadUtil
@@ -31,7 +32,7 @@ class StudentFutureAppointment : Fragment() {
     private lateinit var appointmentsListPast: ArrayList<Appointment>
     private lateinit var appointmentsListFuture: ArrayList<Appointment>
     private lateinit var appointmentListTutorNames: ArrayList<String>
-
+    private lateinit var noAptTextView: TextView
     private lateinit var username: String
     private lateinit var futureRV: RecyclerView
     private lateinit var database: FirebaseDatabase
@@ -47,6 +48,7 @@ class StudentFutureAppointment : Fragment() {
         appointmentsListPast = arrayListOf()
         appointmentsListFuture = arrayListOf()
         appointmentListTutorNames= arrayListOf()
+        noAptTextView=view.findViewById(R.id.noFutureAppointmentTextView)
 
         futureRV = view.findViewById(R.id.futureRVTutor)
         futureRV.layoutManager = LinearLayoutManager(this.context)
@@ -134,8 +136,19 @@ class StudentFutureAppointment : Fragment() {
 
 
             UiThreadUtil.runOnUiThread {
-                futureRV.adapter=
-                    StudentAppointmentListAdapter(appointmentsListFuture, appointmentListTutorNames)
+
+
+                if(appointmentsListFuture.size !=0){
+                    futureRV.adapter= StudentAppointmentListAdapter(appointmentsListFuture, appointmentListTutorNames)
+                    noAptTextView.visibility=View.GONE
+
+                }
+                else{
+                    futureRV.visibility=View.GONE
+                    noAptTextView.text="No Future Appointments Available"
+
+                }
+
 
 
             }

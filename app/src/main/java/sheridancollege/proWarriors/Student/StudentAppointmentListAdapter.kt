@@ -15,6 +15,7 @@ class StudentAppointmentListAdapter(private val cList:List<Appointment>,val tuto
         val date:TextView=itemView.findViewById(R.id.dateDisplay)
         val tutorName:TextView=itemview.findViewById(R.id.tutorNameDisplay)
         val time:TextView=itemview.findViewById(R.id.timeDisplay)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -24,11 +25,13 @@ class StudentAppointmentListAdapter(private val cList:List<Appointment>,val tuto
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item: Appointment = cList[position]
-        holder.courseName.text=item.courseName
-        holder.date.text = item.date
-        holder.tutorName.text=tutorName[position]
-        holder.time.text=item.startTime +" to "+item.endTime
+       if(getItemCount()!=0) {
+           val item: Appointment = cList[position]
+           holder.courseName.text = item.courseName
+           holder.date.text = item.date
+           holder.tutorName.text = tutorName[position]
+           holder.time.text = item.startTime + " to " + item.endTime
+       }
 
     }
 
