@@ -53,7 +53,7 @@ class StudentHomeFragment : Fragment() {
         R.drawable.all
     )
     private lateinit var storageRef: StorageReference
-    private var iconArrayList: ArrayList<StudentHome> = arrayListOf<StudentHome>()
+    private var iconArrayList: ArrayList<StudentHome> = arrayListOf()
     private lateinit var username: String
     private lateinit var database: FirebaseDatabase
     private lateinit var allAppointmentsList: ArrayList<String>

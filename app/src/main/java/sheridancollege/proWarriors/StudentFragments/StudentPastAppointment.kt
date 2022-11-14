@@ -90,7 +90,7 @@ class StudentPastAppointment : Fragment() {
                                 var courseName = data.child("courseName").value.toString()
                                 var tutorUserName =
                                     data.child("tutorUserName").value.toString()
-                                TutorEntity.getTutorDetails(tutorUserName)
+                               // Log.d("Tutor user name",tutorUserName)
 
                                 val cmpDate = Date().compareTo(  simpleDate.parse(date))
                                 when {
@@ -107,9 +107,18 @@ class StudentPastAppointment : Fragment() {
                                             )
                                         )
 
-                                        appointmentListTutorNames.add(tut.tutor.firstName +" "+tut.tutor.lastName)
+                                        GlobalScope.launch{
+                                            TutorEntity.getTutorDetails(tutorUserName)
+                                            delay(500)
+                                            runOnUiThread(){
+                                                appointmentListTutorNames.add(tut.tutor.firstName +" "+tut.tutor.lastName)
+                                                Log.d("Tutor name : ",tut.tutor.firstName +" "+tut.tutor.lastName)
 
-                                    }
+                                            }
+                                        }
+
+
+                                        }
                                 }
                             }
                         }
@@ -121,7 +130,7 @@ class StudentPastAppointment : Fragment() {
                 }
                 databaseref.addValueEventListener(appointmentListener)
             }
-            delay(300)
+            delay(500)
             runOnUiThread{
                 pastRV.adapter=StudentAppointmentListAdapter(appointmentsListPast, appointmentListTutorNames)
 

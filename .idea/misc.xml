@@ -115,7 +115,7 @@
         <entry key="app/src/main/res/layout/fragment_student_details.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/fragment_student_future_appointment.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_student_home.xml" value="0.3763676961263021" />
-        <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.19276885986328127" />
+        <entry key="app/src/main/res/layout/fragment_student_login.xml" value="0.18472761674360794" />
         <entry key="app/src/main/res/layout/fragment_student_past_appointment.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_student_tutor_description.xml" value="0.21158447265624997" />
         <entry key="app/src/main/res/layout/fragment_support.xml" value="0.25545959472656254" />
@@ -127,9 +127,9 @@
         <entry key="app/src/main/res/layout/fragment_tutor_display_review.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/fragment_tutor_future_appointment.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_tutor_home.xml" value="0.30953979492187506" />
-        <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tutor_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_past_appointment.xml" value="0.22056159420289856" />
-        <entry key="app/src/main/res/layout/fragment_tutor_review.xml" value="0.3347839355468751" />
+        <entry key="app/src/main/res/layout/fragment_tutor_review.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutor_sign_up.xml" value="0.28192901611328125" />
         <entry key="app/src/main/res/layout/home_courses_rv.xml" value="0.51976318359375" />
         <entry key="app/src/main/res/layout/row_item.xml" value="0.22056159420289856" />

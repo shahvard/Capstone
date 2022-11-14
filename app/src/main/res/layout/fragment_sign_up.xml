@@ -89,7 +89,6 @@
                         android:imeOptions="actionDone"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:text="Vardhman Shah"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +117,6 @@
                         android:imeOptions="actionDone"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:text="shahvard@sheridancollege.ca"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,7 +145,6 @@
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
                         android:maxLines="1"
-                        android:text="12345678"
                         android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -177,7 +174,6 @@
                         android:imeOptions="actionDone"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:text="6476150054"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -206,7 +202,6 @@
                         android:imeOptions="actionDone"
                         android:inputType="text"
                         android:maxLines="2"
-                        android:text="10 danum road"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 

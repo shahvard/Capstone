@@ -20,7 +20,7 @@ class StudentAppointmentListAdapter(private val cList:List<Appointment>,val tuto
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemview =
             LayoutInflater.from(parent.context).inflate(R.layout.appointment_view_row,parent,false)
-        return StudentAppointmentListAdapter.MyViewHolder(itemview)
+        return MyViewHolder(itemview)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

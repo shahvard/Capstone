@@ -273,7 +273,13 @@ class TutorHomeFragment : Fragment() {
             delay(500)
             UiThreadUtil.runOnUiThread {
                 ratingCount.text = starsCount.toString()
+                seeAppointments.setOnClickListener(){
+                    Navigation.findNavController(requireView())
+                        .navigate(R.id.action_tutorHomeFragment_to_tutorAppointmentDisplayFragment)
+                }
             }
+
+
         }
         return view
     }
