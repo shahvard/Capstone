@@ -35,6 +35,7 @@ class TutorAvailabilityFragment : Fragment() {
     private lateinit var username: String
     private lateinit var availList: ArrayList<Availability>
     private lateinit var database: DatabaseReference
+    private lateinit var days: Array<ImageView>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,17 +52,25 @@ class TutorAvailabilityFragment : Fragment() {
         availList = arrayListOf()
         heading = view.findViewById(R.id.timeHeading)
         sunday = view.findViewById(R.id.sunButton)
+        sunday.tag = "sunday"
         saturday = view.findViewById(R.id.satButton)
+        saturday.tag = "saturday"
         monday = view.findViewById(R.id.monButton)
+        monday.tag = "monday"
         tuesday = view.findViewById(R.id.tueButton)
+        tuesday.tag = "tuesday"
         wednesday = view.findViewById(R.id.wedButton)
+        wednesday.tag = "wednesday"
         thursday = view.findViewById(R.id.thuButton)
+        thursday.tag = "thursday"
         friday = view.findViewById(R.id.friButton)
+        friday.tag = "friday"
         sTime = view.findViewById(R.id.startTime)
         eTime = view.findViewById(R.id.endTime)
         confirmButton = view.findViewById(R.id.confirm)
         addButton = view.findViewById(R.id.addButton)
         notAvail = view.findViewById(R.id.notAvailable)
+        days = arrayOf(sunday, monday, tuesday, wednesday, thursday, friday, saturday)
 
         var fromStudent = arguments?.getBoolean("fromStudent")
         if (fromStudent == true){
@@ -79,58 +88,72 @@ class TutorAvailabilityFragment : Fragment() {
         sunday.setOnClickListener {
             heading.text = "Select timings for Sunday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Sunday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("sunday")
         }
         monday.setOnClickListener {
             heading.text = "Select timings for Monday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Monday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("monday")
         }
         tuesday.setOnClickListener {
             heading.text = "Select timings for Tuesday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Tuesday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("tuesday")
         }
         wednesday.setOnClickListener {
             heading.text = "Select timings for Wednesday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Wednesday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("wednesday")
         }
         thursday.setOnClickListener {
             heading.text = "Select timings for Thursday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Thursday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("thursday")
         }
         friday.setOnClickListener {
             heading.text = "Select timings for Friday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Friday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("friday")
         }
         saturday.setOnClickListener {
             heading.text = "Select timings for Saturday"
             addButton.setOnClickListener {
+                showAllImages()
                 getTimings("Saturday")
                 clearTextFields()
                 provided++
             }
+            invisbleOthers("saturday")
         }
 
         confirmButton.setOnClickListener {
@@ -166,6 +189,26 @@ class TutorAvailabilityFragment : Fragment() {
             }
         }
         return view
+    }
+
+
+    private fun invisbleOthers(day: String) {
+
+        for (d in days){
+            var name = d.tag
+            if (name==day){
+                d.visibility = View.VISIBLE
+            }
+            else{
+                d.visibility = View.INVISIBLE
+            }
+        }
+    }
+
+    private fun showAllImages(){
+        for (d in days){
+            d.visibility = View.VISIBLE
+        }
     }
 
     private fun clearTextFields() {

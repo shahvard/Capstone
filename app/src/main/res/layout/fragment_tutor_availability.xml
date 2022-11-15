@@ -72,9 +72,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginBottom="20dp"
-            android:text="Day"
+            android:text="Provide availability for each day"
             android:textColor="@color/blue"
-            android:textSize="28dp"
+            android:textSize="26dp"
             android:textStyle="bold" />
 
         <ImageView
