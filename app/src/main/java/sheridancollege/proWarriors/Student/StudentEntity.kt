@@ -12,8 +12,9 @@ import com.google.firebase.ktx.Firebase
 class stu{
    companion object{
    var student: Student= Student()
-
+   var type = "student"
    }
+
 }
 
 object StudentEntity {

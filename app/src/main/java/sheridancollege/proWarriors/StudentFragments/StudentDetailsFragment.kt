@@ -32,6 +32,7 @@ import sheridancollege.proWarriors.Student.Student
 import sheridancollege.proWarriors.Student.StudentActivity
 import sheridancollege.proWarriors.Student.StudentEntity
 import sheridancollege.proWarriors.Student.stu
+import sheridancollege.proWarriors.Student.stu.Companion.student
 import java.io.ByteArrayOutputStream
 import java.io.File
 
@@ -55,6 +56,8 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         val view = inflater.inflate(R.layout.fragment_details, container, false)
         val user = Firebase.auth.currentUser
 
+        view.findViewById<TextView>(R.id.setAvailability).visibility = View.GONE
+
         user?.let {
             val email = user.email
             username = email?.split("@")?.get(0).toString()
@@ -64,7 +67,10 @@ class StudentDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         imageStore = FirebaseStorage.getInstance().getReference()
         storageRef = FirebaseStorage.getInstance().reference.child("profile_images/$username.jpg")
 
-
+        /*if(stu.type=="student"){
+            view.findViewById<TextView>(R.id.setAvailability).visibility = View.GONE
+        }
+*/
         var fullName = view.findViewById<TextView>(R.id.fName)
         var first = view.findViewById<TextView>(R.id.firstName)
         var phone = view.findViewById<TextView>(R.id.cNumber)

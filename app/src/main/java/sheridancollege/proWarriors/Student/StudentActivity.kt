@@ -39,6 +39,7 @@ class StudentActivity : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
     private lateinit var username:String
     private lateinit var database: DatabaseReference
+    companion object var type = "Student"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
