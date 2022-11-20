@@ -70,7 +70,7 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         var back = view.findViewById<TextView>(R.id.backToHome)
         mImage = view.findViewById<ImageView>(R.id.profileImage)
 
-        view.findViewById<Button>(R.id.setAvailability).setOnClickListener() {
+        view.findViewById<TextView>(R.id.setAvailability).setOnClickListener() {
             val bundle = Bundle()
             bundle.putBoolean("edit", true)
             Navigation.findNavController(requireView())
@@ -168,11 +168,11 @@ class TutorDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 filepath.putFile(resultUri).addOnCompleteListener{ task ->
                     if (task.isSuccessful){
                         Log.d("HELLO", "inside first")
-                        val download_url = task.result.storage.downloadUrl.toString()
+                        val download_url = task.result?.storage?.downloadUrl.toString()
                         val uploadTask = thumb_filepath.putBytes(thumb_byte)
 
                         uploadTask.addOnCompleteListener{
-                            val thumb_downUrl = it.result.storage.downloadUrl.toString()
+                            val thumb_downUrl = it.result!!.storage.downloadUrl.toString()
                             if(it.isSuccessful){
                                 Log.d("HELLO", "inside second")
                                 val update_hashMap = HashMap<String, Any>()

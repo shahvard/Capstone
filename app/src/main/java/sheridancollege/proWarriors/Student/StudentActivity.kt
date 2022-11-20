@@ -39,6 +39,7 @@ class StudentActivity : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
     private lateinit var username:String
     private lateinit var database: DatabaseReference
+    companion object var type = "Student"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,12 +67,9 @@ class StudentActivity : AppCompatActivity() {
             var student: Student = stu.student
             delay(900)
             if (stu.student != null) {
-               findViewById<TextView>(R.id.drawerName).text = stu.student.firstName.toString()
-                if (student.isTutor == false){
-                    findViewById<TextView>(R.id.drawerAccount).text = "Student"
-                }else{
-                    findViewById<TextView>(R.id.drawerAccount).text = "Tutor"
-                }
+                findViewById<TextView>(R.id.drawerName).text = stu.student.firstName.toString()
+                findViewById<TextView>(R.id.drawerAccount).text = "Student"
+
             }
             storageRef.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -128,6 +126,7 @@ class StudentActivity : AppCompatActivity() {
     fun viewAsTutorOnClick(item: MenuItem){
         if(stu.student.isTutor == true){
             var intent = Intent(this, TutorActivity::class.java)
+            intent.putExtra("fromStudent", true)
             startActivity(intent)
         }
         else{

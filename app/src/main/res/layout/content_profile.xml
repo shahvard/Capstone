@@ -104,13 +104,15 @@
 
         <View style="@style/proifleDetailsView" />
 
-        <RelativeLayout style="@style/profileDetailsLayout">
-            <Button
+        <RelativeLayout style="@style/profileDetailsLayout"
+            android:gravity="center">
+
+            <TextView
+                android:layout_centerInParent="true"
                 android:id="@+id/setAvailability"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Availability"
-                android:background="@drawable/back_home_button"/>
+                style="@style/profileStyledBackButton"
+                android:text="Edit \nAvailability"
+                android:textColor="@color/black"/>
         </RelativeLayout>
 
     </LinearLayout>
